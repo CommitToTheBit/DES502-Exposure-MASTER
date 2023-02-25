@@ -10,6 +10,8 @@
 
 #include "DESGameInstance.generated.h"
 
+class UDESSaveGame;
+
 UCLASS()
 class DES502_BUILD_API UDESGameInstance : public UGameInstance
 {
@@ -19,12 +21,16 @@ class DES502_BUILD_API UDESGameInstance : public UGameInstance
 
 	FString SaveSlot = "GameData";
 
-	class UDESSaveGame* GameData;
+	UDESSaveGame* GameData;
 
 public:
-	void SaveGameData(
-		FVector PlayerPosition,
-		int CameraAmmo
-	);
-	class UDESSaveGame* LoadGameData();
+
+	UFUNCTION(BlueprintCallable, Category="Saving/Loading")
+		void SaveGameData(
+			FVector PlayerPosition,
+			int CameraAmmo
+		);
+
+	UFUNCTION(BlueprintCallable, Category="Saving/Loading")
+		UDESSaveGame* LoadGameData();
 };
