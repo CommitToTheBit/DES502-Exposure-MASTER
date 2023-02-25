@@ -25,12 +25,12 @@ class DES502_BUILD_API UDESGameInstance : public UGameInstance
 
 public:
 
-	UFUNCTION(BlueprintCallable, Category="Saving/Loading")
+	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		void SaveGameData(
 			FVector PlayerPosition,
 			int CameraAmmo
 		);
 
-	UFUNCTION(BlueprintCallable, Category="Saving/Loading")
+	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		UDESSaveGame* LoadGameData();
 };

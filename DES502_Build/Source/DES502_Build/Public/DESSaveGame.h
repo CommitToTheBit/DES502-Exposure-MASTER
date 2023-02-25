@@ -12,9 +12,9 @@ class DES502_BUILD_API UDESSaveGame : public USaveGame
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving/Loading")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
 		FVector PlayerPosition;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving/Loading")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
 		int CameraAmmo;
 };
