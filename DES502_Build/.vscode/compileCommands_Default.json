@@ -24,6 +24,14 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\Source\\DES502_Build\\Private\\DESCurio.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\.vscode\\compileCommands_Default\\DES502_Build.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\Source\\DES502_Build\\Private\\DESGameInstance.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
@@ -33,6 +41,14 @@
 	},
 	{
 		"file": "C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\Source\\DES502_Build\\Private\\DESSaveGame.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\.vscode\\compileCommands_Default\\DES502_Build.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\Source\\DES502_Build\\Public\\DESCurio.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
 			"@C:\\Users\\Sam\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\.vscode\\compileCommands_Default\\DES502_Build.255.rsp"
