@@ -12,7 +12,11 @@ void UDESGameInstance::Init()
 	// If this fails, create new game data...
 	GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
+	// Player Variables...
 	GameData->PlayerPosition = FVector(0.0, 0.0, 0.0);
+	GameData->PlayerCameraRotation = FRotator(0.0, 0.0, 0.0);
+
+	// Polaroid Variables...
 	GameData->PolaroidAmmo = 27;
 
 	// Crawl Space Variables...
@@ -24,6 +28,7 @@ void UDESGameInstance::Init()
 
 void UDESGameInstance::SaveGameData(
 	FVector PlayerPosition,
+	FRotator PlayerCameraRotation,
 	int PolaroidAmmo,
 	bool bCrawling,
 	float CrawlDistance
@@ -32,7 +37,11 @@ void UDESGameInstance::SaveGameData(
 	if (!GameData)
 		return;
 
+	// Player Variables...
 	GameData->PlayerPosition = PlayerPosition;
+	GameData->PlayerCameraRotation = PlayerCameraRotation,
+
+	// Polaroid Variables...
 	GameData->PolaroidAmmo = PolaroidAmmo;
 
 	// Crawl Space Variables...

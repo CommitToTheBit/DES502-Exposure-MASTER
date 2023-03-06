@@ -16,6 +16,9 @@ public:
 		FVector PlayerPosition;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+		FRotator PlayerCameraRotation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
 		int PolaroidAmmo;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
