@@ -16,5 +16,14 @@ public:
 		FVector PlayerPosition;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
-		int CameraAmmo;
+		FRotator PlayerCameraRotation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+		int PolaroidAmmo;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+		bool bCrawling;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+		float CrawlDistance;
 };

@@ -28,7 +28,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		void SaveGameData(
 			FVector PlayerPosition,
-			int CameraAmmo
+			FRotator PlayerCameraRotation,
+			int PolaroidAmmo,
+			bool bCrawling,
+			float CrawlDistance
 		);
 
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
