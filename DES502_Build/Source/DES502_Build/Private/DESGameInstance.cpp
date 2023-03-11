@@ -4,6 +4,9 @@
 
 void UDESGameInstance::Init()
 {
+	// BUGFIX: This is what makes the calls that set up widgets!
+	Super::Init();
+
 	// Try loading data...
 	GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveSlot, 0));
 	if (GameData)
