@@ -27,6 +27,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		void SaveGameData(
+			float SettingsMasterVolume,
+			float SettingsMusicVolume,
+			float SettingsSFXVolume,
 			FVector PlayerPosition,
 			FRotator PlayerCameraRotation,
 			int PolaroidAmmo,

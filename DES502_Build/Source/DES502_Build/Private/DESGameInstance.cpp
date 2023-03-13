@@ -30,6 +30,9 @@ void UDESGameInstance::Init()
 }
 
 void UDESGameInstance::SaveGameData(
+	float SettingsMasterVolume,
+	float SettingsMusicVolume,
+	float SettingsSFXVolume,
 	FVector PlayerPosition,
 	FRotator PlayerCameraRotation,
 	int PolaroidAmmo,
@@ -39,6 +42,9 @@ void UDESGameInstance::SaveGameData(
 {
 	if (!GameData)
 		return;
+
+	// Settings Variables...
+	// FIXME: Add volume controls here!
 
 	// Player Variables...
 	GameData->PlayerPosition = PlayerPosition;
