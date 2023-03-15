@@ -8,7 +8,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(true); // DEBUG: Reset GameData on start...
+	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
 }
 
 void UDESGameInstance::SaveGameData() 
@@ -39,7 +39,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	GameData->SettingsMusicVolume = 1.0f;
 	GameData->SettingsMusicMute = false;
 
-	GameData->SettingsSFX_Volume = 0.5f; // DEBUG...
+	GameData->SettingsSFX_Volume = 1.0f;
 	GameData->SettingsSFX_Mute = false;
 
 	// Player Variables...
