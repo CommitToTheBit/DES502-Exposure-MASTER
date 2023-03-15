@@ -23,7 +23,7 @@ class DES502_BUILD_API UDESGameInstance : public UGameInstance
 
 public:
 	// NB: Getting/setting handles most 'saving/loading' functionality...
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
 		UDESSaveGame* GameData;
 
 public:

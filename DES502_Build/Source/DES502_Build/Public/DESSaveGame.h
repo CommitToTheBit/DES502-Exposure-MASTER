@@ -16,19 +16,19 @@ public:
 		float SettingsMasterVolume;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		float SettingsMasterMute;
+		bool SettingsMasterMute;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
 		float SettingsMusicVolume;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		float SettingsMusicMute;
+		bool SettingsMusicMute;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
 		float SettingsSFX_Volume;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		float SettingsSFX_Mute;
+		bool SettingsSFX_Mute;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Player")
 		FVector PlayerPosition;
