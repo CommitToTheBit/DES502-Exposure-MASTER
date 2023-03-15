@@ -21,22 +21,16 @@ class DES502_BUILD_API UDESGameInstance : public UGameInstance
 
 	FString SaveSlot = "GameData";
 
-	UDESSaveGame* GameData;
+public:
+	// NB: Getting/setting handles most 'saving/loading' functionality...
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
+		UDESSaveGame* GameData;
 
 public:
+	// NB: Saving/loading are purely interactions with the disk...
+	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
+		void SaveGameData();
 
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
-		void SaveGameData(
-			float SettingsMasterVolume,
-			float SettingsMusicVolume,
-			float SettingsSFXVolume,
-			FVector PlayerPosition,
-			FRotator PlayerCameraRotation,
-			int PolaroidAmmo,
-			bool bCrawling,
-			float CrawlDistance
-		);
-
-	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
-		UDESSaveGame* LoadGameData();
+		void LoadGameData(bool resetGameData = false);
 };

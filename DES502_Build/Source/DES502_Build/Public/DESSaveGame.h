@@ -12,18 +12,38 @@ class DES502_BUILD_API UDESSaveGame : public USaveGame
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
+		float SettingsMasterVolume;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
+		float SettingsMasterMute;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
+		float SettingsMusicVolume;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
+		float SettingsMusicMute;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
+		float SettingsSFX_Volume;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
+		float SettingsSFX_Mute;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Player")
 		FVector PlayerPosition;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Player")
 		FRotator PlayerCameraRotation;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
-		int PolaroidAmmo;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+	// FIXME: CrawlSpaces need refactored...
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Player")
 		bool bCrawling;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading")
+	// FIXME: CrawlSpaces need refactored...
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Player")
 		float CrawlDistance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Polaroid")
+		int PolaroidAmmo;
 };
