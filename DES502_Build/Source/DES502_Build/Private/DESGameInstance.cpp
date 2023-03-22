@@ -17,6 +17,19 @@ void UDESGameInstance::SaveGameData()
 		return;
 
 	UGameplayStatics::SaveGameToSlot(GameData, SaveSlot, 0);
+
+	// Set scalability to low, by default...
+	// FIXME: Incorporate into final settings?
+	UGameUserSettings* gameUserSettings = UGameUserSettings::GetGameUserSettings();
+
+	gameUserSettings->SetOverallScalabilityLevel(0);
+	//gameUserSettings->SetResolutionScaleNormalized(0.25f);
+	//gameUserSettings->SetViewDistanceQuality(0);
+	//gameUserSettings->SetAntiAliasingQuality(0);
+	//gameUserSettings->SetPostProcessingQuality(0);
+	//gameUserSettings->SetShadowQuality(0);
+	//gameUserSettings->SetGlobalIlluminationQuality(0);
+	
 }
 
 void UDESGameInstance::LoadGameData(bool resetGameData)
