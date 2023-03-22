@@ -9,6 +9,24 @@ void UDESGameInstance::Init()
 
 	// Load any saved data...
 	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+
+	// Set all graphics to low quality, as default...
+	UGameUserSettings* gameUserSettings = UGameUserSettings::GetGameUserSettings();
+	gameUserSettings->SetOverallScalabilityLevel(0);
+
+	/* FIXME: Components to incorporate as individual graphics settings...?
+	gameUserSettings->SetResolutionScaleNormalized(0.25f);
+	gameUserSettings->SetViewDistanceQuality(0);
+	gameUserSettings->SetAntiAliasingQuality(0);
+	gameUserSettings->SetPostProcessingQuality(0);
+	gameUserSettings->SetShadowQuality(0);
+	gameUserSettings->SetGlobalIlluminationQuality(0);
+	gameUserSettings->SetReflectionQuality(0);
+	gameUserSettings->SetTextureQuality(0);
+	gameUserSettings->SetVisualEffectQuality(0);
+	gameUserSettings->SetFoliageQuality(0);
+	gameUserSettings->SetShadingQuality(0); */
+
 }
 
 void UDESGameInstance::SaveGameData() 
@@ -16,20 +34,7 @@ void UDESGameInstance::SaveGameData()
 	if (!GameData)
 		return;
 
-	UGameplayStatics::SaveGameToSlot(GameData, SaveSlot, 0);
-
-	// Set scalability to low, by default...
-	// FIXME: Incorporate into final settings?
-	UGameUserSettings* gameUserSettings = UGameUserSettings::GetGameUserSettings();
-
-	gameUserSettings->SetOverallScalabilityLevel(0);
-	//gameUserSettings->SetResolutionScaleNormalized(0.25f);
-	//gameUserSettings->SetViewDistanceQuality(0);
-	//gameUserSettings->SetAntiAliasingQuality(0);
-	//gameUserSettings->SetPostProcessingQuality(0);
-	//gameUserSettings->SetShadowQuality(0);
-	//gameUserSettings->SetGlobalIlluminationQuality(0);
-	
+	UGameplayStatics::SaveGameToSlot(GameData, SaveSlot, 0);	
 }
 
 void UDESGameInstance::LoadGameData(bool resetGameData)
