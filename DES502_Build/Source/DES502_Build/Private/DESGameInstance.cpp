@@ -1,5 +1,3 @@
-// CC: AwesomeTuts...
-
 #include "DESGameInstance.h"
 
 void UDESGameInstance::Init()
@@ -29,12 +27,15 @@ void UDESGameInstance::Init()
 
 }
 
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
+/* This enclosed section has been adapted from: Awesome Tuts (no date) Saving And Loading Game Data With Blueprints And C++ In Unreal Engine. Available at: https://awesometuts.com/blog/save-load-game-data-unreal-engine/ (Accessed: 22 March 2022) */
+
 void UDESGameInstance::SaveGameData() 
 {
 	if (!GameData)
 		return;
 
-	UGameplayStatics::SaveGameToSlot(GameData, SaveSlot, 0);	
+	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
 }
 
 void UDESGameInstance::LoadGameData(bool resetGameData)
@@ -42,7 +43,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// Try loading data...
 	if (!resetGameData)
 	{
-		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveSlot, 0));
+		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
 		if (GameData)
 			return;
 	}
@@ -51,14 +52,14 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
 	// Settings Variables...
-	GameData->SettingsMasterVolume = 1.0f;
-	GameData->SettingsMasterMute = false;
+	SettingsData->AudioMasterVolume = 1.0f;
+	SettingsData->AudioMasterMute = false;
 
-	GameData->SettingsMusicVolume = 1.0f;
-	GameData->SettingsMusicMute = false;
+	SettingsData->AudioMusicVolume = 1.0f;
+	SettingsData->AudioMusicMute = false;
 
-	GameData->SettingsSFX_Volume = 1.0f;
-	GameData->SettingsSFX_Mute = false;
+	SettingsData->AudioSFX_Volume = 1.0f;
+	SettingsData->AudioSFX_Mute = false;
 
 	// Player Variables...
 	GameData->PlayerPosition = FVector(0.0, 0.0, 0.0);
@@ -70,5 +71,17 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// Polaroid Variables...
 	GameData->PolaroidAmmo = 27;
 
-	UGameplayStatics::SaveGameToSlot(GameData, SaveSlot, 0);
+	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);
 }
+
+void UDESGameInstance::SaveSettingsData() 
+{
+
+}
+
+void UDESGameInstance::LoadSettingsData(bool resetSettingsData) 
+{
+	
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 

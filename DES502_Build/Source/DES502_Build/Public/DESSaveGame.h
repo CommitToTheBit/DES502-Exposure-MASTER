@@ -1,5 +1,3 @@
-// CC: AwesomeTuts...
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -12,24 +10,6 @@ class DES502_BUILD_API UDESSaveGame : public USaveGame
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		float SettingsMasterVolume;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		bool SettingsMasterMute;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		float SettingsMusicVolume;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		bool SettingsMusicMute;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		float SettingsSFX_Volume;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings")
-		bool SettingsSFX_Mute;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Player")
 		FVector PlayerPosition;
 
