@@ -7,6 +7,8 @@
 #include "DES_SaveSettings.h"
 #include "Engine.h"
 
+#include "AudioModulationStatics.h"
+
 #include "DESGameInstance.generated.h"
 
 class UDESSaveGame;
@@ -76,4 +78,6 @@ public:
 private:
 	// AUDIO SETTINGS:
 	float GetMixWithMasterVolume(float volume, bool mute);
+
+	FSoundControlBusMixStage* test;
 };
