@@ -11,23 +11,23 @@ class DES502_BUILD_API UDES_SaveSettings : public USaveGame
 	
 public: 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Graphics")
-		int GraphicsOverallScalability; 
+		int OverallScalability; 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
-		float AudioMasterVolume;
+		float MasterVolume;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
-		bool AudioMasterMute;
+		bool MasterMute;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
-		float AudioMusicVolume;
+		float MusicVolume;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
-		bool AudioMusicMute;
+		bool MusicMute;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
-		float AudioSFX_Volume;
+		float SFX_Volume;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
-		bool AudioSFX_Mute;
+		bool SFX_Mute;
 };

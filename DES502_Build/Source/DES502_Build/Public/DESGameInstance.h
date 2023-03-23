@@ -31,7 +31,7 @@ public:
 		UDES_SaveSettings* SettingsData;
 
 public:
-	// NB: Saving/loading are purely interactions with the disk...
+	// GAME DATA:
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		void SaveGameData();
 
@@ -45,6 +45,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		void LoadSettingsData(bool resetSettingsData = false);
 
+	// AUDIO SETTINGS:
+	UFUNCTION(BlueprintCallable, Category="Audio")
+		void UpdateMasterVolume(float masterVolume);
+
+	UFUNCTION(BlueprintCallable, Category="Audio")
+		void UpdateMasterMute(bool masterMute);
+
+	UFUNCTION(BlueprintCallable, Category="Audio")
+		void UpdateMusicVolume(float musicVolume);
+
+	UFUNCTION(BlueprintCallable, Category="Audio")
+		void UpdateMusicMute(bool musicMute);
+
+	UFUNCTION(BlueprintCallable, Category="Audio")
+		void UpdateSFX_Volume(float sfxVolume);
+
+	UFUNCTION(BlueprintCallable, Category="Audio")
+		void UpdateSFX_Mute(bool sfxMute);
+
 	// NB: Settings to be interacted with at high-level
 	
 	// FIXME: ...Why can't I find documentation for audio modulation??
@@ -52,4 +71,9 @@ public:
 	// Can't use a blueprint, so all functionality needs contained within C++...
 	// To do this, need the right documentation...
 	// Necessarily leaving this until I've got a better sense of C++ for UE5...
+
+	
+private:
+	// AUDIO SETTINGS:
+	float GetMixWithMasterVolume(float volume, bool mute);
 };

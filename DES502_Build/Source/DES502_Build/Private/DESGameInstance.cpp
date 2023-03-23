@@ -51,16 +51,6 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// If this fails, create new game data...
 	GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
-	// Settings Variables...
-	SettingsData->AudioMasterVolume = 1.0f;
-	SettingsData->AudioMasterMute = false;
-
-	SettingsData->AudioMusicVolume = 1.0f;
-	SettingsData->AudioMusicMute = false;
-
-	SettingsData->AudioSFX_Volume = 1.0f;
-	SettingsData->AudioSFX_Mute = false;
-
 	// Player Variables...
 	GameData->PlayerPosition = FVector(0.0, 0.0, 0.0);
 	GameData->PlayerCameraRotation = FRotator(0.0, 0.0, 0.0);
@@ -81,7 +71,72 @@ void UDESGameInstance::SaveSettingsData()
 
 void UDESGameInstance::LoadSettingsData(bool resetSettingsData) 
 {
-	
+	// STEP 1: If not resetting settings, try to load any settings data written to disk...
+	if (!resetSettingsData)
+	{
+		SettingsData = Cast<UDES_SaveSettings>(UGameplayStatics::LoadGameFromSlot(SaveSettingsSlot, 0));
+	}
+
+	// STEP 2: If settings aren't loaded, reset to defaults...
+	if (!SettingsData)
+	{
+		// Graphics
+		SettingsData->OverallScalability = 0;
+
+		// Audio settings...
+		SettingsData->MasterVolume = 1.0f;
+		SettingsData->MasterMute = false;
+
+		SettingsData->MusicVolume = 1.0f;
+		SettingsData->MusicMute = false;
+
+		SettingsData->SFX_Volume = 1.0f;
+		SettingsData->SFX_Mute = false;
+	}
+
+	// STEP 3: Update all settings according to SettingsData...
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
+
+void UDESGameInstance::UpdateMasterVolume(float masterVolume)
+{
+	SettingsData->MasterVolume = masterVolume;
+
+	// FIXME: Update both buses here...
+	// Create music bus...
+	GetMixWithMasterVolume(SettingsData->MusicVolume, SettingsData->MusicMute);
+
+	// Create SFX bus...
+	GetMixWithMasterVolume(SettingsData->SFX_Volume, SettingsData->SFX_Mute);
+}
+
+void UDESGameInstance::UpdateMasterMute(bool masterMute)
+{
+	SettingsData->MasterMute = masterMute;
+}
+
+void UDESGameInstance::UpdateMusicVolume(float musicVolume)
+{
+	SettingsData->MusicVolume = musicVolume;
+}
+
+void UDESGameInstance::UpdateMusicMute(bool musicMute)
+{
+	SettingsData->MusicMute = musicMute;
+}
+
+void UDESGameInstance::UpdateSFX_Volume(float sfxVolume)
+{
+	SettingsData->SFX_Volume = sfxVolume;
+}
+
+void UDESGameInstance::UpdateSFX_Mute(bool sfxMute)
+{
+	SettingsData->SFX_Mute = sfxMute;
+}
+
+float UDESGameInstance::GetMixWithMasterVolume(float volume, bool mute)
+{
+	return (mute || SettingsData->MasterMute) ? 0.0f : volume*SettingsData->MasterVolume;
+}
