@@ -32,6 +32,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
 		UDES_SaveSettings* SettingsData;
 
+	// DBEUG:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="DEBUG") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
+		UMaterial* loadedMaterial;
+
 public:
 	// GAME DATA:
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
@@ -78,6 +82,4 @@ public:
 private:
 	// AUDIO SETTINGS:
 	float GetMixWithMasterVolume(float volume, bool mute);
-
-	FSoundControlBusMixStage* test;
 };

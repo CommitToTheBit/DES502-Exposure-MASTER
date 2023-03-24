@@ -25,6 +25,20 @@ void UDESGameInstance::Init()
 	gameUserSettings->SetFoliageQuality(0);
 	gameUserSettings->SetShadingQuality(0); */
 
+	//FSoundControlBusMixStage* test;
+	//static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("Material'/Game/Materials/YourMaterialName.YourMaterialName'")); // "Material'/DES502_Build/Content/Materials/YourMaterialName.YourMaterialName'"
+	static ConstructorHelpers::FObjectFinder<UMaterial>
+	Material(TEXT("/Game/VFX/EDITOR_Vignette_Trigger.EDITOR_Vignette_Trigger'"));
+	//static ConstructorHelpers::FObjectFinder<USoundControlBus>MasterBus(TEXT("Material'/Game/Materials/YourMaterialName.YourMaterialName'"));
+
+	loadedMaterial = Material.Object;
+
+	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("DEBUG..."));
+
+	if (Material.Succeeded())//Material.Object != NULL)
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Material loaded..."));
+	else
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Material not loaded..."));
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
