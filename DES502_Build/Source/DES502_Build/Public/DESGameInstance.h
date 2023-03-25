@@ -94,5 +94,6 @@ public:
 	
 private:
 	// AUDIO SETTINGS:
+	void UpdateBus(USoundControlBus* bus, USoundControlBusMix* mix, float volume);
 	float GetMixWithMasterVolume(float volume, bool mute);
 };
