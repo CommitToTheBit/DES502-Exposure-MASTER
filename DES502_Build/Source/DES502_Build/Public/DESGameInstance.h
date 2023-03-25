@@ -51,21 +51,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Saving / Loading")
 		void LoadSettingsData(bool resetSettingsData = false);
 
+	// GRAPHICS SETTINGS:
+	UFUNCTION(BlueprintCallable, Category="Graphics")
+		void UpdateOverallScalability(int overallScalability);
+
 	// AUDIO SETTINGS:
 	UFUNCTION(BlueprintCallable, Category="Audio")
-		void UpdateMasterVolume(float masterVolume);
+		void UpdateMasterVolume(float masterVolume, bool unmute = true);
 
 	UFUNCTION(BlueprintCallable, Category="Audio")
 		void UpdateMasterMute(bool masterMute);
 
 	UFUNCTION(BlueprintCallable, Category="Audio")
-		void UpdateMusicVolume(float musicVolume);
+		void UpdateMusicVolume(float musicVolume, bool unmute = true);
 
 	UFUNCTION(BlueprintCallable, Category="Audio")
 		void UpdateMusicMute(bool musicMute);
 
 	UFUNCTION(BlueprintCallable, Category="Audio")
-		void UpdateSFX_Volume(float sfxVolume);
+		void UpdateSFX_Volume(float sfxVolume, bool unmute = true);
 
 	UFUNCTION(BlueprintCallable, Category="Audio")
 		void UpdateSFX_Mute(bool sfxMute);
