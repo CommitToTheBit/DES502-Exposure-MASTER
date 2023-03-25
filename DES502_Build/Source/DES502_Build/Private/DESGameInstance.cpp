@@ -112,7 +112,7 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 	// STEP 3: Update all settings according to SettingsData...
 	UpdateOverallScalability(SettingsData->OverallScalability);
 
-	UpdateMasterVolume(SettingsData->MasterVolume, true);
+	UpdateMasterVolume(SettingsData->MasterVolume, false);
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
@@ -133,11 +133,28 @@ void UDESGameInstance::UpdateMasterVolume(float masterVolume, bool unmute)
 	}
 
 	// FIXME: Update both buses here...
-	// Create music bus...
-	GetMixWithMasterVolume(SettingsData->MusicVolume, SettingsData->MusicMute);
+	if (MasterMix != NULL)
+	{
+		if (MasterMusic != NULL)
+		{
+			FSoundControlBusMixStage MasterMusicMixStage = UAudioModulationStatics::CreateBusMixStage(GetWorld(), MasterMusic, GetMixWithMasterVolume(SettingsData->MusicVolume, SettingsData->MusicMute));
 
-	// Create SFX bus...
-	GetMixWithMasterVolume(SettingsData->SFX_Volume, SettingsData->SFX_Mute);
+			TArray<FSoundControlBusMixStage> ControlBusMixStageArray;
+			ControlBusMixStageArray.Add(MasterMusicMixStage);
+
+			UAudioModulationStatics::UpdateMix(GetWorld(), MasterMix, ControlBusMixStageArray);
+		}
+
+		if (MasterSFX != NULL)
+		{
+			FSoundControlBusMixStage MasterSFX_MixStage = UAudioModulationStatics::CreateBusMixStage(GetWorld(), MasterSFX, GetMixWithMasterVolume(SettingsData->SFX_Volume, SettingsData->SFX_Mute));
+
+			TArray<FSoundControlBusMixStage> ControlBusMixStageArray;
+			ControlBusMixStageArray.Add(MasterSFX_MixStage);
+
+			UAudioModulationStatics::UpdateMix(GetWorld(), MasterMix, ControlBusMixStageArray);
+		}
+	}
 }
 
 void UDESGameInstance::UpdateMasterMute(bool masterMute)

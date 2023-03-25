@@ -32,9 +32,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
 		UDES_SaveSettings* SettingsData;
 
-	// DBEUG:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="DEBUG") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
-		UMaterial* loadedMaterial;
+	// AUDIO SETTINGS:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
+		USoundControlBusMix* MasterMix;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
+		USoundControlBus* MasterSFX;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
+		USoundControlBus* MasterMusic;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
+		USoundControlBusMix* SFX_Mix;
 
 public:
 	// GAME DATA:
