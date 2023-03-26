@@ -33,7 +33,7 @@ public:
 		int PolaroidAmmo;
 
 	// DEBUG:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
 		UDES_JournalEntry* DEBUG_JournalEntry;
 
 };
