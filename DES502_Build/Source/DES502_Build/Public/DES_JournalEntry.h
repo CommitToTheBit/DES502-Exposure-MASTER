@@ -14,4 +14,7 @@ class DES502_BUILD_API UDES_JournalEntry : public UObject
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
 		UTextureRenderTarget2D* EntryRenderTarget;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		int test = 20;
 };
