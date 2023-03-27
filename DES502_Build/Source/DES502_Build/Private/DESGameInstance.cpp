@@ -6,7 +6,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	/* FIXME: Components to incorporate as individual graphics settings...?
@@ -72,6 +72,10 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		// Polaroid variables...
 		GameData->PolaroidAmmo = 27;
+
+		// DEBUG:
+		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
+		GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
