@@ -76,6 +76,9 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		// DEBUG:
 		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 		GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+
+		if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
+			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?

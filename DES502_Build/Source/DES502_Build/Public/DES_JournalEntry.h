@@ -1,7 +1,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "Engine.h"
+
 #include "DES_JournalEntry.generated.h"
 
 class UTextureRenderTarget2D;
