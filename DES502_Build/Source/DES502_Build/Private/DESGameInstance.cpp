@@ -6,7 +6,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	/* FIXME: Components to incorporate as individual graphics settings...?
@@ -58,10 +58,13 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
-	if (!GameData)
+	if (resetGameData || !GameData)
 	{
 		// Create new game data...
 		GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
+
+		// Progress variables
+		GameData->ProgressStarted = false;
 
 		// Player variables...
 		GameData->PlayerPosition = FVector(0.0, 0.0, 0.0);
@@ -101,7 +104,7 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
-	if (!SettingsData)
+	if (resetSettingsData || !SettingsData)
 	{
 		// Create new settings data...
 		SettingsData = Cast<UDES_SaveSettings>(UGameplayStatics::CreateSaveGameObject(UDES_SaveSettings::StaticClass()));

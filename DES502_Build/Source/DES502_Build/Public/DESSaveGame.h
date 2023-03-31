@@ -15,6 +15,9 @@ class DES502_BUILD_API UDESSaveGame : public USaveGame
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		bool ProgressStarted;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 		FVector PlayerPosition;
 
