@@ -6,7 +6,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	/* FIXME: Components to incorporate as individual graphics settings...?
@@ -74,7 +74,10 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->CrawlDistance = 0.0f;
 
 		// Polaroid variables...
+		GameData->PolaroidInventoried = 0;
 		GameData->PolaroidAmmo = 27;
+
+		GameData->CrowbarInventoried = 0;
 
 		// DEBUG:
 		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());

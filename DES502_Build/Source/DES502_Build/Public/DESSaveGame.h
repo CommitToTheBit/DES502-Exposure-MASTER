@@ -9,6 +9,13 @@
 
 class UDES_JournalEntry;
 
+UENUM(BlueprintType)
+enum class EHandheld : uint8 {
+	EPolaroid	UMETA(DisplayName = "Polaroid"),
+	ECrowbar	UMETA(DisplayName = "Crowbar"),
+	ENone		UMETA(Displayname = "None")
+};
+
 UCLASS()
 class DES502_BUILD_API UDESSaveGame : public USaveGame
 {
@@ -32,8 +39,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 		float CrawlDistance;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+		EHandheld PlayerHandheld;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaroid")
+		int PolaroidInventoried;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Polaroid")
 		int PolaroidAmmo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Crowbar")
+		int CrowbarInventoried;
 
 	// DEBUG:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
