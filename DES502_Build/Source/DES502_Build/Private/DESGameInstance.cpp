@@ -73,8 +73,13 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->bCrawling = false;
 		GameData->CrawlDistance = 0.0f;
 
+		GameData->PlayerHandheld = EHandheld::ENone;
+
 		// Polaroid variables...
+		GameData->PolaroidInventoried = 0;
 		GameData->PolaroidAmmo = 27;
+
+		GameData->CrowbarInventoried = 0;
 
 		// DEBUG:
 		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
