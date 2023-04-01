@@ -6,7 +6,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	/* FIXME: Components to incorporate as individual graphics settings...?
@@ -72,6 +72,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		GameData->bCrawling = false;
 		GameData->CrawlDistance = 0.0f;
+
+		GameData->PlayerHandheld = EHandheld::ENone;
 
 		// Polaroid variables...
 		GameData->PolaroidInventoried = 0;
