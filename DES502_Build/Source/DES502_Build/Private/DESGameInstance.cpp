@@ -6,7 +6,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	/* FIXME: Components to incorporate as individual graphics settings...?
@@ -85,8 +85,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 		GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 
-		if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
-			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
+		//if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
+		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
