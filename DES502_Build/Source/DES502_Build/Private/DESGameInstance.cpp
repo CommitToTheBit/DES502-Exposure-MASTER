@@ -6,7 +6,7 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Load any saved data...
-	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	// Create journal manager...
@@ -14,6 +14,15 @@ void UDESGameInstance::Init()
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 	DEBUG_JournalEntry->RenderTarget->InitAutoFormat(1080, 900); // NB: This line, previously missing, is what solves the access violation!
+
+	//TArray<FColor> colors;
+	//colors.Init(FColor::White, 1080 * 900);
+
+	//uint8* check = new uint8[40000];
+	//for (int i = 0; i < 40000; i++)
+	//	check[i] = 200;
+
+	//DEBUG_JournalEntry->RenderTarget->Source.Init(1080,900,0,0,TSF_RGBA16F,check);//; GetRenderTargetResource()->Set
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
@@ -25,6 +34,11 @@ void UDESGameInstance::SaveGameData()
 		return;
 
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
+
+	// DEBUG:
+	// FIXME: Crashes if RenderTarget is empty... so need to initialise it on creation!
+	//colors.Init(FColor::White, 1080 * 900);
+	DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->ReadPixels(GameData->DEBUG_Pixels);
 }
 
 void UDESGameInstance::LoadGameData(bool resetGameData)
@@ -60,7 +74,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->CrowbarInventoried = 0;
 
 		// DEBUG:
-		
+		GameData->DEBUG_Pixels.Init(FColor::Red, 1080 * 900);
+
 		//GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 		
 		//GameData->DEBUG_JournalEntry->EntryRenderTarget->SizeX = 1080;
@@ -73,6 +88,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, GameData->DEBUG_Pixels[0].ToString());
+
 }
 
 void UDESGameInstance::SaveSettingsData() 

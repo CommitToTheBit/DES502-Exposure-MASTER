@@ -50,4 +50,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Crowbar")
 		int CrowbarInventoried;
+
+public:
+	TArray<FColor> DEBUG_Pixels;
 };
