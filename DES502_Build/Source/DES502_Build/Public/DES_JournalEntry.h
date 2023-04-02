@@ -18,4 +18,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
 		int test = 20;
+
+private:
+
 };

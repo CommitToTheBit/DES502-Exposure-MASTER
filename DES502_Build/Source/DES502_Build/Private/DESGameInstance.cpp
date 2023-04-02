@@ -83,7 +83,12 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		// DEBUG:
 		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
-		GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+		//GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+		
+		//GameData->DEBUG_JournalEntry->EntryRenderTarget->SizeX = 1080;
+		//GameData->DEBUG_JournalEntry->EntryRenderTarget->SizeY = 1080;
+
+		//UTextureRenderTarget2D::UTextureRenderTarget2D()
 
 		//if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
 		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
