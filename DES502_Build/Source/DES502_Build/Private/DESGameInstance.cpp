@@ -5,18 +5,18 @@ void UDESGameInstance::Init()
 	// BUGFIX: This is what makes the calls that set up widgets!
 	Super::Init();
 
-	// Load any saved data...
-	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
-	LoadSettingsData();
-
 	// Create journal manager...
 	// FIXME: Fold this into a full 'Update' function...
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-	DEBUG_JournalEntry->RenderTarget->InitAutoFormat(1080, 900); // NB: This line, previously missing, is what solves the access violation!
+	DEBUG_JournalEntry->RenderTarget->InitAutoFormat(900, 1080); // NB: This line, previously missing, is what solves the access violation!
 
-	UTexture2D* test;
-	test->Create8Bit
+	// Load any saved data...
+	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+	LoadSettingsData();
+
+	//UTexture2D* test;
+	//test->Create8Bit
 
 	//TArray<FColor> colors;
 	//colors.Init(FColor::White, 1080 * 900);
@@ -29,12 +29,29 @@ void UDESGameInstance::Init()
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
-/* This enclosed section has been adapted from: Awesome Tuts (no date) Saving And Loading Game Data With Blueprints And C++ In Unreal Engine. Available at: https://awesometuts.com/blog/save-load-game-data-unreal-engine/ (Accessed: 22 March 2022) */
+/* This enclosed section has been adapted from: Awesome Tuts (no date) Saving And Loading Game Data With Blueprints And C++ In Unreal Engine. Available at: https://awesometuts.com/blog/save-load-game-data-unreal-engine/ (Accessed: 22 March 2023) */
 
 void UDESGameInstance::SaveGameData() 
 {
 	if (!GameData)
 		return;
+
+	// FIXME: A for loop over all of the journal's updated entries will go here...
+
+	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+	/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+	// STEP 1: Read RenderTarget's data into an FColor array...
+	TArray<FColor> ColorArray;
+	ColorArray.Init(FColor::White, 900 * 1080);
+	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->ReadPixels(ColorArray); // FIXME: ReadPixels specifically causes a crash?
+
+	// STEP 2: Copy FColor array into binary texture...
+	GameData->BinaryTexture.Reserve(4 * 900 * 1080);
+	GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080); // NB: 4 values, RGBA, for each pixel of the polaroid...
+	FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
+
+	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
 
@@ -50,6 +67,30 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	if (!resetGameData)
 	{
 		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
+
+		if (GameData)
+		{
+			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+			// STEP 1: Set up texture...
+			UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+			// Get a reference to MIP 0, for convenience.
+			FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
+
+			// STEP 2: Copy data...
+			void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
+			Mip.BulkData.Realloc(4 * 900 * 1080);
+			FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
+			Mip.BulkData.Unlock();
+
+			// STEP 3: Update resources...
+			Texture->UpdateResource();
+			//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_RGBA8);
+
+			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+		}
+
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
@@ -88,9 +129,15 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		//if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
 		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
+
+		SaveGameData();
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
+
+	//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D()
+
+
 	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, GameData->DEBUG_Pixels[0].ToString());
 
 }
@@ -129,6 +176,8 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 
 		SettingsData->SFX_Volume = 1.0f;
 		SettingsData->SFX_Mute = false;
+
+		SaveSettingsData();
 	}
 
 	// STEP 3: Update all settings according to SettingsData...

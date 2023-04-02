@@ -52,5 +52,5 @@ public:
 		int CrowbarInventoried;
 
 public:
-	TArray<FColor> DEBUG_Pixels;
+	TArray<uint8> BinaryTexture;
 };
