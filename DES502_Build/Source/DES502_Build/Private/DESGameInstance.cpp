@@ -12,6 +12,8 @@ void UDESGameInstance::Init()
 	// Create journal manager...
 	// FIXME: Fold this into a full 'Update' function...
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
+	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+	DEBUG_JournalEntry->RenderTarget->InitAutoFormat(1080, 900); // NB: This line, previously missing, is what solves the access violation!
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
