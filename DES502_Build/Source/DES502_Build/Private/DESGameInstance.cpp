@@ -53,6 +53,9 @@ void UDESGameInstance::SaveGameData()
 	GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080); // NB: 4 values, RGBA, for each pixel of the polaroid...
 	FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
 
+	// DEBUG:
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Saved binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
+
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
@@ -70,29 +73,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	{
 		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
 
-		if (GameData)
-		{
-			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
-
-			// STEP 1: Set up texture...
-			UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
-			// Get a reference to MIP 0, for convenience.
-			FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
-
-			// STEP 2: Copy data...
-			void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
-			Mip.BulkData.Realloc(4 * 900 * 1080);
-			FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
-			Mip.BulkData.Unlock();
-
-			// STEP 3: Update resources...
-			Texture->UpdateResource();
-			//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_RGBA8);
-
-			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-		}
-
+		// DEBUG:
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Loaded binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
@@ -119,6 +101,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		GameData->CrowbarInventoried = 0;
 
+		GameData->BinaryTexture.Init(0, 4 * 900 * 1080);
+
 		// DEBUG:
 		//GameData->DEBUG_Pixels.Init(FColor::Red, 1080 * 900);
 
@@ -133,6 +117,29 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
 
 		//SaveGameData();
+	}
+
+	if (GameData->BinaryTexture.Num() == 4 * 900 * 1080)
+	{
+		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+		/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+		// STEP 1: Set up texture...
+		UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+		// Get a reference to MIP 0, for convenience.
+		FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
+
+		// STEP 2: Copy data...
+		void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
+		Mip.BulkData.Realloc(4 * 900 * 1080);
+		FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
+		Mip.BulkData.Unlock();
+
+		// STEP 3: Update resources...
+		Texture->UpdateResource();
+		//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_RGBA8);
+
+		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
