@@ -9,10 +9,11 @@ void UDESGameInstance::Init()
 	// FIXME: Fold this into a full 'Update' function...
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-	DEBUG_JournalEntry->RenderTarget->InitAutoFormat(900, 1080); // NB: This line, previously missing, is what solves the access violation!
+	DEBUG_JournalEntry->RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false); // NB: This line, previously missing, is what solves the access violation!
+	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->InitResource();
 
 	// Load any saved data...
-	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
 	//UTexture2D* test;
@@ -43,8 +44,9 @@ void UDESGameInstance::SaveGameData()
 
 	// STEP 1: Read RenderTarget's data into an FColor array...
 	TArray<FColor> ColorArray;
-	ColorArray.Init(FColor::White, 900 * 1080);
-	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->ReadPixels(ColorArray); // FIXME: ReadPixels specifically causes a crash?
+	ColorArray.Reserve(900 * 1080);
+	DEBUG_JournalEntry->RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
+	ColorArray.Shrink();
 
 	// STEP 2: Copy FColor array into binary texture...
 	GameData->BinaryTexture.Reserve(4 * 900 * 1080);
@@ -130,7 +132,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		//if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
 		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
 
-		SaveGameData();
+		//SaveGameData();
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
