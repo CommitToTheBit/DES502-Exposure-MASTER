@@ -9,33 +9,9 @@ void UDESGameInstance::Init()
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 
-	/* FIXME: Components to incorporate as individual graphics settings...?
-	gameUserSettings->SetResolutionScaleNormalized(0.25f);
-	gameUserSettings->SetViewDistanceQuality(0);
-	gameUserSettings->SetAntiAliasingQuality(0);
-	gameUserSettings->SetPostProcessingQuality(0);
-	gameUserSettings->SetShadowQuality(0);
-	gameUserSettings->SetGlobalIlluminationQuality(0);
-	gameUserSettings->SetReflectionQuality(0);
-	gameUserSettings->SetTextureQuality(0);
-	gameUserSettings->SetVisualEffectQuality(0);
-	gameUserSettings->SetFoliageQuality(0);
-	gameUserSettings->SetShadingQuality(0); */
-
-	//FSoundControlBusMixStage* test;
-	//static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("Material'/Game/Materials/YourMaterialName.YourMaterialName'")); // "Material'/DES502_Build/Content/Materials/YourMaterialName.YourMaterialName'"
-	//static ConstructorHelpers::FObjectFinder<UMaterial>
-	//Material(TEXT("/Game/VFX/EDITOR_Vignette_Trigger.EDITOR_Vignette_Trigger'"));
-	//static ConstructorHelpers::FObjectFinder<USoundControlBus>MasterBus(TEXT("Material'/Game/Materials/YourMaterialName.YourMaterialName'"));
-
-	/*loadedMaterial = Material.Object;
-
-	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("DEBUG..."));
-
-	if (Material.Succeeded())//Material.Object != NULL)
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Material loaded..."));
-	else
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Material not loaded..."));*/
+	// Create journal manager...
+	// FIXME: Fold this into a full 'Update' function...
+	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
@@ -82,7 +58,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->CrowbarInventoried = 0;
 
 		// DEBUG:
-		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
+		
 		//GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 		
 		//GameData->DEBUG_JournalEntry->EntryRenderTarget->SizeX = 1080;

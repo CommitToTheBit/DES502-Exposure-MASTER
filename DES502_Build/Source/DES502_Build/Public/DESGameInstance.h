@@ -32,6 +32,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
 		UDES_SaveSettings* SettingsData;
 
+	// JOURNAL FUNCTIONALITY:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
+		UDES_JournalEntry* DEBUG_JournalEntry; // FIXME: Placeholder for full 'journal manager'...
+
 	// AUDIO SETTINGS:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
 		USoundControlBusMix* MasterMix;

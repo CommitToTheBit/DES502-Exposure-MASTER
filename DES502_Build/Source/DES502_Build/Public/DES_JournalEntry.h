@@ -14,10 +14,13 @@ class DES502_BUILD_API UDES_JournalEntry : public UObject
 	
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
-		UTextureRenderTarget2D* EntryRenderTarget;
+		FString Title;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
-		int test = 20;
+		FString Text;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		UTextureRenderTarget2D* RenderTarget;
 
 private:
 
