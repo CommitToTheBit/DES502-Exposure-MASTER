@@ -15,18 +15,6 @@ void UDESGameInstance::Init()
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
-
-	//UTexture2D* test;
-	//test->Create8Bit
-
-	//TArray<FColor> colors;
-	//colors.Init(FColor::White, 1080 * 900);
-
-	//uint8* check = new uint8[100000];
-	//for (int i = 0; i < 100000; i++)
-	//	check[i] = 200;
-
-	//DEBUG_JournalEntry->RenderTarget->Source.Init(1080,900,0,0,TSF_RGBA8,check);//; GetRenderTargetResource()->Set
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
@@ -50,20 +38,21 @@ void UDESGameInstance::SaveGameData()
 
 	// STEP 2: Copy FColor array into binary texture...
 	GameData->BinaryTexture.Reserve(4 * 900 * 1080);
-	GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080); // NB: 4 values, RGBA, for each pixel of the polaroid...
+
+	GameData->BinaryTexture.Empty();
+	if (GameData->BinaryTexture.Num() < 4 * 900 * 1080)
+		GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num()); // NB: 4 values, RGBA, for each pixel of the polaroid...
+
 	FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
 
 	// DEBUG:
 	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Saved binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
+	if (GameData->BinaryTexture.Num() > 0)
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "The first integer in the texture is " + FString::FromInt(GameData->BinaryTexture[0]) + "...");
 
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
-
-	// DEBUG:
-	// FIXME: Crashes if RenderTarget is empty... so need to initialise it on creation!
-	//colors.Init(FColor::White, 1080 * 900);
-	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->ReadPixels(GameData->DEBUG_Pixels);
 }
 
 void UDESGameInstance::LoadGameData(bool resetGameData)
@@ -102,21 +91,6 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->CrowbarInventoried = 0;
 
 		GameData->BinaryTexture.Init(0, 4 * 900 * 1080);
-
-		// DEBUG:
-		//GameData->DEBUG_Pixels.Init(FColor::Red, 1080 * 900);
-
-		//GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-		
-		//GameData->DEBUG_JournalEntry->EntryRenderTarget->SizeX = 1080;
-		//GameData->DEBUG_JournalEntry->EntryRenderTarget->SizeY = 1080;
-
-		//UTextureRenderTarget2D::UTextureRenderTarget2D()
-
-		//if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
-		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
-
-		//SaveGameData();
 	}
 
 	if (GameData->BinaryTexture.Num() == 4 * 900 * 1080)
@@ -143,12 +117,6 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
-
-	//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D()
-
-
-	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, GameData->DEBUG_Pixels[0].ToString());
-
 }
 
 void UDESGameInstance::SaveSettingsData() 
