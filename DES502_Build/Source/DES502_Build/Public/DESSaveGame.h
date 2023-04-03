@@ -55,6 +55,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
 		bool EntryActive;
 
-public:
-	TArray<uint8> BinaryTexture;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
+		TArray<uint8> BinaryTexture;
 };

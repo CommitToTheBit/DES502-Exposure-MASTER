@@ -13,7 +13,7 @@ void UDESGameInstance::Init()
 	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->InitResource();
 
 	// Load any saved data...
-	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 }
 
@@ -30,7 +30,8 @@ void UDESGameInstance::SaveGameData()
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
 
-	// FIXME: In BPs, update entry actives at the same time...
+	GameData->EntryActive = DEBUG_JournalEntry->EntryActive;
+
 	if (DEBUG_JournalEntry->EntryActive && DEBUG_JournalEntry->RenderTargetActive)
 	{	
 		// STEP 1: Read RenderTarget's data into an FColor array...
@@ -50,12 +51,14 @@ void UDESGameInstance::SaveGameData()
 
 		// DEBUG:
 		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Saved binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
-		if (GameData->BinaryTexture.Num() > 0)
-			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "The first integer in the texture is " + FString::FromInt(GameData->BinaryTexture[0]) + "...");
+		//if (GameData->BinaryTexture.Num() > 0)
+		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "The first integer in the texture is " + FString::FromInt(GameData->BinaryTexture[0]) + "...");
 	}
 
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
+	// FIXME: Why is this not saving properly?
+	// - gameData *has* the binary data...
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
 }
 
@@ -64,7 +67,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// STEP 1: If not resetting settings, try to load any settings data written to disk...
 	if (!resetGameData)
 	{
-		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
+		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
 
 		// DEBUG:
 		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Loaded binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
@@ -74,7 +77,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	if (resetGameData || !GameData)
 	{
 		// Create new game data...
-		GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
+		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
 		// Progress variables
 		GameData->ProgressStarted = false;
@@ -125,7 +128,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
 		DEBUG_JournalEntry->RenderTarget->UpdateResource();
 
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Success?");
+		//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Success?");
 
 		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
