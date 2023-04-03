@@ -13,9 +13,24 @@ class DES502_BUILD_API UDES_JournalEntry : public UObject
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
-		UTextureRenderTarget2D* EntryRenderTarget;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+		FString Title;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
-		int test = 20;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+		FString Text;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Display")
+		bool EntryActive;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Display")
+		bool RenderTargetActive = true; // NB: Not saved to texture yet!
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Display")
+		UTextureRenderTarget2D* RenderTarget;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Display")
+		UTexture2D* Texture;
+
+private:
+
 };

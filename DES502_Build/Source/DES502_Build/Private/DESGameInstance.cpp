@@ -5,47 +5,60 @@ void UDESGameInstance::Init()
 	// BUGFIX: This is what makes the calls that set up widgets!
 	Super::Init();
 
+	// Create journal manager...
+	// FIXME: Fold this into a full 'Update' function...
+	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
+	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+	DEBUG_JournalEntry->RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false); // NB: This line, previously missing, is what solves the access violation!
+	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->InitResource();
+
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
-
-	/* FIXME: Components to incorporate as individual graphics settings...?
-	gameUserSettings->SetResolutionScaleNormalized(0.25f);
-	gameUserSettings->SetViewDistanceQuality(0);
-	gameUserSettings->SetAntiAliasingQuality(0);
-	gameUserSettings->SetPostProcessingQuality(0);
-	gameUserSettings->SetShadowQuality(0);
-	gameUserSettings->SetGlobalIlluminationQuality(0);
-	gameUserSettings->SetReflectionQuality(0);
-	gameUserSettings->SetTextureQuality(0);
-	gameUserSettings->SetVisualEffectQuality(0);
-	gameUserSettings->SetFoliageQuality(0);
-	gameUserSettings->SetShadingQuality(0); */
-
-	//FSoundControlBusMixStage* test;
-	//static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("Material'/Game/Materials/YourMaterialName.YourMaterialName'")); // "Material'/DES502_Build/Content/Materials/YourMaterialName.YourMaterialName'"
-	//static ConstructorHelpers::FObjectFinder<UMaterial>
-	//Material(TEXT("/Game/VFX/EDITOR_Vignette_Trigger.EDITOR_Vignette_Trigger'"));
-	//static ConstructorHelpers::FObjectFinder<USoundControlBus>MasterBus(TEXT("Material'/Game/Materials/YourMaterialName.YourMaterialName'"));
-
-	/*loadedMaterial = Material.Object;
-
-	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("DEBUG..."));
-
-	if (Material.Succeeded())//Material.Object != NULL)
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Material loaded..."));
-	else
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Material not loaded..."));*/
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
-/* This enclosed section has been adapted from: Awesome Tuts (no date) Saving And Loading Game Data With Blueprints And C++ In Unreal Engine. Available at: https://awesometuts.com/blog/save-load-game-data-unreal-engine/ (Accessed: 22 March 2022) */
+/* This enclosed section has been adapted from: Awesome Tuts (no date) Saving And Loading Game Data With Blueprints And C++ In Unreal Engine. Available at: https://awesometuts.com/blog/save-load-game-data-unreal-engine/ (Accessed: 22 March 2023) */
 
-void UDESGameInstance::SaveGameData() 
+void UDESGameInstance::SaveGameData()
 {
 	if (!GameData)
 		return;
 
+	// FIXME: A for loop over all of the journal's updated entries will go here...
+
+	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+	/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+	GameData->EntryActive = DEBUG_JournalEntry->EntryActive;
+
+	if (DEBUG_JournalEntry->EntryActive && DEBUG_JournalEntry->RenderTargetActive)
+	{	
+		// STEP 1: Read RenderTarget's data into an FColor array...
+		TArray<FColor> ColorArray;
+		ColorArray.Reserve(900 * 1080);
+		DEBUG_JournalEntry->RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
+		ColorArray.Shrink();
+
+		// STEP 2: Copy FColor array into binary texture...
+		GameData->BinaryTexture.Reserve(4 * 900 * 1080);
+
+		GameData->BinaryTexture.Empty();
+		if (GameData->BinaryTexture.Num() < 4 * 900 * 1080)
+			GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num()); // NB: 4 values, RGBA, for each pixel of the polaroid...
+
+		FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
+
+		// DEBUG:
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Saved binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
+		//if (GameData->BinaryTexture.Num() > 0)
+		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "The first integer in the texture is " + FString::FromInt(GameData->BinaryTexture[0]) + "...");
+	}
+
+	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+	// FIXME: Why is this not saving properly?
+	// - gameData *has* the binary data...
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
 }
 
@@ -54,14 +67,17 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// STEP 1: If not resetting settings, try to load any settings data written to disk...
 	if (!resetGameData)
 	{
-		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
+		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
+
+		// DEBUG:
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Loaded binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
 	if (resetGameData || !GameData)
 	{
 		// Create new game data...
-		GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
+		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
 		// Progress variables
 		GameData->ProgressStarted = false;
@@ -81,12 +97,40 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		GameData->CrowbarInventoried = 0;
 
-		// DEBUG:
-		GameData->DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
-		GameData->DEBUG_JournalEntry->EntryRenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+		GameData->EntryActive = false;
+		GameData->BinaryTexture.Init(128, 4 * 900 * 1080);
+	}
 
-		if (GameData->DEBUG_JournalEntry->EntryRenderTarget)
-			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, TEXT("Success?"));
+	DEBUG_JournalEntry->EntryActive = GameData->EntryActive;
+	DEBUG_JournalEntry->RenderTargetActive = !GameData->EntryActive;
+
+	if (GameData->BinaryTexture.Num() == 4 * 900 * 1080) // NB: Safety check; prevents crashes!
+	{
+		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+		/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+		// STEP 1: Set up texture...
+		UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+		// Get a reference to MIP 0, for convenience.
+		FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
+
+		// STEP 2: Copy data...
+		void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
+		Mip.BulkData.Realloc(4 * 900 * 1080);
+		FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
+		Mip.BulkData.Unlock();
+
+		// STEP 3: Update resources...
+		Texture->UpdateResource();
+		DEBUG_JournalEntry->Texture = Texture;
+
+		// FIXME: No longer crashing, but not doing anything else?
+		DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
+		DEBUG_JournalEntry->RenderTarget->UpdateResource();
+
+		//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Success?");
+
+		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
 
 	// NB: Updates will be applied by... the appropriate game mode?
@@ -126,6 +170,8 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 
 		SettingsData->SFX_Volume = 1.0f;
 		SettingsData->SFX_Mute = false;
+
+		SaveSettingsData();
 	}
 
 	// STEP 3: Update all settings according to SettingsData...
