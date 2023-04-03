@@ -48,11 +48,6 @@ void UDESGameInstance::SaveGameData()
 			GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num()); // NB: 4 values, RGBA, for each pixel of the polaroid...
 
 		FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
-
-		// DEBUG:
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Saved binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
-		//if (GameData->BinaryTexture.Num() > 0)
-		//	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "The first integer in the texture is " + FString::FromInt(GameData->BinaryTexture[0]) + "...");
 	}
 
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -68,9 +63,6 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	if (!resetGameData)
 	{
 		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
-
-		// DEBUG:
-		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Loaded binary texture of size " + FString::FromInt(GameData->BinaryTexture.Num()) + "...");
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
@@ -127,8 +119,6 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		// FIXME: No longer crashing, but not doing anything else?
 		DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
 		DEBUG_JournalEntry->RenderTarget->UpdateResource();
-
-		//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Success?");
 
 		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
