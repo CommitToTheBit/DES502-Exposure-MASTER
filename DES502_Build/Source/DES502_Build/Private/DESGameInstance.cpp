@@ -99,24 +99,33 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
 
 		// STEP 1: Set up texture...
-		UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+		//UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
 		// Get a reference to MIP 0, for convenience.
-		FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
+		//FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
 
 		// STEP 2: Copy data...
-		void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
-		Mip.BulkData.Realloc(4 * 900 * 1080);
-		FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
-		Mip.BulkData.Unlock();
+		//void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
+		//Mip.BulkData.Realloc(4 * 900 * 1080);
+		//FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
+		//Mip.BulkData.Unlock();
 
 		// STEP 3: Update resources...
-		Texture->UpdateResource();
+		//Texture->UpdateResource();
 		//DEBUG_JournalEntry->Texture = Texture;
 
 		// FIXME: No longer crashing, but not doing anything else?
 		// Use this? https://stackoverflow.com/questions/59638346/how-do-you-update-a-utexturerendertarget2d-dynamically-in-c
-		DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
-		DEBUG_JournalEntry->RenderTarget->UpdateResource();
+		FUpdateTextureRegion2D region = FUpdateTextureRegion2D(0, 0, 0, 0, 900, 1080);
+
+		//const uint8* BinaryTexture = new uint8[4 * 900 * 1080];
+		//for (int i = 0; i < GameData->BinaryTexture.Num(); i++)
+		//	BinaryTexture[i] = GameData->BinaryTexture[i];
+
+		FTexture2DRHIRef test = DEBUG_JournalEntry->RenderTarget->GameThread_GetRenderTargetResource()->GetRenderTargetTexture();
+		//UpdateTextureRegion(DEBUG_JournalEntry->RenderTarget->GameThread_GetRenderTargetResource()->GetRenderTargetTexture(), 0, 1, region, 2 * 4, 4, GameData->BinaryTexture.GetData());
+
+		//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
+		//DEBUG_JournalEntry->RenderTarget->UpdateResource();
 
 		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Success?");
 
@@ -254,3 +263,23 @@ float UDESGameInstance::GetMixWithMasterVolume(float volume, bool mute)
 {
 	return (mute || SettingsData->MasterMute) ? 0.0f : volume*SettingsData->MasterVolume;
 }
+
+/*void UDESGameInstance::UpdateTextureRegion(FTexture2DRHIRef TextureRHI, int32 MipIndex, uint32 NumRegions, FUpdateTextureRegion2D Region, uint32 SrcPitch, uint32 SrcBpp, uint8* SrcData, TFunction<void(uint8* SrcData)> DataCleanupFunc)
+{
+	ENQUEUE_RENDER_COMMAND(UpdateTextureRegionsData)(
+		[=](FRHICommandListImmediate& RHICmdList)
+		{
+			check(TextureRHI.IsValid());
+			RHIUpdateTexture2D(
+				TextureRHI,
+				MipIndex,
+				Region,
+				SrcPitch,
+				SrcData
+				+ Region.SrcY * SrcPitch
+				+ Region.SrcX * SrcBpp
+			);
+
+			DataCleanupFunc(SrcData);
+		});
+}*/

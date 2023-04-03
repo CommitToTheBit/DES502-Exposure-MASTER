@@ -7,6 +7,7 @@
 #include "DES_SaveSettings.h"
 #include "Engine.h"
 
+#include "RHIResources.h"
 #include "AudioModulationStatics.h"
 
 #include "DESGameInstance.generated.h"
@@ -100,4 +101,7 @@ private:
 	// AUDIO SETTINGS:
 	void UpdateBus(USoundControlBus* bus, USoundControlBusMix* mix, float volume);
 	float GetMixWithMasterVolume(float volume, bool mute);
+
+	// DEBUG:
+	//void UpdateTextureRegion(FTextureRHIRef TextureRHI, int32 MipIndex, uint32 NumRegions, FUpdateTextureRegion2D Region, uint32 SrcPitch, uint32 SrcBpp, uint8* SrcData, TFunction<void(uint8* SrcData)> DataCleanupFunc = [](uint8*) {});
 };
