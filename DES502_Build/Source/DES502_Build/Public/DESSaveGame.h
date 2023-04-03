@@ -51,6 +51,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Crowbar")
 		int CrowbarInventoried;
 
+	// TEMPORARY:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
+		bool EntryActive;
+
 public:
 	TArray<uint8> BinaryTexture;
 };
