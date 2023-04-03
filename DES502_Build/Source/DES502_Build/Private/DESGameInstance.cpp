@@ -13,7 +13,7 @@ void UDESGameInstance::Init()
 	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->InitResource();
 
 	// Load any saved data...
-	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
+	LoadGameData(true); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
 }
 
@@ -90,7 +90,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		GameData->CrowbarInventoried = 0;
 
-		GameData->BinaryTexture.Init(0, 4 * 900 * 1080);
+		GameData->BinaryTexture.Init(128, 4 * 900 * 1080);
 	}
 
 	if (GameData->BinaryTexture.Num() == 4 * 900 * 1080)
@@ -111,7 +111,14 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		// STEP 3: Update resources...
 		Texture->UpdateResource();
-		//DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_RGBA8);
+		//DEBUG_JournalEntry->Texture = Texture;
+
+		// FIXME: No longer crashing, but not doing anything else?
+		// Use this? https://stackoverflow.com/questions/59638346/how-do-you-update-a-utexturerendertarget2d-dynamically-in-c
+		DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
+		DEBUG_JournalEntry->RenderTarget->UpdateResource();
+
+		GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, "Success?");
 
 		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}

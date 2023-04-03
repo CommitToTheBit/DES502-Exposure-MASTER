@@ -22,8 +22,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
 		UTextureRenderTarget2D* RenderTarget;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
-	//	UTexture2D* Texture;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		UTexture2D* Texture;
 
 private:
 
