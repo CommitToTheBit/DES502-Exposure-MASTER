@@ -10,27 +10,41 @@
 
 #include "DES_JournalManager.generated.h"
 
-USTRUCT(BlueprintType, Category = "JSON")
+USTRUCT(BlueprintType, Category = "Journal")
 struct FDES_JournalEntryStruct
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY()
-		FString ID;
+	// DATA: Variables read from the JSON...
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
+		FString ID = "N/A";
 
-	UPROPERTY()
-		FString Title;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
+		FString Title = "N/A";
+
+	// PROGRESS: Variables determined by the player...
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		bool EntryActive;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		bool RenderTargetActive = true; // NB: Not saved to texture yet!
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		UTextureRenderTarget2D* RenderTarget;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		UTexture2D* Texture;
 };
 
-USTRUCT(BlueprintType, Category = "JSON")
+USTRUCT(BlueprintType, Category = "Journal")
 struct FDES_JournalStruct
 {
 	GENERATED_BODY()
 
 public:
 	UPROPERTY()
-		TArray<FDES_JournalEntryStruct> JournalEntries;
+		TMap<FString, FDES_JournalEntryStruct> Entries;
 };
 
 UCLASS()
@@ -39,8 +53,11 @@ class DES502_BUILD_API UDES_JournalManager : public UObject
 	GENERATED_BODY()
 
 public:
+	FDES_JournalStruct Journal;
+
+public:
 	void InitialiseEntries(FString FilePath);
 
 private:
-	TArray<FDES_JournalEntryStruct> ReadJsonStructsFromFile(FString FilePath);
+	FDES_JournalStruct ReadJournalStructFromFile(FString FilePath);
 };
