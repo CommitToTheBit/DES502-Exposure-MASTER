@@ -3,6 +3,10 @@
 void UDES_JournalManager::InitialiseEntries(FString FilePath)
 {
 	FDES_JournalStruct JournalStruct = ReadJournalStructFromFile(FilePath);
+	dummy = FPlayerStats();
+
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, dummy.Running);
+
 	//Journal = FDES_JournalStruct();
 	//Journal = ReadJournalStructFromFile(FilePath);
 
