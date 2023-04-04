@@ -3,7 +3,8 @@
 void UDES_JournalManager::InitialiseEntries(FString FilePath)
 {
 	FDES_JournalStruct JournalStruct = ReadJournalStructFromFile(FilePath);
-	Journal.Entries.Reserve(JournalStruct.Entries.Num());
+	//Journal = FDES_JournalStruct();
+	//Journal = ReadJournalStructFromFile(FilePath);
 
 
 	//Journal = ReadJournalStructFromFile(FilePath);
@@ -46,6 +47,9 @@ FDES_JournalStruct UDES_JournalManager::ReadJournalStructFromFile(FString FilePa
 	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, JournalStruct.Entries["Goblet"].Title);
 
 	return JournalStruct;
+
+	// DEBUG:
+	//return FDES_JournalStruct();
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
