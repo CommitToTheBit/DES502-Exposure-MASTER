@@ -8,7 +8,7 @@ public class DES502_Build : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "AudioModulation", "Core", "CoreUObject", "Engine", "InputCore", "WaveTable" });
+		PublicDependencyModuleNames.AddRange(new string[] { "AudioModulation", "Core", "CoreUObject", "Engine", "InputCore", "Json", "WaveTable" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

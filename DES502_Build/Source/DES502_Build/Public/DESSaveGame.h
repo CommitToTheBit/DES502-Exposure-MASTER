@@ -2,9 +2,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
-
-#include "DES_JournalEntry.h"
-
 #include "DESSaveGame.generated.h"
 
 class UDES_JournalEntry;

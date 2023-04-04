@@ -5,6 +5,7 @@
 
 #include "DESSaveGame.h"
 #include "DES_SaveSettings.h"
+#include "DES_JournalManager.h"
 #include "Engine.h"
 
 #include "AudioModulationStatics.h"
@@ -33,6 +34,9 @@ public:
 		UDES_SaveSettings* SettingsData;
 
 	// JOURNAL FUNCTIONALITY:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
+		UDES_JournalManager* JournalManager;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
 		UDES_JournalEntry* DEBUG_JournalEntry; // FIXME: Placeholder for full 'journal manager'...
 
