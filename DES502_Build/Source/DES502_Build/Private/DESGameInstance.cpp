@@ -62,14 +62,14 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// STEP 1: If not resetting settings, try to load any settings data written to disk...
 	if (!resetGameData)
 	{
-		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
+		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
 	if (resetGameData || !GameData)
 	{
 		// Create new game data...
-		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
+		GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
 		// Progress variables
 		GameData->ProgressStarted = false;
