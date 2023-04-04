@@ -45,6 +45,12 @@ struct FDES_JournalStruct
 public:
 	UPROPERTY()
 		TMap<FString, FDES_JournalEntryStruct> Entries;
+
+	// Copy constructor
+	FDES_JournalStruct()
+	{
+		Entries = TMap<FString, FDES_JournalEntryStruct>();
+	}
 };
 
 UCLASS()
@@ -54,6 +60,7 @@ class DES502_BUILD_API UDES_JournalManager : public UObject
 
 public:
 	FDES_JournalStruct Journal;
+	FDES_JournalEntryStruct dummy;
 
 public:
 	void InitialiseEntries(FString FilePath);

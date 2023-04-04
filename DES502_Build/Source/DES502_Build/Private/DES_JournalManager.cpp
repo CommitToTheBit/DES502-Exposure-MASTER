@@ -2,6 +2,8 @@
 
 void UDES_JournalManager::InitialiseEntries(FString FilePath)
 {
+	FDES_JournalStruct TempJournal = FDES_JournalStruct();
+
 	ReadJournalStructFromFile(FilePath);
 	//Journal = ReadJournalStructFromFile(FilePath);
 
