@@ -18,10 +18,10 @@ struct FDES_JournalEntryStruct
 public:
 	// DATA: Variables read from the JSON...
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
-		FString ID = "N/A";
+		FString ID;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
-		FString Title = "N/A";
+		FString Title;
 
 	// PROGRESS: Variables determined by the player...
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
@@ -45,12 +45,6 @@ struct FDES_JournalStruct
 public:
 	UPROPERTY()
 		TMap<FString, FDES_JournalEntryStruct> Entries;
-
-	// Copy constructor
-	FDES_JournalStruct()
-	{
-		Entries = TMap<FString, FDES_JournalEntryStruct>();
-	}
 };
 
 UCLASS()

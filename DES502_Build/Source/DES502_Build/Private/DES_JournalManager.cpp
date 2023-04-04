@@ -2,9 +2,10 @@
 
 void UDES_JournalManager::InitialiseEntries(FString FilePath)
 {
-	FDES_JournalStruct TempJournal = FDES_JournalStruct();
+	FDES_JournalStruct JournalStruct = ReadJournalStructFromFile(FilePath);
+	Journal.Entries.Reserve(JournalStruct.Entries.Num());
 
-	ReadJournalStructFromFile(FilePath);
+
 	//Journal = ReadJournalStructFromFile(FilePath);
 
 	/*for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
