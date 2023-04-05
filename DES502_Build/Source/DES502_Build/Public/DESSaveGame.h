@@ -2,7 +2,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
-#include "DES_SaveJournalEntryStruct.h"
 #include "DESSaveGame.generated.h"
 
 class UDES_JournalEntry;
@@ -54,7 +53,7 @@ public:
 		TMap<FString, bool> EntriesActive;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
-	//	TMap<FString, FDES_SaveJournalEntryStruct> BinaryTextures;
+	//	TArray<TArray<uint8>> BinaryTextures;
 
 	// TEMPORARY:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
