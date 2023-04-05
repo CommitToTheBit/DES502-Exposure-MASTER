@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "DES_SaveJournalEntryStruct.h"
 #include "DESSaveGame.generated.h"
 
 class UDES_JournalEntry;
@@ -47,6 +48,13 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Crowbar")
 		int CrowbarInventoried;
+
+	//
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
+		TMap<FString, bool> EntriesActive;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
+	//	TMap<FString, FDES_SaveJournalEntryStruct> BinaryTextures;
 
 	// TEMPORARY:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")

@@ -4,6 +4,7 @@
 
 #include "DES_JournalEntry.h" // DELETE THIS!
 #include "DES_JournalStruct.h"
+#include "DESSaveGame.h"
 #include "Engine.h"
 
 #include "Serialization/JsonSerializer.h"
@@ -23,6 +24,6 @@ public:
 public:
 	void ReadJournalData(FString FilePath);
 
-	void ReadJournalProgress(); // NB: Reference to SaveGame.h?
-	void WriteJournalProgress(); // NB: Reference to SaveGame.h?
+	void ReadJournalProgress(UDESSaveGame* GameData); // NB: Reference to SaveGame.h?
+	void WriteJournalProgress(UDESSaveGame* GameData); // NB: Reference to SaveGame.h?
 };

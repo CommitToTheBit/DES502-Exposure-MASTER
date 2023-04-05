@@ -21,20 +21,85 @@ void UDES_JournalManager::ReadJournalData(FString FilePath)
 
 	// STEP 4: Convert JSON object into desired structure, if possible...
 	FJsonObjectConverter::JsonObjectToUStruct<FDES_JournalStruct>(JsonObject.ToSharedRef(), &Journal);
+
+	// STEP 5: [SAFETY]
+	/*for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
+	{
+		Journal.Entries[Entry.Key].RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
+	}*/
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-void UDES_JournalManager::ReadJournalProgress()
+void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 {
 	for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 	{
-		Entry.Value.RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-		Entry.Value.RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
+		//Journal.Entries[Entry.Key].EntryActive = GameData->BinaryTextures.Contains(Entry.Key);
+		//if (Journal.Entries[Entry.Key].EntryActive)
+		//{
+			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+			// STEP 1: Set up texture...
+		//	UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+		//	// Get a reference to MIP 0, for convenience.
+		//	FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
+
+			// STEP 2: Copy data...
+		//	void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
+		//	Mip.BulkData.Realloc(4 * 900 * 1080);
+		//	FMemory::Memcpy(MipBulkData, GameData->BinaryTextures[Entry.Key].GetData(), 4 * 900 * 1080);
+		//	Mip.BulkData.Unlock();
+
+			// STEP 3: Update resources...
+		//	Texture->UpdateResource();
+		//	Journal.Entries[Entry.Key].Texture = Texture;
+
+			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+		//}
+
+		//Journal.Entries[Entry.Key].RenderTargetActive = !Journal.Entries[Entry.Key].EntryActive;
+		//{
+		Journal.Entries[Entry.Key].RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
+		//}
 	}
 }
 
-void UDES_JournalManager::WriteJournalProgress()
+void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData)
 {
+	for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
+	{
+		if (!GameData->EntriesActive.Contains(Entry.Key))
+			GameData->EntriesActive.Add(Entry.Key, Journal.Entries[Entry.Key].EntryActive);
+		else
+			GameData->EntriesActive[Entry.Key] = Journal.Entries[Entry.Key].EntryActive;
 
+		//if (Journal.Entries[Entry.Key].EntryActive&& Journal.Entries[Entry.Key].RenderTargetActive)
+		//{
+			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
+
+			// STEP 1: Read RenderTarget's data into an FColor array...
+		//	TArray<FColor> ColorArray;
+		//	ColorArray.Reserve(900 * 1080);
+		//	Journal.Entries[Entry.Key].RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
+		//	ColorArray.Shrink();
+
+			// STEP 2: Copy FColor array into binary texture...
+		//	if (!GameData->BinaryTextures.Contains(Entry.Key))
+		//		GameData->BinaryTextures.Add(Entry.Key, TArray<uint8>());
+		//	GameData->BinaryTexture.Reserve(4 * 900 * 1080);
+
+		//	GameData->BinaryTexture.Empty();
+		//	if (GameData->BinaryTexture.Num() < 4 * 900 * 1080)
+		//		GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num()); // NB: 4 values, RGBA, for each pixel of the polaroid...
+
+		//	FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
+
+			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+		//}
+	}
 }

@@ -13,7 +13,6 @@ void UDESGameInstance::Init()
 	// Create journal manager...
 	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
 	JournalManager->ReadJournalData("C:/Users/Sam/Desktop/JournalEntries.json");
-	JournalManager->ReadJournalProgress(); // FIXME: Run within LoadGameData...
 
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
@@ -54,6 +53,8 @@ void UDESGameInstance::SaveGameData()
 	}
 
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+	JournalManager->WriteJournalProgress(GameData);
 
 	// FIXME: Why is this not saving properly?
 	// - gameData *has* the binary data...
@@ -125,6 +126,9 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
+
+	// STEP 3: ...
+	JournalManager->ReadJournalProgress(GameData);
 
 	// NB: Updates will be applied by... the appropriate game mode?
 }
