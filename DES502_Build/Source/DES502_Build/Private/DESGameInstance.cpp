@@ -6,7 +6,8 @@ void UDESGameInstance::Init()
 	Super::Init();
 
 	// Create journal manager...
-	JournalManager->InitialiseEntries("C:/Users/Sam/Desktop/JournalEntries.json");
+	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
+	JournalManager->InitialiseJournal("C:/Users/Sam/Desktop/JournalEntries.json");
 
 	// FIXME: Fold this into a full 'Update' function...
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());

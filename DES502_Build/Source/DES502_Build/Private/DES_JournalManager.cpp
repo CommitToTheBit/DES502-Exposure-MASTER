@@ -1,26 +1,16 @@
 #include "DES_JournalManager.h"
 
-void UDES_JournalManager::InitialiseEntries(FString FilePath)
+void UDES_JournalManager::InitialiseJournal(FString FilePath)
 {
-	FDES_JournalStruct JournalStruct = ReadJournalStructFromFile(FilePath);
-	dummy = FPlayerStats();
-
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, dummy.Running);
-
-	//Journal = FDES_JournalStruct();
-	//Journal = ReadJournalStructFromFile(FilePath);
-
-
-	//Journal = ReadJournalStructFromFile(FilePath);
-
-	/*for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
+	Journal = ReadJournalStructFromFile(FilePath);
+	for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 	{
-		//Entry.Value.RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-		//Entry.Value.RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
-	}*/
+		Entry.Value.RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
+		Entry.Value.RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
+	}
 
 	// DEBUG:
-	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::FromInt(JsonStructs.Num()));
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::FromInt(Journal.Entries.Num()));
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -47,13 +37,7 @@ FDES_JournalStruct UDES_JournalManager::ReadJournalStructFromFile(FString FilePa
 	if (!FJsonObjectConverter::JsonObjectToUStruct<FDES_JournalStruct>(JsonObject.ToSharedRef(), &JournalStruct)) // FIXME: Is this actually catching any errors?
 		return FDES_JournalStruct();
 
-	// DEBUG:
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, JournalStruct.Entries["Goblet"].Title);
-
 	return JournalStruct;
-
-	// DEBUG:
-	//return FDES_JournalStruct();
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
