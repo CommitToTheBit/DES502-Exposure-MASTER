@@ -17,12 +17,12 @@ class DES502_BUILD_API UDES_JournalManager : public UObject
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		FDES_JournalStruct Journal;
 
 public:
-	void InitialiseJournal(FString FilePath);
+	void ReadJournalData(FString FilePath);
 
-private:
-	FDES_JournalStruct ReadJournalStructFromFile(FString FilePath);
+	void ReadJournalProgress(); // NB: Reference to SaveGame.h?
+	void WriteJournalProgress(); // NB: Reference to SaveGame.h?
 };

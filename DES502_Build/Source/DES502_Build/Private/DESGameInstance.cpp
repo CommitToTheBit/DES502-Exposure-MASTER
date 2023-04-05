@@ -5,15 +5,15 @@ void UDESGameInstance::Init()
 	// BUGFIX: This is what makes the calls that set up widgets!
 	Super::Init();
 
-	// Create journal manager...
-	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
-	JournalManager->InitialiseJournal("C:/Users/Sam/Desktop/JournalEntries.json");
-
 	// FIXME: Fold this into a full 'Update' function...
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 	DEBUG_JournalEntry->RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false); // NB: This line, previously missing, is what solves the access violation!
-	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->InitResource();
+
+	// Create journal manager...
+	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
+	JournalManager->ReadJournalData("C:/Users/Sam/Desktop/JournalEntries.json");
+	JournalManager->ReadJournalProgress(); // FIXME: Run within LoadGameData...
 
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...

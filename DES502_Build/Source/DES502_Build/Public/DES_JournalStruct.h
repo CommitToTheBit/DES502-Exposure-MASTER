@@ -13,7 +13,7 @@ struct DES502_BUILD_API FDES_JournalStruct
 	GENERATED_BODY()
 
 public:
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		TMap<FString, FDES_JournalEntryStruct> Entries;
 
 	FDES_JournalStruct();
