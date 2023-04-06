@@ -1,0 +1,15 @@
+{
+    "Entries":
+    {
+        "Wisp":
+        {
+            "ID": "Wisp",
+            "Title": "Flickering lights?"
+        },
+        "Goblet":
+        {
+            "ID": "Goblet",
+            "Title": "Goblets"
+        }
+    }
+}
