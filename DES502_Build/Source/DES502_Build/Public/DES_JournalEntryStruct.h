@@ -20,7 +20,7 @@ public:
 
 	// PROGRESS: Variables determined by the player...
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
-		bool EntryActive;
+		int EntryActive = -1;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
 		bool RenderTargetActive = true; // NB: Not saved to texture yet!

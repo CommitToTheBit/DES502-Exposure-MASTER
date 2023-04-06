@@ -35,11 +35,12 @@ void UDES_JournalManager::ReadJournalData(FString FilePath)
 void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 {
 	int index = 0;
+	int maxActive = 0;
 	for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 	{
 		Journal.Entries[Entry.Key].EntryActive = GameData->EntriesActive[index];
 
-		if (Journal.Entries[Entry.Key].EntryActive)
+		if (Journal.Entries[Entry.Key].EntryActive >= 0)
 		{
 			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
@@ -62,12 +63,29 @@ void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 		}
 
-		Journal.Entries[Entry.Key].RenderTargetActive = !Journal.Entries[Entry.Key].EntryActive;
+		Journal.Entries[Entry.Key].RenderTargetActive = Journal.Entries[Entry.Key].EntryActive < 0;
 
 		Journal.Entries[Entry.Key].RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
 
+		if (Journal.Entries[Entry.Key].EntryActive >= maxActive)
+			maxActive = Journal.Entries[Entry.Key].EntryActive + 1;
+
 		index++;
+	}
+
+	// NB: Ordering entries for UI...
+	Chronology.Empty();
+	for (int i = 0; i < maxActive; i++)
+	{
+		for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
+		{
+			if (Entry.Value.EntryActive == i)
+			{
+				Chronology.Add(Entry.Key);
+				continue;
+			}
+		}
 	}
 }
 
@@ -90,7 +108,7 @@ void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData, bool rese
 			GameData->EntriesActive.RemoveAt(GameData->EntriesActive.Num() - 1);
 
 		for (int i = 0; i < Journal.Entries.Num(); i++)
-			GameData->EntriesActive[i] = false;
+			GameData->EntriesActive[i] = -1;
 
 		GameData->BinaryTextures.Reserve(Journal.Entries.Num() * 4 * 900 * 1080); // NB: 4 values, RGBA, for each pixel of the polaroid...
 		GameData->BinaryTextures.Empty();
@@ -107,7 +125,7 @@ void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData, bool rese
 		for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 		{
 			// NB: Updating only the entries that have actually changed...
-			if (!GameData->EntriesActive[index] && Entry.Value.EntryActive)
+			if (GameData->EntriesActive[index] < 0 && Entry.Value.EntryActive >= 0)
 			{
 				GameData->EntriesActive[index] = Entry.Value.EntryActive;
 

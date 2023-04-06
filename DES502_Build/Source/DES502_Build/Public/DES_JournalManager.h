@@ -21,6 +21,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		FDES_JournalStruct Journal;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<FString> Chronology;
+
 public:
 	void ReadJournalData(FString FilePath);
 

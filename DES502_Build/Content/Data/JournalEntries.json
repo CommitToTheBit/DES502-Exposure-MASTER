@@ -10,6 +10,21 @@
         {
             "ID": "Goblet",
             "Title": "Goblets"
+        },
+        "Painting (Skin #1)":
+        {
+            "ID": "Painting (Skin #1)",
+            "Title": "A king, seemingly..."
+        },
+        "Painting (Skin #2)":
+        {
+            "ID": "Painting (Skin #2)",
+            "Title": "Rites - pagan??"
+        },
+        "Painting (Skin #3)":
+        {
+            "ID": "Painting (Skin #3)",
+            "Title": "Appraise this!"
         }
     }
 }
