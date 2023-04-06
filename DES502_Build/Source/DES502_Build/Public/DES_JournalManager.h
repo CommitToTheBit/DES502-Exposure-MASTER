@@ -25,5 +25,5 @@ public:
 	void ReadJournalData(FString FilePath);
 
 	void ReadJournalProgress(UDESSaveGame* GameData); // NB: Reference to SaveGame.h?
-	void WriteJournalProgress(UDESSaveGame* GameData); // NB: Reference to SaveGame.h?
+	void WriteJournalProgress(UDESSaveGame* GameData, bool resetJournalData = false); // NB: Reference to SaveGame.h?
 };

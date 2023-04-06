@@ -70,7 +70,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
-	if (resetGameData || !GameData)
+	resetGameData |= !GameData;
+	if (resetGameData)
 	{
 		// Create new game data...
 		GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
@@ -128,6 +129,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	}
 
 	// STEP 3: ...
+	JournalManager->WriteJournalProgress(GameData, resetGameData);
 	JournalManager->ReadJournalProgress(GameData);
 
 	// NB: Updates will be applied by... the appropriate game mode?
@@ -150,7 +152,8 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
-	if (resetSettingsData || !SettingsData)
+	resetSettingsData |= !SettingsData;
+	if (resetSettingsData)
 	{
 		// Create new settings data...
 		SettingsData = Cast<UDES_SaveSettings>(UGameplayStatics::CreateSaveGameObject(UDES_SaveSettings::StaticClass()));
