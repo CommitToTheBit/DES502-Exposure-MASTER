@@ -5,12 +5,14 @@ void UDESGameInstance::Init()
 	// BUGFIX: This is what makes the calls that set up widgets!
 	Super::Init();
 
-	// Create journal manager...
 	// FIXME: Fold this into a full 'Update' function...
 	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
 	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 	DEBUG_JournalEntry->RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false); // NB: This line, previously missing, is what solves the access violation!
-	//DEBUG_JournalEntry->RenderTarget->GetRenderTargetResource()->InitResource();
+
+	// Create journal manager...
+	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
+	JournalManager->ReadJournalData(FPaths::ProjectContentDir() + "Data/JournalEntries.json");
 
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
@@ -52,6 +54,8 @@ void UDESGameInstance::SaveGameData()
 
 	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
+	JournalManager->WriteJournalProgress(GameData);
+
 	// FIXME: Why is this not saving properly?
 	// - gameData *has* the binary data...
 	UGameplayStatics::SaveGameToSlot(GameData, SaveGameSlot, 0);	
@@ -62,14 +66,15 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 	// STEP 1: If not resetting settings, try to load any settings data written to disk...
 	if (!resetGameData)
 	{
-		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
+		GameData = Cast<UDESSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameSlot, 0));
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
-	if (resetGameData || !GameData)
+	resetGameData |= !GameData;
+	if (resetGameData)
 	{
 		// Create new game data...
-		GameData = static_cast<UDESSaveGame*>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
+		GameData = Cast<UDESSaveGame>(UGameplayStatics::CreateSaveGameObject(UDESSaveGame::StaticClass()));
 
 		// Progress variables
 		GameData->ProgressStarted = false;
@@ -123,6 +128,10 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
 
+	// STEP 3: ...
+	JournalManager->WriteJournalProgress(GameData, resetGameData);
+	JournalManager->ReadJournalProgress(GameData);
+
 	// NB: Updates will be applied by... the appropriate game mode?
 }
 
@@ -143,7 +152,8 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 	}
 
 	// STEP 2: If settings aren't loaded, reset to defaults...
-	if (resetSettingsData || !SettingsData)
+	resetSettingsData |= !SettingsData;
+	if (resetSettingsData)
 	{
 		// Create new settings data...
 		SettingsData = Cast<UDES_SaveSettings>(UGameplayStatics::CreateSaveGameObject(UDES_SaveSettings::StaticClass()));

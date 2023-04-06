@@ -3,15 +3,13 @@
 #include "CoreMinimal.h"
 #include "Engine.h"
 
-#include "DES_JournalEntry.generated.h"
+#include "DES_JournalEntryStruct.generated.h"
 
-class UTextureRenderTarget2D;
-
-UCLASS()
-class DES502_BUILD_API UDES_JournalEntry : public UObject
+USTRUCT(BlueprintType, Category = "Journal")
+struct FDES_JournalEntryStruct
 {
 	GENERATED_BODY()
-	
+
 public:
 	// DATA: Variables read from the JSON...
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
@@ -33,6 +31,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
 		UTexture2D* Texture;
 
-private:
-
+	FDES_JournalEntryStruct();
+	~FDES_JournalEntryStruct();
 };
