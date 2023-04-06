@@ -34,37 +34,40 @@ void UDES_JournalManager::ReadJournalData(FString FilePath)
 
 void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 {
+	int index = 0;
 	for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 	{
-		//Journal.Entries[Entry.Key].EntryActive = GameData->BinaryTextures.Contains(Entry.Key);
-		//if (Journal.Entries[Entry.Key].EntryActive)
-		//{
+		Journal.Entries[Entry.Key].EntryActive = GameData->EntriesActive[index];
+		if (Journal.Entries[Entry.Key].EntryActive)
+		{
 			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
 
 			// STEP 1: Set up texture...
-		//	UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
-		//	// Get a reference to MIP 0, for convenience.
-		//	FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
+			UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+			// Get a reference to MIP 0, for convenience.
+			FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
 
 			// STEP 2: Copy data...
-		//	void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
-		//	Mip.BulkData.Realloc(4 * 900 * 1080);
-		//	FMemory::Memcpy(MipBulkData, GameData->BinaryTextures[Entry.Key].GetData(), 4 * 900 * 1080);
-		//	Mip.BulkData.Unlock();
+			void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
+			Mip.BulkData.Realloc(4 * 900 * 1080);
+			FMemory::Memcpy(MipBulkData, GameData->BinaryTextures.GetData() + index * 4 * 900 * 1080, 4 * 900 * 1080);
+			Mip.BulkData.Unlock();
 
 			// STEP 3: Update resources...
-		//	Texture->UpdateResource();
-		//	Journal.Entries[Entry.Key].Texture = Texture;
+			Texture->UpdateResource();
+			Journal.Entries[Entry.Key].Texture = Texture;
 
 			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-		//}
+		}
 
-		//Journal.Entries[Entry.Key].RenderTargetActive = !Journal.Entries[Entry.Key].EntryActive;
+		Journal.Entries[Entry.Key].RenderTargetActive = !Journal.Entries[Entry.Key].EntryActive;
 		//{
 		Journal.Entries[Entry.Key].RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
 		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
 		//}
+
+		index++;
 	}
 }
 
