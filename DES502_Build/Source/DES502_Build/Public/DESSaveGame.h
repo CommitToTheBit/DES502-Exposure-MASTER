@@ -50,10 +50,10 @@ public:
 
 	//
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
-		TMap<FString, bool> EntriesActive;
+		TArray<bool> EntriesActive; // Store IDs in... ??
 
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
-	//	TArray<TArray<uint8>> BinaryTextures;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
+		TArray<uint8> BinaryTextures;
 
 	// TEMPORARY:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")

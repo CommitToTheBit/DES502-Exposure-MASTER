@@ -70,12 +70,35 @@ void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 
 void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData)
 {
+	// NB: 'Re-saving' everything, every time, might not be efficient, but useful for JSON changes...?
+	GameData->EntriesActive.Reserve(Journal.Entries.Num());
+	GameData->EntriesActive.Empty();
+	if (GameData->EntriesActive.Num() < Journal.Entries.Num())
+		GameData->EntriesActive.AddUninitialized(Journal.Entries.Num() - GameData->EntriesActive.Num());
+
+	GameData->BinaryTextures.Reserve(Journal.Entries.Num() * 4 * 900 * 1080); // NB: 4 values, RGBA, for each pixel of the polaroid...
+	GameData->BinaryTextures.Empty();
+	if (GameData->BinaryTextures.Num() < Journal.Entries.Num() * 4 * 900 * 1080)
+		GameData->BinaryTextures.AddUninitialized(Journal.Entries.Num() * 4 * 900 * 1080 - GameData->BinaryTextures.Num());
+
+	int index = 0;
 	for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 	{
-		if (!GameData->EntriesActive.Contains(Entry.Key))
-			GameData->EntriesActive.Add(Entry.Key, Journal.Entries[Entry.Key].EntryActive);
-		else
-			GameData->EntriesActive[Entry.Key] = Journal.Entries[Entry.Key].EntryActive;
+		// NB: This would prevent issues with re-saving...
+		//if (Entry.Value.EntryActive)
+		//	continue;
+
+		GameData->EntriesActive[index] = Entry.Value.EntryActive;
+
+		//for (int i = 0; i < 4 * 900 * 1080; i++)
+		//	GameData->BinaryTextures[index * 4 * 900 * 1080 + i] = 0;
+
+
+
+		//if (!GameData->EntriesActive.Contains(Entry.Key))
+		//	GameData->EntriesActive.Add(Entry.Key, Journal.Entries[Entry.Key].EntryActive);
+		//else
+		//	GameData->EntriesActive[Entry.Key] = Journal.Entries[Entry.Key].EntryActive;
 
 		//if (Journal.Entries[Entry.Key].EntryActive&& Journal.Entries[Entry.Key].RenderTargetActive)
 		//{
@@ -83,23 +106,25 @@ void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData)
 			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
 
 			// STEP 1: Read RenderTarget's data into an FColor array...
-		//	TArray<FColor> ColorArray;
-		//	ColorArray.Reserve(900 * 1080);
-		//	Journal.Entries[Entry.Key].RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
-		//	ColorArray.Shrink();
+			TArray<FColor> ColorArray;
+			ColorArray.Reserve(900 * 1080);
+			Journal.Entries[Entry.Key].RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
+			ColorArray.Shrink();
 
 			// STEP 2: Copy FColor array into binary texture...
-		//	if (!GameData->BinaryTextures.Contains(Entry.Key))
-		//		GameData->BinaryTextures.Add(Entry.Key, TArray<uint8>());
-		//	GameData->BinaryTexture.Reserve(4 * 900 * 1080);
+			/*if (!GameData->BinaryTextures.Contains(Entry.Key))
+				GameData->BinaryTextures.Add(Entry.Key, TArray<uint8>());
+			GameData->BinaryTexture.Reserve(4 * 900 * 1080);
 
-		//	GameData->BinaryTexture.Empty();
-		//	if (GameData->BinaryTexture.Num() < 4 * 900 * 1080)
-		//		GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num()); // NB: 4 values, RGBA, for each pixel of the polaroid...
+			GameData->BinaryTexture.Empty();
+			if (GameData->BinaryTexture.Num() < 4 * 900 * 1080)
+				GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num());*/ //
 
-		//	FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
+			FMemory::Memcpy(GameData->BinaryTextures.GetData() + index * 4 * 900 * 1080, ColorArray.GetData(), 4 * 900 * 1080);
 
 			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 		//}
+
+		index++;
 	}
 }
