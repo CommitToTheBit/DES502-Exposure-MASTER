@@ -5,28 +5,36 @@
         {
             "ID": "Wisp",
             "CaptionText": "Flickering lights?",
-            "ExtractType": "Journal",
+            "ExtractType": "Folklore",
             "ExtractText": "Strange lights... almost hypnotic, really..."
         },
         "Goblet":
         {
             "ID": "Goblet",
-            "CaptionText": "Goblets"
+            "CaptionText": "Goblets",
+            "ExtractType": "Journal",
+            "ExtractText": "...17th century? Come back for these, could be worth something..."
         },
         "Painting (First Skin)":
         {
             "ID": "Painting (Skin #1)",
-            "CaptionText": "A king, seemingly..."
+            "CaptionText": "A king, seemingly...",
+            "ExtractType": "Folklore",
+            "ExtractText": "...a devout witchfinder..."
         },
         "Painting (Second Skin)":
         {
             "ID": "Painting (Skin #2)",
-            "CaptionText": "Rites - pagan??"
+            "CaptionText": "Rites - pagan??",
+            "ExtractType": "Newspaper",
+            "ExtractText": "Sheep found impaled..."
         },
         "Painting (Third Skin)":
         {
             "ID": "Painting (Skin #3)",
-            "CaptionText": "Appraise this!"
+            "CaptionText": "Appraise this!",
+            "ExtractType": "Journal",
+            "ExtractText": "How did this even get down here?"
         }
     }
 }
