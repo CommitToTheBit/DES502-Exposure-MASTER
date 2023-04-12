@@ -5,11 +5,6 @@ void UDESGameInstance::Init()
 	// BUGFIX: This is what makes the calls that set up widgets!
 	Super::Init();
 
-	// FIXME: Fold this into a full 'Update' function...
-	DEBUG_JournalEntry = NewObject<UDES_JournalEntry>(UDES_JournalEntry::StaticClass());
-	DEBUG_JournalEntry->RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-	DEBUG_JournalEntry->RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false); // NB: This line, previously missing, is what solves the access violation!
-
 	// Create journal manager...
 	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
 	JournalManager->ReadJournalData(FPaths::ProjectContentDir() + "Data/JournalEntries.json");
@@ -26,33 +21,6 @@ void UDESGameInstance::SaveGameData()
 {
 	if (!GameData)
 		return;
-
-	// FIXME: A for loop over all of the journal's updated entries will go here...
-
-	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-	/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
-
-	GameData->EntryActive = DEBUG_JournalEntry->EntryActive;
-
-	if (DEBUG_JournalEntry->EntryActive && DEBUG_JournalEntry->RenderTargetActive)
-	{	
-		// STEP 1: Read RenderTarget's data into an FColor array...
-		TArray<FColor> ColorArray;
-		ColorArray.Reserve(900 * 1080);
-		DEBUG_JournalEntry->RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
-		ColorArray.Shrink();
-
-		// STEP 2: Copy FColor array into binary texture...
-		GameData->BinaryTexture.Reserve(4 * 900 * 1080);
-
-		GameData->BinaryTexture.Empty();
-		if (GameData->BinaryTexture.Num() < 4 * 900 * 1080)
-			GameData->BinaryTexture.AddUninitialized(4 * 900 * 1080 - GameData->BinaryTexture.Num()); // NB: 4 values, RGBA, for each pixel of the polaroid...
-
-		FMemory::Memcpy(GameData->BinaryTexture.GetData(), ColorArray.GetData(), 4 * 900 * 1080);
-	}
-
-	/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 	JournalManager->WriteJournalProgress(GameData);
 
@@ -93,39 +61,6 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->PolaroidAmmo = 27;
 
 		GameData->CrowbarInventoried = 0;
-
-		GameData->EntryActive = false;
-		GameData->BinaryTexture.Init(128, 4 * 900 * 1080);
-	}
-
-	DEBUG_JournalEntry->EntryActive = GameData->EntryActive;
-	DEBUG_JournalEntry->RenderTargetActive = !GameData->EntryActive;
-
-	if (GameData->BinaryTexture.Num() == 4 * 900 * 1080) // NB: Safety check; prevents crashes!
-	{
-		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-		/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
-
-		// STEP 1: Set up texture...
-		UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
-		// Get a reference to MIP 0, for convenience.
-		FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
-
-		// STEP 2: Copy data...
-		void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
-		Mip.BulkData.Realloc(4 * 900 * 1080);
-		FMemory::Memcpy(MipBulkData, GameData->BinaryTexture.GetData(), 4 * 900 * 1080);
-		Mip.BulkData.Unlock();
-
-		// STEP 3: Update resources...
-		Texture->UpdateResource();
-		DEBUG_JournalEntry->Texture = Texture;
-
-		// FIXME: No longer crashing, but not doing anything else?
-		DEBUG_JournalEntry->RenderTarget->UpdateTexture2D(Texture, TSF_BGRA8);
-		DEBUG_JournalEntry->RenderTarget->UpdateResource();
-
-		/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	}
 
 	// STEP 3: ...

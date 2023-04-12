@@ -4,27 +4,27 @@
         "Wisp":
         {
             "ID": "Wisp",
-            "Title": "Flickering lights?"
+            "CaptionText": "Flickering lights?"
         },
         "Goblet":
         {
             "ID": "Goblet",
-            "Title": "Goblets"
+            "CaptionText": "Goblets"
         },
         "Painting (First Skin)":
         {
             "ID": "Painting (Skin #1)",
-            "Title": "A king, seemingly..."
+            "CaptionText": "A king, seemingly..."
         },
         "Painting (Second Skin)":
         {
             "ID": "Painting (Skin #2)",
-            "Title": "Rites - pagan??"
+            "CaptionText": "Rites - pagan??"
         },
         "Painting (Third Skin)":
         {
             "ID": "Painting (Skin #3)",
-            "Title": "Appraise this!"
+            "CaptionText": "Appraise this!"
         }
     }
 }

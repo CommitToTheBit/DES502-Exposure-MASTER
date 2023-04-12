@@ -16,7 +16,13 @@ public:
 		FString ID;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
-		FString Title;
+		FString CaptionText;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
+		FString ExtractType;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
+		FString ExtractText;
 
 	// PROGRESS: Variables determined by the player...
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")

@@ -37,9 +37,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
 		UDES_JournalManager* JournalManager;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
-		UDES_JournalEntry* DEBUG_JournalEntry; // FIXME: Placeholder for full 'journal manager'...
-
 	// AUDIO SETTINGS:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
 		USoundControlBusMix* MasterMix;
