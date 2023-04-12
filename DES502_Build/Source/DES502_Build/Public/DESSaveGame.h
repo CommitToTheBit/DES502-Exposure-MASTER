@@ -4,8 +4,6 @@
 #include "GameFramework/SaveGame.h"
 #include "DESSaveGame.generated.h"
 
-class UDES_JournalEntry;
-
 UENUM(BlueprintType)
 enum class EHandheld : uint8 {
 	EPolaroid	UMETA(DisplayName = "Polaroid"),

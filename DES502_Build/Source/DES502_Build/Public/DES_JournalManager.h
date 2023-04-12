@@ -2,7 +2,6 @@
 
 #include "CoreMinimal.h"
 
-#include "DES_JournalEntry.h" // DELETE THIS!
 #include "DES_JournalStruct.h"
 #include "DESSaveGame.h"
 #include "Engine.h"

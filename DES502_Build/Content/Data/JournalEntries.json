@@ -4,7 +4,9 @@
         "Wisp":
         {
             "ID": "Wisp",
-            "CaptionText": "Flickering lights?"
+            "CaptionText": "Flickering lights?",
+            "ExtractType": "Journal",
+            "ExtractText": "Strange lights... almost hypnotic, really..."
         },
         "Goblet":
         {
