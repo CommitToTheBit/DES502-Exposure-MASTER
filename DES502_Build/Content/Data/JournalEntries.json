@@ -6,35 +6,33 @@
             "ID": "Wisp",
             "CaptionText": "Flickering lights?",
             "ExtractType": "Folklore",
-            "ExtractText": "Strange lights... almost hypnotic, really..."
+            "ExtractText": "This is placeholder text, to be replaced with, say, a 17th century account of what wisps are? These 'folklore' clippings can be particularly long, and will be particularly relevant to setting the scene, and introducing the player to the game's more supernatural or folk horror elements. Obviously, there is a question of whether all this reading takes the player out of the game, but that shouldn't be felt so acutely in a full game."
         },
         "Goblet":
         {
             "ID": "Goblet",
-            "CaptionText": "Goblets",
             "ExtractType": "Journal",
-            "ExtractText": "...17th century? Come back for these, could be worth something..."
+            "ExtractText": "Goblets. Can't be real gold, they reek of rust. Doubt they'd even fetch a tenner, but you never know...\n\nThis is placeholder text to show how 'first-person' notes will look."
         },
         "Painting (First Skin)":
         {
             "ID": "Painting (Skin #1)",
-            "CaptionText": "A king, seemingly...",
+            "CaptionText": "A king, I think?",
             "ExtractType": "Folklore",
-            "ExtractText": "...a devout witchfinder..."
+            "ExtractText": "Thou art too like the spirit of Banquo; down!\nThy crown does sea mine eye-balls. And thy hair,\nThou other gold-bound-brow, is like the first.\nA third is like the former. Filthy hags!\nWhy do you show me this? A fourth! Start, eyes!\nWhat, will the line stretch out to the crack of doom?\nAnother yet! A seventh! I'll see no more:\nAnd yet the eighth appears, who bears a glass\nWhich shows me many more; and some I see\nThat two-fold balls and treble sceptres carry:\nHorrible sight! Now I see 'tis true;\nFor the blood-bolter'd Banquo smiles upon me,\nAnd points at them for his."
         },
         "Painting (Second Skin)":
         {
             "ID": "Painting (Skin #2)",
-            "CaptionText": "Rites - pagan??",
             "ExtractType": "Newspaper",
-            "ExtractText": "Sheep found impaled..."
+            "ExtractText": "Alasdair Blunt, responsible for the 'Kilmarnock Killings' of 1959, is found guilty by a jury of his peers. This is placeholder text to show how newspaper clipping will look: the writer can add a heading and body text. These extracts can just as well relate directly to the narrative as give a broader sense of time and place. Indeed, if we're establishing our protagonist as a reporter meddling where they don't belong, I think using these snippets to emphasise the crassness of the British tabloid press can only strengthen that characterisation? Sources close to the prosecution expect the hanging will be expedited.",
+            "HeadlineText": "Blunt to a fault!"
         },
         "Painting (Third Skin)":
         {
             "ID": "Painting (Skin #3)",
-            "CaptionText": "Appraise this!",
             "ExtractType": "Journal",
-            "ExtractText": "How did this even get down here?"
+            "ExtractText": "One point to consider - one sentence text entries don't really fill the page!"
         }
     }
 }
