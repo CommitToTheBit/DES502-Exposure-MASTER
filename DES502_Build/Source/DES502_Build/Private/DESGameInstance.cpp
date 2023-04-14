@@ -112,6 +112,18 @@ void UDESGameInstance::LoadSettingsData(bool resetSettingsData)
 	// STEP 3: Update all settings according to SettingsData...
 	UpdateOverallScalability(SettingsData->OverallScalability);
 
+	UGameUserSettings::GetGameUserSettings()->SetResolutionScaleNormalized(0.25f);
+	UGameUserSettings::GetGameUserSettings()->SetViewDistanceQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetAntiAliasingQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetPostProcessingQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetShadowQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetGlobalIlluminationQuality(0);
+	UGameUserSettings::GetGameUserSettings()->SetReflectionQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetTextureQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetVisualEffectQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetFoliageQuality(SettingsData->OverallScalability);
+	UGameUserSettings::GetGameUserSettings()->SetShadingQuality(SettingsData->OverallScalability);
+
 	UpdateMasterVolume(SettingsData->MasterVolume, false);
 }
 
