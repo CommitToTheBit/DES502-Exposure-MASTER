@@ -81,6 +81,7 @@ class DES502_BUILD_API ADES_L_System : public AActor
 
 public:
 	ADES_L_System();
+	~ADES_L_System();
 
 	virtual void Tick(float DeltaTime) override;
 
@@ -91,8 +92,8 @@ public:
 		void Update(float DeltaTime, float DeltaIntensity);
 
 	// DEBUG:
-	//float* GetIntensity();
-	//std::string GetSentence();
+	UFUNCTION(BlueprintCallable, Category = "Generation")
+		FString GetSentence();
 
 protected:
 	virtual void BeginPlay() override;

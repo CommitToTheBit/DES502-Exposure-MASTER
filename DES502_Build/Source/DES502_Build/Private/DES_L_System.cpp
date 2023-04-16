@@ -34,6 +34,11 @@ ADES_L_System::ADES_L_System()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
+ADES_L_System::~ADES_L_System()
+{
+
+}
+
 void ADES_L_System::BeginPlay()
 {
 	Super::BeginPlay();
@@ -70,7 +75,6 @@ void ADES_L_System::InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, 
 	}
 
 	TArray<FDES_L_Module> IteratedSentence;
-	FDES_L_Module ProductionModule;
 	for (int i = 0; i < Iterations; i++)
 	{
 		IteratedSentence = TArray<FDES_L_Module>();
@@ -78,11 +82,6 @@ void ADES_L_System::InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, 
 		// FIXME: Why won't this loop compile?
 		for (FDES_L_Module L_Module : Sentence)
 		{
-			ProductionModule = L_Module;
-
-			if (GetProductionRule(L_Module.Letter).Productions.Num() == 0)
-				continue;
-			
 			for (TFunction<FDES_L_Module(FDES_L_Module)> Production : GetProductionRule(L_Module.Letter).Productions)
 			{
 				IteratedSentence.Add(Production(L_Module));
@@ -115,15 +114,61 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 
 void ADES_L_System::AddProductionRule(FString Letter, FDES_ProductionRule ProductionRule)
 {
-
+	if (ProductionRules.Num() == 0)
+	{
+		ProductionRules.Add(TPair<FString, TArray<FDES_ProductionRule>>(Letter, TArray<FDES_ProductionRule>{ ProductionRule }));
+	}
+	else
+	{
+		ProductionRules[Letter].Add(ProductionRule);
+	}
 }
 
 FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter)
 {
-	return FDES_ProductionRule();
+	// If no production rules exists, treat the letter as a terminal...
+	if (ProductionRules.Num() == 0)
+	{
+		FDES_ProductionRule Identity;
+		Identity.Productions.Add([this](FDES_L_Module L_Module) { return L_Module; });
+		Identity.Weight = 1.0f;
+		return Identity;
+	}
+
+	// If production rules exist, choose one at random...
+	float TotalWeight = 0.0f;
+	for (FDES_ProductionRule ProductionRule : ProductionRules[Letter])
+		TotalWeight += ProductionRule.Weight;
+
+	int Index = 0;
+	float Weight = GetRNGRange(0.0f, TotalWeight);
+	float SummedWeight = 0.0f;
+	for (FDES_ProductionRule ProductionRule : ProductionRules[Letter])
+	{
+		if (Weight > SummedWeight + ProductionRule.Weight)
+		{
+			SummedWeight += ProductionRule.Weight;
+			Index++;
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	return ProductionRules[Letter][Index];
 }
 
 float ADES_L_System::GetRNGRange(float A, float B)
 {
 	return 0.0f;
+}
+
+FString ADES_L_System::GetSentence()
+{
+	FString Text = "";
+	for (FDES_L_Module L_Module : Sentence)
+		Text += L_Module.Letter;
+
+	return Text;
 }
