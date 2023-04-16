@@ -65,13 +65,13 @@ void ADES_L_System::Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_L_Mod
 
 void ADES_L_System::InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, int Iterations)
 {
-	srand(Seed);
+	FRandomStream rng = FRandomStream(Seed);
 
 	Sentence = Axiom;
 	for (int i = 0; i < Axiom.Num(); i++)
 	{
 		// NB: (Rough) initialisation...
-		Sentence[i].Asymmetry = Sentence[i].StaticAsymmetry + GetRNGRange() * Sentence[i].RandomStaticAsymmetry;
+		Sentence[i].Asymmetry = Sentence[i].StaticAsymmetry + rng.FRandRange(-1.0, 1.0) * Sentence[i].RandomStaticAsymmetry;
 	}
 
 	TArray<FDES_L_Module> IteratedSentence;
@@ -82,10 +82,10 @@ void ADES_L_System::InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, 
 		// FIXME: Why won't this loop compile?
 		for (FDES_L_Module L_Module : Sentence)
 		{
-			for (TFunction<FDES_L_Module(FDES_L_Module)> Production : GetProductionRule(L_Module.Letter).Productions)
+			for (TFunction<FDES_L_Module(FDES_L_Module)> Production : GetProductionRule(L_Module.Letter, &rng).Productions)
 			{
 				IteratedSentence.Add(Production(L_Module));
-				IteratedSentence[IteratedSentence.Num() - 1].Asymmetry = IteratedSentence[IteratedSentence.Num() - 1].StaticAsymmetry + GetRNGRange() * IteratedSentence[IteratedSentence.Num() - 1].RandomStaticAsymmetry;
+				IteratedSentence[IteratedSentence.Num() - 1].Asymmetry = IteratedSentence[IteratedSentence.Num() - 1].StaticAsymmetry + rng.FRandRange(-1.0, 1.0) * IteratedSentence[IteratedSentence.Num() - 1].RandomStaticAsymmetry;
 			}
 		}
 
@@ -124,7 +124,7 @@ void ADES_L_System::AddProductionRule(FString Letter, FDES_ProductionRule Produc
 	}
 }
 
-FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter)
+FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter, FRandomStream* rng)
 {
 	// If no production rules exists, treat the letter as a terminal...
 	if (!ProductionRules.Contains(Letter))
@@ -141,11 +141,11 @@ FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter)
 		TotalWeight += ProductionRule.Weight;
 
 	int Index = 0;
-	float Weight = GetRNGRange(0.0f, TotalWeight);
+	float Weight = rng->FRandRange(0.0f, TotalWeight);
 	float SummedWeight = 0.0f;
 	for (FDES_ProductionRule ProductionRule : ProductionRules[Letter])
 	{
-		if (Weight > SummedWeight + ProductionRule.Weight)
+		if (Weight >= SummedWeight + ProductionRule.Weight)
 		{
 			SummedWeight += ProductionRule.Weight;
 			Index++;
@@ -157,11 +157,6 @@ FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter)
 	}
 
 	return ProductionRules[Letter][Index];
-}
-
-float ADES_L_System::GetRNGRange(float A, float B)
-{
-	return 0.0f;
 }
 
 FString ADES_L_System::GetSentence()

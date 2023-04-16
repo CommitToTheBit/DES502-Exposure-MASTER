@@ -108,8 +108,7 @@ private:
 	void UpdateTree(float DeltaTime, float DeltaIntensity);
 	//void UpdateMesh(); // FIXME: Add this!
 
-	FDES_ProductionRule GetProductionRule(FString Letter);
-	float GetRNGRange(float a = -1.0f, float b = 1.0f);
+	FDES_ProductionRule GetProductionRule(FString Letter, FRandomStream* rng);
 
 private:
 	TMap<FString, TArray<FDES_ProductionRule>> ProductionRules;

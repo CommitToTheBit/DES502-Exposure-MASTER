@@ -1,0 +1,13 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/Sam/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_Blood_Vessel.uasset",
+				"C:/Users/Sam/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Maps/EXPERIMENTAL_PrototypingSandbox.umap"
+			]
+		}
+	]
+}
