@@ -1,7 +1,4 @@
 #pragma once
-
-#include <functional>
-
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
@@ -27,7 +24,7 @@ struct DES502_BUILD_API FDES_TreeVertex
 {
 	GENERATED_BODY()
 
-		int Parent;
+	int Parent;
 	FTransform Transform;
 	FVector Position;
 	float Width;
@@ -35,7 +32,7 @@ struct DES502_BUILD_API FDES_TreeVertex
 };
 
 USTRUCT(BlueprintType)
-struct DES502_BUILD_API FDES_LModule
+struct DES502_BUILD_API FDES_L_Module
 {
 	GENERATED_BODY()
 
@@ -64,10 +61,8 @@ struct DES502_BUILD_API FDES_LModule
 	float Asymmetry;
 	float StaticAsymmetry;
 	float RandomStaticAsymmetry;
-	float PeriodicAsymmetry;
-	float RandomPeriodicAsymmetry;
 
-	FDES_LModule();
+	FDES_L_Module();
 };
 
 USTRUCT(BlueprintType)
@@ -75,7 +70,7 @@ struct DES502_BUILD_API  FDES_ProductionRule
 {
 	GENERATED_BODY()
 
-	TArray<std::function<FDES_LModule(FDES_LModule)>> Productions;
+	TArray<TFunction<FDES_L_Module(FDES_L_Module)>> Productions;
 	float Weight;
 };
 
@@ -90,7 +85,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Generation")
-		virtual void Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_LModule> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
+		virtual void Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_L_Module> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
 
 	UFUNCTION(BlueprintCallable, Category = "Generation")
 		void Update(float DeltaTime, float DeltaIntensity);
@@ -105,7 +100,7 @@ protected:
 	void AddProductionRule(FString Letter, FDES_ProductionRule ProductionRule);
 
 private:
-	void InitializeSentence(float Seed, TArray<FDES_LModule> Axiom, int Iterations);
+	void InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, int Iterations);
 	void InitializeTree(float Seed, float Rotation, FVector2D Anchoring);
 	void InitializeMesh(UProceduralMeshComponent* Mesh);
 
@@ -117,7 +112,7 @@ private:
 
 private:
 	TMap<FString, TArray<FDES_ProductionRule>> ProductionRules;
-	TArray<FDES_LModule> Sentence;
+	TArray<FDES_L_Module> Sentence;
 
 	float LSeed, LRotation, LScale, LDepth;
 	TArray<FDES_SeedVertex> SeedVertices;
