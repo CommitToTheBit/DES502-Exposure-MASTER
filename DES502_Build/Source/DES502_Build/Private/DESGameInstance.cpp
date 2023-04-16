@@ -9,6 +9,10 @@ void UDESGameInstance::Init()
 	JournalManager = NewObject<UDES_JournalManager>(UDES_JournalManager::StaticClass());
 	JournalManager->ReadJournalData(FPaths::ProjectContentDir() + "Data/JournalEntries.json");
 
+	// Name save slots...
+	SaveGameSlot = "GameData";
+	SaveSettingsSlot = "SettingsData";
+
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
