@@ -66,7 +66,7 @@ struct DES502_BUILD_API FDES_LModule
 	float PeriodicAsymmetry;
 	float RandomPeriodicAsymmetry;
 
-	//FDES_LModule();
+	FDES_LModule();
 };
 
 USTRUCT(BlueprintType)
@@ -88,11 +88,11 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
-	/*UFUNCTION(BlueprintCallable, Category = "Generation")
-		virtual bool Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_LModule> axiom, int iterations, float seed = 0.0f, float rotation = 0.0f, FVector2D anchoring = FVector2D(0.5f, 0.5f));
+	UFUNCTION(BlueprintCallable, Category = "Generation")
+		virtual void Initialize(/*UProceduralMeshComponent* Mesh,*/ TArray<FDES_LModule> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
 
 	UFUNCTION(BlueprintCallable, Category = "Generation")
-		void Update(float deltaTime, float deltaIntensity);*/
+		void Update(float DeltaTime, float DeltaIntensity);
 
 	// DEBUG:
 	//float* GetIntensity();
@@ -101,32 +101,33 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	/*void AddProductionRule(FString Letter, FDES_ProductionRule ProductionRule);
+	void AddProductionRule(FString Letter, FDES_ProductionRule ProductionRule);
 
 private:
-	void InitializeSentence(float Seed, std::vector<FDES_LModule> Axiom, int Iterations);
+	void InitializeSentence(float Seed, TArray<FDES_LModule> Axiom, int Iterations);
 	void InitializeTree(float Seed, float Rotation, FVector2D Anchoring);
-	bool InitializeMesh(UProceduralMeshComponent* Mesh);
+	void InitializeMesh(UProceduralMeshComponent* Mesh);
 
 	void UpdateTree(float DeltaTime, float DeltaIntensity);
-	//bool UpdateMesh(); // FIXME: Add this!
+	//void UpdateMesh(); // FIXME: Add this!
 
-	FDES_ProductionRule GetProductionRule(FString letter);
+	FDES_ProductionRule GetProductionRule(FString Letter);
 	float GetRNGRange(float a = -1.0f, float b = 1.0f);
 
-public:
+/*public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UProceduralMeshComponent* ProceduralMesh;
+		UProceduralMeshComponent* ProceduralMesh;*/
 
-private:
+/*private:
 	TMap<FString, TArray<FDES_ProductionRule>> ProductionRules;
 	TArray<FDES_LModule> Sentence;
 
-	float Seed, Rotation, Scale, Depth;
+	float LSeed, LRotation, LScale, LDepth;
 	TArray<FDES_SeedVertex> SeedVertices;
 
 	float Time, Intensity;
-	std::vector<FDES_TreeVertex> TreeVertices;
+	TArray<FDES_TreeVertex> TreeVertices;
 
 	TArray<FVector> Vertices, Indices;*/
+	//UProceduralMeshComponent* LMesh;
 };
