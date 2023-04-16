@@ -114,7 +114,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 
 void ADES_L_System::AddProductionRule(FString Letter, FDES_ProductionRule ProductionRule)
 {
-	if (ProductionRules.Num() == 0)
+	if (!ProductionRules.Contains(Letter))
 	{
 		ProductionRules.Add(TPair<FString, TArray<FDES_ProductionRule>>(Letter, TArray<FDES_ProductionRule>{ ProductionRule }));
 	}
@@ -127,7 +127,7 @@ void ADES_L_System::AddProductionRule(FString Letter, FDES_ProductionRule Produc
 FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter)
 {
 	// If no production rules exists, treat the letter as a terminal...
-	if (ProductionRules.Num() == 0)
+	if (!ProductionRules.Contains(Letter))
 	{
 		FDES_ProductionRule Identity;
 		Identity.Productions.Add([this](FDES_L_Module L_Module) { return L_Module; });

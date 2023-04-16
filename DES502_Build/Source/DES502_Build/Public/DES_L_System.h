@@ -85,8 +85,8 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable, Category = "Generation")
-		virtual void Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_L_Module> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
+	//UFUNCTION(BlueprintCallable, Category = "Generation")
+	virtual void Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_L_Module> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
 
 	UFUNCTION(BlueprintCallable, Category = "Generation")
 		void Update(float DeltaTime, float DeltaIntensity);

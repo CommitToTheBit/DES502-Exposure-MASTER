@@ -15,7 +15,8 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
-	void Initialize(UProceduralMeshComponent* Mesh, float Width, int Iterations, float Seed = 0.0f);
+	UFUNCTION(BlueprintCallable, Category = "Generation")
+		void Initialize(UProceduralMeshComponent* Mesh, float Width, int Iterations, float Seed = 0.0f);
 
 protected:
 	virtual void BeginPlay() override;
