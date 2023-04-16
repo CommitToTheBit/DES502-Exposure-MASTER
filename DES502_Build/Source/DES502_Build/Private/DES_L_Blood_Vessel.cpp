@@ -24,13 +24,16 @@ void ADES_L_Blood_Vessel::Tick(float DeltaTime)
 
 void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width, int Iterations, float Seed)
 {
-	// STEP 1: Write production rules...
-	FDES_ProductionRule CForward;
-	CForward.Productions.Add([this](FDES_L_Module L_Module) {
+	// STEP 0: Define any 'frequently used' productions...
+	TFunction<FDES_L_Module(FDES_L_Module)> XProduction = [this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
 		K_Module.Letter = "X";
 		return K_Module;
-		});
+	};
+
+	// STEP 1: Write production rules...
+	FDES_ProductionRule CForward;
+	CForward.Productions.Add(XProduction);
 	CForward.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
 		K_Module.Letter = "C";
@@ -38,15 +41,11 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		K_Module.StaticWidth *= 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
-	CForward.Weight = 3.0f;
+	CForward.Weight = 1.0f;
 	AddProductionRule("C", CForward);
 
 	FDES_ProductionRule CLeft;
-	CLeft.Productions.Add([this](FDES_L_Module L_Module) {
-		FDES_L_Module K_Module = L_Module;
-		K_Module.Letter = "X";
-		return K_Module;
-		});
+	CLeft.Productions.Add(XProduction);
 	CLeft.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
 		K_Module.Letter = "[";
@@ -72,17 +71,86 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	CLeft.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
 		K_Module.Letter = "R";
-		K_Module.StaticLength *= 0.5625f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomStaticLength *= 0.5625f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicLength *= 0.5625f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomStaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.StaticRotation = -acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
 		K_Module.PeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.RandomPeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.StaticWidth = 0.5625f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticWidth = 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
-	CLeft.Weight = 1.0f;
+	CLeft.Weight = 2.0f;
 	AddProductionRule("C", CLeft);
+
+	FDES_ProductionRule CRight;
+	CRight.Productions.Add(XProduction);
+	CRight.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "[";
+		return K_Module;
+		});
+	CRight.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "L";
+		K_Module.StaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomStaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticRotation = acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
+		K_Module.PeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticWidth = 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		return K_Module;
+		});
+	CRight.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "]";
+		return K_Module;
+		});
+	CRight.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "R";
+		K_Module.StaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomStaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticRotation = -acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + 1.0f - pow(L_Module.Asymmetry, 4.0f)) / (2.0f * pow(L_Module.Asymmetry, 0.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
+		K_Module.PeriodicRotation *= 1.0f + 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicRotation *= 1.0f + 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticWidth *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		return K_Module;
+		});
+	CRight.Weight = 2.0f;
+	AddProductionRule("C", CRight);
+
+	FDES_ProductionRule L;
+	L.Productions.Add(XProduction);
+	L.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "C";
+		K_Module.StaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomStaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticRotation = -1.25f * acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + 1.0f - pow(L_Module.Asymmetry, 4.0f)) / (2.0f * pow(L_Module.Asymmetry, 0.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
+		K_Module.StaticWidth *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		return K_Module;
+		});
+	L.Weight = 1.0f;
+	AddProductionRule("L", L);
+
+	FDES_ProductionRule R;
+	R.Productions.Add(XProduction);
+	R.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "C";
+		K_Module.StaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomStaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticRotation = 1.25f * acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + 1.0f - pow(L_Module.Asymmetry, 4.0f)) / (2.0f * pow(L_Module.Asymmetry, 0.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
+		K_Module.StaticWidth *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		return K_Module;
+		});
+	R.Weight = 1.0f;
+	AddProductionRule("R", R);
 
 	// STEP 2: Write axiom...
 	FDES_L_Module C_Module = FDES_L_Module();
