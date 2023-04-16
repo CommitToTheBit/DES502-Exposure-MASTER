@@ -22,7 +22,7 @@ void ADES_L_System::Tick(float DeltaTime)
 
 }
 
-void ADES_L_System::Initialize(/*UProceduralMeshComponent* Mesh,*/ TArray<FDES_LModule> Axiom, int Iterations, float Seed, float Rotation, FVector2D Anchoring)
+void ADES_L_System::Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_LModule> Axiom, int Iterations, float Seed, float Rotation, FVector2D Anchoring)
 {
 
 }

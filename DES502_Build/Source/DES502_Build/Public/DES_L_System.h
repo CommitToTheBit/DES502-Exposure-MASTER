@@ -4,9 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "DES_L_System.generated.h"
 
-class UProceduralMeshComponent;
+#include "ProceduralMeshComponent.h"
+
+#include "DES_L_System.generated.h"
 
 // Seed vertex information, used for normalising turtle drawings...
 USTRUCT(BlueprintType)
@@ -14,7 +15,7 @@ struct DES502_BUILD_API FDES_SeedVertex
 {
 	GENERATED_BODY()
 
-		int Parent;
+	int Parent;
 	FTransform Transform;
 	FVector Position;
 	float Depth;
@@ -89,7 +90,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Generation")
-		virtual void Initialize(/*UProceduralMeshComponent* Mesh,*/ TArray<FDES_LModule> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
+		virtual void Initialize(UProceduralMeshComponent* Mesh, TArray<FDES_LModule> Axiom, int Iterations, float Seed = 0.0f, float Rotation = 0.0f, FVector2D Anchoring = FVector2D(0.5f, 0.5f));
 
 	UFUNCTION(BlueprintCallable, Category = "Generation")
 		void Update(float DeltaTime, float DeltaIntensity);
@@ -114,11 +115,7 @@ private:
 	FDES_ProductionRule GetProductionRule(FString Letter);
 	float GetRNGRange(float a = -1.0f, float b = 1.0f);
 
-/*public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UProceduralMeshComponent* ProceduralMesh;*/
-
-/*private:
+private:
 	TMap<FString, TArray<FDES_ProductionRule>> ProductionRules;
 	TArray<FDES_LModule> Sentence;
 
@@ -128,6 +125,6 @@ private:
 	float Time, Intensity;
 	TArray<FDES_TreeVertex> TreeVertices;
 
-	TArray<FVector> Vertices, Indices;*/
-	//UProceduralMeshComponent* LMesh;
+	TArray<FVector> Vertices, Indices;
+	UProceduralMeshComponent* LMesh;
 };
