@@ -103,7 +103,7 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 	SeedVertices = TArray<FDES_SeedVertex>();
 	SeedVertices.Add(FDES_SeedVertex());
 	SeedVertices[0].Parent = 0;
-	SeedVertices[0].Transform = FTransform(FRotator(0.0f, Rotation, 0.0f));
+	SeedVertices[0].Transform = FTransform::Identity;// FTransform(FRotator(0.0f, Rotation, 0.0f));
 	SeedVertices[0].Position = FVector(0.0f, 0.0f, 0.0f);
 	SeedVertices[0].Depth = 0.0f;
 
@@ -185,6 +185,14 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 		LDepth = std::max(SeedVertices[i].Depth, LDepth);
 	}
 
+	// DEBUG:
+	FString Positions = FString::SanitizeFloat(LScale)+"\n";
+	for (FDES_SeedVertex SeedVertex : SeedVertices)
+	{
+		Positions += SeedVertex.Position.ToString() + "\n";
+	}
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);
+
 	// STEP 4: Instantaneously 'update' TreeVertices...
 	UpdateTree(0.0f, 0.0f);
 }
@@ -196,10 +204,9 @@ void ADES_L_System::InitializeMesh(UProceduralMeshComponent* Mesh)
 	Vertices.Init(FVector(0.0f, 0.0f, 0.0f), 4 * TreeVertices.Num()); // NB: Use 16-gon to approximate a circle at joints?
 
 	Indices = TArray<int32>();
-	Indices.Init(0, 12 * TreeVertices.Num());
+	Indices.Init(0, 24 * TreeVertices.Num());
 
 	// Initialize the index to the vertex buffer.
-	int Index = 0;
 	FDES_TreeVertex TreeVertex, ParentVertex;
 	FVector Orthogonal;
 	for (int i = 0; i < TreeVertices.Num(); i++)
@@ -210,29 +217,29 @@ void ADES_L_System::InitializeMesh(UProceduralMeshComponent* Mesh)
 		Orthogonal = FTransform(FRotator(0.0f, 90.0f, 0.0f)).TransformPosition(TreeVertex.Position - ParentVertex.Position);
 		Orthogonal.Normalize();
 
-		Vertices[4 * i] = FVector(ParentVertex.Position + ParentVertex.Width * Orthogonal);
-		Vertices[4 * i + 1] = FVector(ParentVertex.Position - ParentVertex.Width * Orthogonal);
-		Vertices[4 * i + 2] = FVector(TreeVertex.Position - TreeVertex.Width * Orthogonal);
-		Vertices[4 * i + 3] = FVector(TreeVertex.Position + TreeVertex.Width * Orthogonal);
+		Vertices[4 * i] = ParentVertex.Position + ParentVertex.Width * Orthogonal;
+		Vertices[4 * i + 1] = ParentVertex.Position - ParentVertex.Width * Orthogonal;
+		Vertices[4 * i + 2] = TreeVertex.Position - TreeVertex.Width * Orthogonal;
+		Vertices[4 * i + 3] = TreeVertex.Position + TreeVertex.Width * Orthogonal;
 
-		Indices[12 * i] = 4 * TreeVertex.Parent + 2;
-		Indices[12 * i + 1] = 4 * TreeVertex.Parent + 3;
-		Indices[12 * i + 2] = 4 * i;
+		for (int j = 0; j < 2; j++)
+		{
+			Indices[24 * i + 12 * j] = 4 * TreeVertex.Parent + 2;
+			Indices[24 * i + 12 * j + 1 + j] = 4 * TreeVertex.Parent + 3;
+			Indices[24 * i + 12 * j + 2 - j] = 4 * i;
 
-		Indices[12 * i + 3] = 4 * TreeVertex.Parent + 2;
-		Indices[12 * i + 4] = 4 * i;
-		Indices[12 * i + 5] = 4 * i + 1;
+			Indices[24 * i + 12 * j + 3] = 4 * TreeVertex.Parent + 2;
+			Indices[24 * i + 12 * j + 4 + j] = 4 * i;
+			Indices[24 * i + 12 * j + 5 - j] = 4 * i + 1;
 
-		Indices[12 * i + 6] = 4 * i;
-		Indices[12 * i + 7] = 4 * i + 1;
-		Indices[12 * i + 8] = 4 * i + 2;
+			Indices[24 * i + 12 * j + 6] = 4 * i;
+			Indices[24 * i + 12 * j + 7 + j] = 4 * i + 1;
+			Indices[24 * i + 12 * j + 8 - j] = 4 * i + 2;
 
-		Indices[12 * i + 9] = 4 * i;
-		Indices[12 * i + 10] = 4 * i + 2;
-		Indices[12 * i + 11] = 4 * i + 3;
-
-		if (i == 1)
-			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::FromInt(TreeVertex.Width));
+			Indices[24 * i + 12 * j + 9] = 4 * i;
+			Indices[24 * i + 12 * j + 10 + j] = 4 * i + 2;
+			Indices[24 * i + 12 * j + 11 - j] = 4 * i + 3;
+		}
 	}
 
 	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Vertices[0].ToString());
@@ -260,6 +267,9 @@ void ADES_L_System::Update(float DeltaTime, float DeltaIntensity)
 
 void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 {
+	// DEBUG: 
+	Intensity = 1.0f;
+
 	// DEBUG:
 	LScale = 1;
 
@@ -272,7 +282,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 	TreeVertices = TArray<FDES_TreeVertex>();
 	TreeVertices.Add(FDES_TreeVertex());
 	TreeVertices[0].Parent = 0;
-	TreeVertices[0].Transform = FTransform(SeedVertices[0].Position) * FTransform(FRotator(0.0f, LRotation, 0.0f)); // NB: Assumes we've initialised m_seedVertices!
+	TreeVertices[0].Transform = FTransform(SeedVertices[0].Position);// *FTransform(FRotator(0.0f, LRotation, 0.0f)); // NB: Assumes we've initialised m_seedVertices!
 	TreeVertices[0].Position = TreeVertices[0].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
 	TreeVertices[0].Width = 0.0f;
 	TreeVertices[0].Degree = 0;
@@ -324,7 +334,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			TreeVertices[ChildIndex].Parent = ParentIndex;
 			TreeVertices[ChildIndex].Transform = TreeVertices[ParentIndex].Transform * LocalTransform;
 			TreeVertices[ChildIndex].Position = TreeVertices[ChildIndex].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
-			TreeVertices[ChildIndex].Width = 1.0f;// Scale* (StaticWidth + PeriodicWidth);
+			TreeVertices[ChildIndex].Width = Scale * (StaticWidth + PeriodicWidth);
 			TreeVertices[ChildIndex].Degree = 1;
 
 			TreeVertices[ParentIndex].Width = std::max(TreeVertices[ChildIndex].Width, TreeVertices[ParentIndex].Width);
