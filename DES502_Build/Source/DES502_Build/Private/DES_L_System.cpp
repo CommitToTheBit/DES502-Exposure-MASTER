@@ -188,7 +188,50 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 }
 void ADES_L_System::InitializeMesh(UProceduralMeshComponent* Mesh)
 {
+	LMesh = Mesh;
 
+	Vertices = TArray<FVector>();
+	Vertices.Init(FVector(0.0f, 0.0f, 0.0f), 4 * TreeVertices.Num()); // NB: Use 16-gon to approximate a circle at joints?
+
+	Indices = TArray<int32>();
+	Indices.Init(0, 12 * TreeVertices.Num());
+
+	// Initialize the index to the vertex buffer.
+	int Index = 0;
+	FDES_TreeVertex TreeVertex, ParentVertex;
+	FVector Orthogonal;
+	for (int i = 0; i < TreeVertices.Num(); i++)
+	{
+		TreeVertex = TreeVertices[i];
+		ParentVertex = TreeVertices[TreeVertex.Parent];
+
+		Orthogonal = TreeVertex.Position - ParentVertex.Position;
+		FTransform(FRotator(0.0f, PI/2.0f, 0.0f)).TransformVector(Orthogonal);
+		Orthogonal.Normalize();
+
+		Vertices[4 * i] = ParentVertex.Position + ParentVertex.Width * Orthogonal;
+		Vertices[4 * i + 1] = ParentVertex.Position - ParentVertex.Width * Orthogonal;
+		Vertices[4 * i + 2] = TreeVertex.Position - TreeVertex.Width * Orthogonal;
+		Vertices[4 * i + 3] = TreeVertex.Position + TreeVertex.Width * Orthogonal;
+
+		Indices[12 * i] = 4 * TreeVertex.Parent + 2;
+		Indices[12 * i + 1] = 4 * TreeVertex.Parent + 3;
+		Indices[12 * i + 2] = 4 * i;
+
+		Indices[12 * i + 3] = 4 * TreeVertex.Parent + 2;
+		Indices[12 * i + 4] = 4 * i;
+		Indices[12 * i + 5] = 4 * i + 1;
+
+		Indices[12 * i + 6] = 4 * i;
+		Indices[12 * i + 7] = 4 * i + 1;
+		Indices[12 * i + 8] = 4 * i + 2;
+
+		Indices[12 * i + 9] = 4 * i;
+		Indices[12 * i + 10] = 4 * i + 2;
+		Indices[12 * i + 11] = 4 * i + 3;
+	}
+
+	LMesh->CreateMeshSection_LinearColor(0, Vertices, Indices, TArray<FVector>(), TArray<FVector2D>(), TArray<FLinearColor>(), TArray<FProcMeshTangent>(), false);
 }
 
 void ADES_L_System::Update(float DeltaTime, float DeltaIntensity)

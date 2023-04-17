@@ -120,6 +120,7 @@ private:
 	float Time, Intensity;
 	TArray<FDES_TreeVertex> TreeVertices;
 
-	TArray<FVector> Vertices, Indices;
+	TArray<FVector> Vertices;
+	TArray<int32> Indices;
 	UProceduralMeshComponent* LMesh;
 };
