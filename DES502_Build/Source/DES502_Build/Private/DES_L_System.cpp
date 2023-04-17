@@ -78,8 +78,6 @@ void ADES_L_System::InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, 
 	for (int i = 0; i < Iterations; i++)
 	{
 		IteratedSentence = TArray<FDES_L_Module>();
-
-		// FIXME: Why won't this loop compile?
 		for (FDES_L_Module L_Module : Sentence)
 		{
 			for (TFunction<FDES_L_Module(FDES_L_Module)> Production : GetProductionRule(L_Module.Letter, &rng).Productions)
@@ -88,7 +86,6 @@ void ADES_L_System::InitializeSentence(float Seed, TArray<FDES_L_Module> Axiom, 
 				IteratedSentence[IteratedSentence.Num() - 1].Asymmetry = IteratedSentence[IteratedSentence.Num() - 1].StaticAsymmetry + rng.FRandRange(-1.0, 1.0) * IteratedSentence[IteratedSentence.Num() - 1].RandomStaticAsymmetry;
 			}
 		}
-
 		Sentence = IteratedSentence;
 	}
 }
@@ -125,7 +122,8 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 		}
 		else if (L_Module.Letter == "]" && ParentIndices.Num() > 0)
 		{
-			ParentIndex = ParentIndices.Pop();
+			ParentIndex = ParentIndices[ParentIndices.Num() - 1];
+			ParentIndices.RemoveAt(ParentIndices.Num() - 1);
 		}
 		else if (L_Module.Letter != "]")
 		{
@@ -209,7 +207,7 @@ void ADES_L_System::InitializeMesh(UProceduralMeshComponent* Mesh)
 		TreeVertex = TreeVertices[i];
 		ParentVertex = TreeVertices[TreeVertex.Parent];
 
-		Orthogonal = FTransform(FRotator(0.0f, PI/2.0f, 0.0f)).TransformPosition(TreeVertex.Position - ParentVertex.Position);
+		Orthogonal = FTransform(FRotator(0.0f, 90.0f, 0.0f)).TransformPosition(TreeVertex.Position - ParentVertex.Position);
 		Orthogonal.Normalize();
 
 		Vertices[4 * i] = FVector(ParentVertex.Position + ParentVertex.Width * Orthogonal);
@@ -262,6 +260,9 @@ void ADES_L_System::Update(float DeltaTime, float DeltaIntensity)
 
 void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 {
+	// DEBUG:
+	LScale = 1;
+
 	FRandomStream rng = FRandomStream(LSeed);
 
 	Time += DeltaTime;
@@ -292,7 +293,8 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 		}
 		else if (L_Module.Letter == "]" && ParentIndices.Num() > 0)
 		{
-			ParentIndex = ParentIndices.Pop();
+			ParentIndex = ParentIndices[ParentIndices.Num() - 1];
+			ParentIndices.RemoveAt(ParentIndices.Num() - 1);
 		}
 		else if (L_Module.Letter != "]")
 		{
@@ -305,7 +307,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			if (L_Module.StaticLength == 0.0f)
 				continue;
 
-			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
+			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : LScale;
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;

@@ -163,15 +163,32 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	C_Module.RandomStaticLength = 0.5f;
 	C_Module.RandomPeriodicLength = 0.125f;
 	C_Module.StaticRotation = 0.0f;
-	C_Module.RandomStaticRotation = 4.0f * PI / 180.0f;
-	C_Module.PeriodicRotation = 0.1f * PI / 180.0f;
-	C_Module.RandomPeriodicRotation = 1.0f * PI / 180.0f;
+	C_Module.RandomStaticRotation = 4.0f;
+	C_Module.PeriodicRotation = 0.1f;
+	C_Module.RandomPeriodicRotation = 1.0f;
 	C_Module.StaticWidth = Width;
 	C_Module.StaticAsymmetry = 0.8f;
 	C_Module.RandomStaticAsymmetry = 0.1f;
 
+	// DEBUG:
+	FDES_ProductionRule F;
+	F.Productions.Add(XProduction);
+	F.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "F";
+		K_Module.StaticRotation = 0.0f;
+		return K_Module;
+		});
+	F.Weight = 1.0f;
+	AddProductionRule("F", F);
+
+	FDES_L_Module F_Module = FDES_L_Module();
+	F_Module.Letter = "F";
+	F_Module.StaticLength = 1.0f;
+	F_Module.StaticWidth = Width;
+
 	TArray<FDES_L_Module> Axiom = TArray<FDES_L_Module>{ C_Module };
 
 	// STEP 3: Initialise...
-	return Super::Initialize(Mesh, Axiom, Iterations, Seed, PI / 2.0f);
+	return Super::Initialize(Mesh, Axiom, Iterations, Seed, 90.0f);
 }
