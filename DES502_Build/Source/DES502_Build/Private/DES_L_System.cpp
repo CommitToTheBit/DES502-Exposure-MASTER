@@ -266,14 +266,14 @@ void ADES_L_System::Update(float DeltaTime, float DeltaIntensity)
 
 void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 {
-	// DEBUG: 
-	Intensity = 1.0f;
-
 	FRandomStream rng = FRandomStream(LSeed);
 
 	Time += DeltaTime;
-	Intensity += DeltaIntensity;
-	Intensity = std::max(0.0f, std::min(Intensity, 1.0f));
+	//Intensity += DeltaIntensity;
+	//Intensity = std::max(0.0f, std::min(Intensity, 1.0f));
+
+	// DEBUG: 
+	Intensity = 0.5f + 0.5f * cos(0.08 * (2.0f * PI) * Time);
 
 	TreeVertices = TArray<FDES_TreeVertex>();
 	TreeVertices.Add(FDES_TreeVertex());
@@ -313,16 +313,16 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			if (L_Module.StaticLength == 0.0f)
 				continue;
 
-			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
+			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min(/*(1.0f - LDepth / (LDepth - SeedVertices[ChildIndex].Depth) + */ (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
+
+			// DEBUG:
+			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::SanitizeFloat(LDepth / SeedVertices[ChildIndex].Depth));
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
 			StaticLength = L_Module.StaticLength + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomStaticLength;
 			PeriodicLength = Oscillation * (L_Module.PeriodicLength + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomPeriodicLength);
 			LocalTransform = FTransform(FVector(Scale * (StaticLength + PeriodicLength), 0.0f, 0.0f)) * LocalTransform;
-
-			// DEBUG:
-			//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::SanitizeFloat(Scale * (StaticLength + PeriodicLength)));
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
