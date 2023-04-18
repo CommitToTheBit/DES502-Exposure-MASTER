@@ -103,7 +103,7 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 	SeedVertices = TArray<FDES_SeedVertex>();
 	SeedVertices.Add(FDES_SeedVertex());
 	SeedVertices[0].Parent = 0;
-	SeedVertices[0].Transform = FTransform::Identity;// FTransform(FRotator(0.0f, Rotation, 0.0f));
+	SeedVertices[0].Transform = FTransform(FRotator(0.0f, Rotation, 0.0f));
 	SeedVertices[0].Position = FVector(0.0f, 0.0f, 0.0f);
 	SeedVertices[0].Depth = 0.0f;
 
@@ -151,6 +151,17 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 		}
 	}
 
+	// DEBUG:
+	FString Positions = SeedVertices[0].Transform.ToString()+"\n";
+	Positions += (SeedVertices[0].Transform * FTransform(FVector(1.0f, 0.0f, 0.0f))).ToString() + "\n";
+	Positions += (FTransform(FVector(1.0f, 0.0f, 0.0f)) * SeedVertices[0].Transform).ToString() + "\n";
+	Positions += SeedVertices[0].Transform.TransformPosition(FVector(1.0f, 0.0f, 0.0f)).ToString() + "\n";
+	for (FDES_SeedVertex SeedVertex : SeedVertices)
+	{
+		Positions += SeedVertex.Position.ToString() + "\n";
+	}
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);
+
 	// STEP 2: Calculate bounds...
 	FVector2D Minima = FVector2D(0.0f, 0.0f);
 	FVector2D Maxima = FVector2D(0.0f, 0.0f);
@@ -186,12 +197,12 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 	}
 
 	// DEBUG:
-	FString Positions = FString::SanitizeFloat(LScale)+"\n";
+	/*FString Positions = FString::SanitizeFloat(LScale) + "\n";
 	for (FDES_SeedVertex SeedVertex : SeedVertices)
 	{
 		Positions += SeedVertex.Position.ToString() + "\n";
 	}
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);*/
 
 	// STEP 4: Instantaneously 'update' TreeVertices...
 	UpdateTree(0.0f, 0.0f);
@@ -241,20 +252,6 @@ void ADES_L_System::InitializeMesh(UProceduralMeshComponent* Mesh)
 			Indices[24 * i + 12 * j + 11 - j] = 4 * i + 3;
 		}
 	}
-
-	//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Vertices[0].ToString());
-
-	//Vertices[0] = FVector(1.0f, 1.0f, 0.0f);
-	//Vertices[1] = FVector(1.0f, -1.0f, 0.0f);
-	//Vertices[2] = FVector(-1.0f, -1.0f, 0.0f);
-
-	///Indices[0] = 0;
-	//Indices[1] = 0;
-	//Indices[2] = 0;
-
-	//Indices[3] = 0;
-	//Indices[4] = 2;
-	//Indices[5] = 1;
 
 	LMesh->CreateMeshSection_LinearColor(0, Vertices, Indices, TArray<FVector>(), TArray<FVector2D>(), TArray<FLinearColor>(), TArray<FProcMeshTangent>(), true);
 	LMesh->SetMeshSectionVisible(0, true);

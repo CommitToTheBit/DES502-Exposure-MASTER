@@ -191,5 +191,5 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	TArray<FDES_L_Module> Axiom = TArray<FDES_L_Module>{ F_Module };
 
 	// STEP 3: Initialise...
-	return Super::Initialize(Mesh, Axiom, Iterations, Seed, 45.0f);
+	return Super::Initialize(Mesh, Axiom, Iterations, Seed, 90.0f);
 }
