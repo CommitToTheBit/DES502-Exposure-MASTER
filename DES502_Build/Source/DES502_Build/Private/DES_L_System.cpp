@@ -138,7 +138,9 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 			SeedVertices[ChildIndex].Parent = ParentIndex;
 			SeedVertices[ChildIndex].Transform = LocalTransform * SeedVertices[ParentIndex].Transform ;
 			SeedVertices[ChildIndex].Position = SeedVertices[ChildIndex].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
-			SeedVertices[ChildIndex].Depth = SeedVertices[ParentIndex].Depth + L_Module.StaticLength;
+
+			// NB: Really interesting quirk of design - accidentally writing ParentIndex on the LHS produces a really nice 'sprouting' effect!
+			SeedVertices[ParentIndex].Depth = SeedVertices[ParentIndex].Depth + L_Module.StaticLength;
 
 			ChildIndex = SeedVertices.Num();
 			ParentIndex = ChildIndex - 1;
@@ -313,10 +315,14 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			if (L_Module.StaticLength == 0.0f)
 				continue;
 
-			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min(/*(1.0f - LDepth / (LDepth - SeedVertices[ChildIndex].Depth) + */ (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
+			if (SeedVertices[ChildIndex].Depth == 0.0f) // NB: Theoretically sets all depths > 0?
+				SeedVertices[ChildIndex].Depth = SeedVertices[ParentIndex].Depth;
+
+			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
 
 			// DEBUG:
-			GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::SanitizeFloat(LDepth / SeedVertices[ChildIndex].Depth));
+			if (ChildIndex == 1)
+				GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::SanitizeFloat(Intensity) + " / " + FString::SanitizeFloat(Scale / LScale));
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
@@ -375,7 +381,7 @@ FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter, FRandomStre
 		TotalWeight += ProductionRule.Weight;
 
 	int Index = 0;
-	float Weight = rng->FRandRange(0.0f, TotalWeight);
+	float Weight = rng->FRandRange(0.0, (double)TotalWeight);
 	float SummedWeight = 0.0f;
 	for (FDES_ProductionRule ProductionRule : ProductionRules[Letter])
 	{
