@@ -164,7 +164,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	C_Module.RandomPeriodicLength = 0.125f;
 	C_Module.StaticRotation = 0.0f;
 	C_Module.RandomStaticRotation = 4.0f;
-	C_Module.PeriodicRotation = 0.1f;
+	C_Module.PeriodicRotation = 1.0f;
 	C_Module.RandomPeriodicRotation = 1.0f;
 	C_Module.StaticWidth = Width;
 	C_Module.StaticAsymmetry = 0.8f;

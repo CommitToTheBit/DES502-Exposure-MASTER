@@ -259,7 +259,9 @@ void ADES_L_System::InitializeMesh(UProceduralMeshComponent* Mesh)
 
 void ADES_L_System::Update(float DeltaTime, float DeltaIntensity)
 {
+	UpdateTree(DeltaTime, DeltaIntensity);
 
+	InitializeMesh(LMesh);
 }
 
 void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
@@ -311,7 +313,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			if (L_Module.StaticLength == 0.0f)
 				continue;
 
-			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : LScale;
+			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
