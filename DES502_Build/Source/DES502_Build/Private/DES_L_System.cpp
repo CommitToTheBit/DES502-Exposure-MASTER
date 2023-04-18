@@ -339,7 +339,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			TreeVertices[ChildIndex].Parent = ParentIndex;
 			TreeVertices[ChildIndex].Transform = LocalTransform * TreeVertices[ParentIndex].Transform;
 			TreeVertices[ChildIndex].Position = TreeVertices[ChildIndex].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
-			TreeVertices[ChildIndex].Width = Scale * (StaticWidth + PeriodicWidth);
+			TreeVertices[ChildIndex].Width = Intensity * LScale * (StaticWidth + PeriodicWidth); // NB: Using LScale rather than scale to avoid tapering off too quickly...
 			TreeVertices[ChildIndex].Degree = 1;
 
 			TreeVertices[ParentIndex].Width = std::max(TreeVertices[ChildIndex].Width, TreeVertices[ParentIndex].Width);
@@ -381,7 +381,7 @@ FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter, FRandomStre
 		TotalWeight += ProductionRule.Weight;
 
 	int Index = 0;
-	float Weight = rng->FRandRange(0.0, (double)TotalWeight);
+	float Weight = rng->FRandRange(0.0f, TotalWeight);
 	float SummedWeight = 0.0f;
 	for (FDES_ProductionRule ProductionRule : ProductionRules[Letter])
 	{
