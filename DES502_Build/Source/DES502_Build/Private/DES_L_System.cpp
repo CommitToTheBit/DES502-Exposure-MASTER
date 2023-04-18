@@ -377,14 +377,14 @@ FDES_ProductionRule ADES_L_System::GetProductionRule(FString Letter, FRandomStre
 	float SummedWeight = 0.0f;
 	for (FDES_ProductionRule ProductionRule : ProductionRules[Letter])
 	{
-		if (Weight >= SummedWeight + ProductionRule.Weight)
+		if (Weight < SummedWeight + ProductionRule.Weight || Index == ProductionRules[Letter].Num() - 1)
 		{
-			SummedWeight += ProductionRule.Weight;
-			Index++;
+			break;
 		}
 		else
 		{
-			break;
+			SummedWeight += ProductionRule.Weight;
+			Index++;
 		}
 	}
 

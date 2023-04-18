@@ -53,14 +53,14 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		});
 	CLeft.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
-		K_Module.Letter = "L";
-		K_Module.StaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomStaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.StaticRotation = acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + 1.0f - pow(L_Module.Asymmetry, 4.0f)) / (2.0f * pow(L_Module.Asymmetry, 0.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
-		K_Module.PeriodicRotation *= 1.0f + 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicRotation *= 1.0f + 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.StaticWidth *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.Letter = "C";
+		K_Module.StaticLength *= 0.55f;// / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.RandomStaticLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.RandomPeriodicLength *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticRotation = (180.0f / PI) * acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + 1.0f - pow(L_Module.Asymmetry, 4.0f)) / (2.0f * pow(L_Module.Asymmetry, 0.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
+		//K_Module.PeriodicRotation *= 1.0f + 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.RandomPeriodicRotation *= 1.0f + 1.0f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.StaticWidth *= 0.95f / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
 	CLeft.Productions.Add([this](FDES_L_Module L_Module) {
@@ -70,17 +70,17 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		});
 	CLeft.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
-		K_Module.Letter = "R";
-		K_Module.StaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomStaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.StaticRotation = -acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
-		K_Module.PeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.StaticWidth = 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.Letter = "C";
+		K_Module.StaticLength *= 0.55f;// *L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.RandomStaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.RandomPeriodicLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticRotation = -(180.0f / PI) * acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
+		//K_Module.PeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.RandomPeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		//K_Module.StaticWidth *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
-	CLeft.Weight = 2.0f;
+	CLeft.Weight = 1.0f;
 	AddProductionRule("C", CLeft);
 
 	FDES_ProductionRule CRight;
@@ -99,7 +99,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		K_Module.StaticRotation = acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
 		K_Module.PeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.RandomPeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.StaticWidth = 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.StaticWidth *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
 	CRight.Productions.Add([this](FDES_L_Module L_Module) {
@@ -163,12 +163,12 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	C_Module.RandomStaticLength = 0.5f;
 	C_Module.RandomPeriodicLength = 0.125f;
 	C_Module.StaticRotation = 0.0f;
-	C_Module.RandomStaticRotation = 4.0f;
-	C_Module.PeriodicRotation = 0.1f;
-	C_Module.RandomPeriodicRotation = 1.0f;
+	//C_Module.RandomStaticRotation = 4.0f;
+	//C_Module.PeriodicRotation = 0.1f;
+	//C_Module.RandomPeriodicRotation = 1.0f;
 	C_Module.StaticWidth = Width;
-	C_Module.StaticAsymmetry = 0.8f;
-	C_Module.RandomStaticAsymmetry = 0.1f;
+	C_Module.StaticAsymmetry = 1.0f;
+	//C_Module.RandomStaticAsymmetry = 0.1f;
 
 	// DEBUG:
 	/*FDES_ProductionRule F;
