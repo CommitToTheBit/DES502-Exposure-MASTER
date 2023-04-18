@@ -175,8 +175,26 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	F.Productions.Add(XProduction);
 	F.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "[";
+		return K_Module;
+		});
+	F.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
 		K_Module.Letter = "F";
-		K_Module.StaticRotation = 60.0f;
+		K_Module.StaticLength *= 0.5f;
+		K_Module.StaticRotation = 45.0f;
+		return K_Module;
+		});
+	F.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "]";
+		return K_Module;
+		});
+	F.Productions.Add([this](FDES_L_Module L_Module) {
+		FDES_L_Module K_Module = L_Module;
+		K_Module.Letter = "F";
+		K_Module.StaticLength *= 0.5f;
+		K_Module.StaticRotation = -45.0f;
 		return K_Module;
 		});
 	F.Weight = 1.0f;
@@ -185,11 +203,11 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	FDES_L_Module F_Module = FDES_L_Module();
 	F_Module.Letter = "F";
 	F_Module.StaticLength = 1.0f;
-	F_Module.StaticRotation = 60.0f;
+	F_Module.StaticRotation = 0.0f;
 	F_Module.StaticWidth = Width;
 
 	TArray<FDES_L_Module> Axiom = TArray<FDES_L_Module>{ F_Module };
 
 	// STEP 3: Initialise...
-	return Super::Initialize(Mesh, Axiom, Iterations, Seed, 90.0f);
+	return Super::Initialize(Mesh, Axiom, Iterations, Seed, 0.0f);
 }

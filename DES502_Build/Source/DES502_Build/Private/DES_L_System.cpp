@@ -127,16 +127,16 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 		}
 		else if (L_Module.Letter != "]")
 		{
-			LocalTransform *= FTransform(FRotator(0.0f, L_Module.StaticRotation, 0.0f)); // NB: Note the order of operations!
+			LocalTransform = FTransform(FRotator(0.0f, L_Module.StaticRotation, 0.0f)) * LocalTransform; // NB: Note the order of operations!
 
 			if (L_Module.StaticLength == 0.0f)
 				continue;
 
-			LocalTransform *= FTransform(FVector(L_Module.StaticLength, 0.0f, 0.0f));
+			LocalTransform = FTransform(FVector(L_Module.StaticLength, 0.0f, 0.0f)) * LocalTransform;
 
 			SeedVertices.Add(FDES_SeedVertex());
 			SeedVertices[ChildIndex].Parent = ParentIndex;
-			SeedVertices[ChildIndex].Transform = SeedVertices[ParentIndex].Transform * LocalTransform;
+			SeedVertices[ChildIndex].Transform = LocalTransform * SeedVertices[ParentIndex].Transform ;
 			SeedVertices[ChildIndex].Position = SeedVertices[ChildIndex].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
 			SeedVertices[ChildIndex].Depth = SeedVertices[ParentIndex].Depth + L_Module.StaticLength;
 
@@ -279,7 +279,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 	TreeVertices = TArray<FDES_TreeVertex>();
 	TreeVertices.Add(FDES_TreeVertex());
 	TreeVertices[0].Parent = 0;
-	TreeVertices[0].Transform = FTransform(SeedVertices[0].Position);// *FTransform(FRotator(0.0f, LRotation, 0.0f)); // NB: Assumes we've initialised m_seedVertices!
+	TreeVertices[0].Transform = FTransform(FRotator(0.0f, LRotation, 0.0f)) * FTransform(SeedVertices[0].Position); // NB: Assumes we've initialised m_seedVertices!
 	TreeVertices[0].Position = TreeVertices[0].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
 	TreeVertices[0].Width = 0.0f;
 	TreeVertices[0].Degree = 0;
@@ -309,7 +309,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
 			StaticRotation = L_Module.StaticRotation + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomStaticRotation;
 			PeriodicRotation = Oscillation * (L_Module.PeriodicRotation + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomPeriodicRotation);
-			LocalTransform *= FTransform(FRotator(0.0f, StaticRotation + PeriodicRotation, 0.0f));
+			LocalTransform = FTransform(FRotator(0.0f, StaticRotation + PeriodicRotation, 0.0f)) * LocalTransform;
 
 			if (L_Module.StaticLength == 0.0f)
 				continue;
@@ -320,7 +320,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
 			StaticLength = L_Module.StaticLength + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomStaticLength;
 			PeriodicLength = Oscillation * (L_Module.PeriodicLength + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomPeriodicLength);
-			LocalTransform *= FTransform(FVector(Scale * (StaticLength + PeriodicLength), 0.0f, 0.0f));
+			LocalTransform = FTransform(FVector(Scale * (StaticLength + PeriodicLength), 0.0f, 0.0f)) * LocalTransform;
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
@@ -329,7 +329,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 
 			TreeVertices.Add(FDES_TreeVertex());
 			TreeVertices[ChildIndex].Parent = ParentIndex;
-			TreeVertices[ChildIndex].Transform = TreeVertices[ParentIndex].Transform * LocalTransform;
+			TreeVertices[ChildIndex].Transform = LocalTransform * TreeVertices[ParentIndex].Transform;
 			TreeVertices[ChildIndex].Position = TreeVertices[ChildIndex].Transform.TransformPosition(FVector(0.0f, 0.0f, 0.0f));
 			TreeVertices[ChildIndex].Width = Scale * (StaticWidth + PeriodicWidth);
 			TreeVertices[ChildIndex].Degree = 1;
