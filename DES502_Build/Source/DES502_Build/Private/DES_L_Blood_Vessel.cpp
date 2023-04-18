@@ -42,7 +42,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		return K_Module;
 		});
 	CForward.Weight = 1.0f;
-	AddProductionRule("C", CForward);
+	//AddProductionRule("C", CForward);
 
 	FDES_ProductionRule CLeft;
 	CLeft.Productions.Add(XProduction);
@@ -75,8 +75,8 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		K_Module.RandomStaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.RandomPeriodicLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.StaticRotation = -acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
-		K_Module.PeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.PeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.StaticWidth = 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
@@ -97,8 +97,8 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		K_Module.RandomStaticLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.RandomPeriodicLength *= 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.StaticRotation = acos((pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 4.0f / 3.0f) + pow(L_Module.Asymmetry, 4.0f) - 1.0f) / (2.0f * pow(L_Module.Asymmetry, 2.0f) * pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 2.0f / 3.0f)));
-		K_Module.PeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
-		K_Module.RandomPeriodicRotation = 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.PeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
+		K_Module.RandomPeriodicRotation *= 1.0f + 1.0f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		K_Module.StaticWidth = 0.55f * L_Module.Asymmetry / pow(1.0f + pow(L_Module.Asymmetry, 3.0f), 1.0f / 3.0f);
 		return K_Module;
 		});
@@ -120,7 +120,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		return K_Module;
 		});
 	CRight.Weight = 2.0f;
-	AddProductionRule("C", CRight);
+	//AddProductionRule("C", CRight);
 
 	FDES_ProductionRule L;
 	L.Productions.Add(XProduction);
@@ -135,7 +135,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		return K_Module;
 		});
 	L.Weight = 1.0f;
-	AddProductionRule("L", L);
+	//AddProductionRule("L", L);
 
 	FDES_ProductionRule R;
 	R.Productions.Add(XProduction);
@@ -150,7 +150,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 		return K_Module;
 		});
 	R.Weight = 1.0f;
-	AddProductionRule("R", R);
+	//AddProductionRule("R", R);
 
 	// STEP 2: Write axiom...
 	FDES_L_Module C_Module = FDES_L_Module();
@@ -171,7 +171,7 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	C_Module.RandomStaticAsymmetry = 0.1f;
 
 	// DEBUG:
-	FDES_ProductionRule F;
+	/*FDES_ProductionRule F;
 	F.Productions.Add(XProduction);
 	F.Productions.Add([this](FDES_L_Module L_Module) {
 		FDES_L_Module K_Module = L_Module;
@@ -204,9 +204,9 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	F_Module.Letter = "F";
 	F_Module.StaticLength = 1.0f;
 	F_Module.StaticRotation = 0.0f;
-	F_Module.StaticWidth = Width;
+	F_Module.StaticWidth = Width;*/
 
-	TArray<FDES_L_Module> Axiom = TArray<FDES_L_Module>{ F_Module };
+	TArray<FDES_L_Module> Axiom = TArray<FDES_L_Module>{ C_Module };
 
 	// STEP 3: Initialise...
 	return Super::Initialize(Mesh, Axiom, Iterations, Seed, 0.0f);

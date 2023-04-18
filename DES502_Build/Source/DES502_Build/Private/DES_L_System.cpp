@@ -152,7 +152,7 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 	}
 
 	// DEBUG:
-	FString Positions = SeedVertices[0].Transform.ToString()+"\n";
+	/*FString Positions = SeedVertices[0].Transform.ToString() + "\n";
 	Positions += (SeedVertices[0].Transform * FTransform(FVector(1.0f, 0.0f, 0.0f))).ToString() + "\n";
 	Positions += (FTransform(FVector(1.0f, 0.0f, 0.0f)) * SeedVertices[0].Transform).ToString() + "\n";
 	Positions += SeedVertices[0].Transform.TransformPosition(FVector(1.0f, 0.0f, 0.0f)).ToString() + "\n";
@@ -160,7 +160,7 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 	{
 		Positions += SeedVertex.Position.ToString() + "\n";
 	}
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);*/
 
 	// STEP 2: Calculate bounds...
 	FVector2D Minima = FVector2D(0.0f, 0.0f);
@@ -197,12 +197,12 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 	}
 
 	// DEBUG:
-	/*FString Positions = FString::SanitizeFloat(LScale) + "\n";
+	FString Positions = FString::SanitizeFloat(LScale)+"\n";
 	for (FDES_SeedVertex SeedVertex : SeedVertices)
 	{
 		Positions += SeedVertex.Position.ToString() + "\n";
 	}
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);*/
+	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);
 
 	// STEP 4: Instantaneously 'update' TreeVertices...
 	UpdateTree(0.0f, 0.0f);
@@ -267,9 +267,6 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 	// DEBUG: 
 	Intensity = 1.0f;
 
-	// DEBUG:
-	LScale = 1;
-
 	FRandomStream rng = FRandomStream(LSeed);
 
 	Time += DeltaTime;
@@ -321,6 +318,9 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			StaticLength = L_Module.StaticLength + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomStaticLength;
 			PeriodicLength = Oscillation * (L_Module.PeriodicLength + rng.FRandRange(-1.0f, 1.0f) * L_Module.RandomPeriodicLength);
 			LocalTransform = FTransform(FVector(Scale * (StaticLength + PeriodicLength), 0.0f, 0.0f)) * LocalTransform;
+
+			// DEBUG:
+			//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::SanitizeFloat(Scale * (StaticLength + PeriodicLength)));
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
