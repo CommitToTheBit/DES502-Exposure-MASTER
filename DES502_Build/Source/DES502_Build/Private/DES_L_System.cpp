@@ -271,11 +271,8 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 	FRandomStream rng = FRandomStream(LSeed);
 
 	Time += DeltaTime;
-	//Intensity += DeltaIntensity;
-	//Intensity = std::max(0.0f, std::min(Intensity, 1.0f));
-
-	// DEBUG: 
-	Intensity = 0.5f + 0.5f * cos(0.08 * (2.0f * PI) * Time);
+	Intensity += DeltaIntensity;
+	Intensity = std::max(0.0f, std::min(Intensity, 1.0f));
 
 	TreeVertices = TArray<FDES_TreeVertex>();
 	TreeVertices.Add(FDES_TreeVertex());
