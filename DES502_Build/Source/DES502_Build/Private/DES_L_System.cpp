@@ -145,24 +145,8 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 			ChildIndex = SeedVertices.Num();
 			ParentIndex = ChildIndex - 1;
 			LocalTransform = FTransform::Identity;
-
-			//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FTransform(FVector(L_Module.StaticLength, 0.0f, 0.0f)), FVector(0.0f, 0.0f, 0.0f)).ToString());
-			//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, SeedVertices[ParentIndex].Position.ToString());
-			//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, (FTransform(FVector(L_Module.StaticLength, 0.0f, 0.0f)).TransformPosition(FVector(0.0f, 0.0f, 0.0f))).ToString());
-			//GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, SeedVertices[ParentIndex].Position.ToString());
 		}
 	}
-
-	// DEBUG:
-	/*FString Positions = SeedVertices[0].Transform.ToString() + "\n";
-	Positions += (SeedVertices[0].Transform * FTransform(FVector(1.0f, 0.0f, 0.0f))).ToString() + "\n";
-	Positions += (FTransform(FVector(1.0f, 0.0f, 0.0f)) * SeedVertices[0].Transform).ToString() + "\n";
-	Positions += SeedVertices[0].Transform.TransformPosition(FVector(1.0f, 0.0f, 0.0f)).ToString() + "\n";
-	for (FDES_SeedVertex SeedVertex : SeedVertices)
-	{
-		Positions += SeedVertex.Position.ToString() + "\n";
-	}
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);*/
 
 	// STEP 2: Calculate bounds...
 	FVector2D Minima = FVector2D(0.0f, 0.0f);
@@ -197,14 +181,6 @@ void ADES_L_System::InitializeTree(float Seed, float Rotation, FVector2D Anchori
 		SeedVertices[i].Depth *= LScale;
 		LDepth = std::max(SeedVertices[i].Depth, LDepth);
 	}
-
-	// DEBUG:
-	FString Positions = FString::SanitizeFloat(LScale)+"\n";
-	for (FDES_SeedVertex SeedVertex : SeedVertices)
-	{
-		Positions += SeedVertex.Position.ToString() + "\n";
-	}
-	GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, Positions);
 
 	// STEP 4: Instantaneously 'update' TreeVertices...
 	UpdateTree(0.0f, 0.0f);
@@ -316,10 +292,6 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 				SeedVertices[ChildIndex].Depth = SeedVertices[ParentIndex].Depth;
 
 			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * pow(std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)), 0.5f) : 0.0f;
-
-			// DEBUG:
-			if (ChildIndex == 1)
-				GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Magenta, FString::SanitizeFloat(Intensity) + " / " + FString::SanitizeFloat(Scale / LScale));
 
 			Period = L_Module.Period + rng.FRandRange(0.0f, std::max(L_Module.Aperiodicity, 0.0f));
 			Oscillation = (L_Module.Period > 0.0f) ? cos(2.0f * PI * (Time / Period) + (L_Module.Synchronisation + rng.FRandRange(0.0f, L_Module.Asynchronicity))) : 0.0f;
