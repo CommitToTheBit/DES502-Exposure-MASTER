@@ -315,7 +315,7 @@ void ADES_L_System::UpdateTree(float DeltaTime, float DeltaIntensity)
 			if (SeedVertices[ChildIndex].Depth == 0.0f) // NB: Theoretically sets all depths > 0?
 				SeedVertices[ChildIndex].Depth = SeedVertices[ParentIndex].Depth;
 
-			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)) : 0.0f;
+			Scale = (SeedVertices[ChildIndex].Depth > 0.0f) ? LScale * pow(std::max(0.0f, std::min((1.0f - LDepth / SeedVertices[ChildIndex].Depth) + (LDepth / SeedVertices[ChildIndex].Depth) * Intensity, 1.0f)), 0.5f) : 0.0f;
 
 			// DEBUG:
 			if (ChildIndex == 1)

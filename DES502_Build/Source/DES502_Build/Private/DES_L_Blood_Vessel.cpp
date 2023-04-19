@@ -155,13 +155,13 @@ void ADES_L_Blood_Vessel::Initialize(UProceduralMeshComponent* Mesh, float Width
 	// STEP 2: Write axiom...
 	FDES_L_Module C_Module = FDES_L_Module();
 	C_Module.Letter = "C";
-	C_Module.Period = 2.5f;
-	C_Module.Aperiodicity = 1.5f;
+	C_Module.Period = 4.5f;
+	C_Module.Aperiodicity = 2.5f;
 	C_Module.Synchronisation = 0.0f;
 	C_Module.Asynchronicity = 1.0f;
 	C_Module.StaticLength = 1.0f;
 	C_Module.RandomStaticLength = 0.5f;
-	C_Module.RandomPeriodicLength = 0.125f;
+	C_Module.RandomPeriodicLength = 0.2f;
 	C_Module.StaticRotation = 0.0f;
 	C_Module.RandomStaticRotation = 4.0f;
 	C_Module.PeriodicRotation = 1.0f;
