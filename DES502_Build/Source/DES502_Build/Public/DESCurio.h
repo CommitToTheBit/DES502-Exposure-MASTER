@@ -11,7 +11,7 @@ class DES502_BUILD_API ADESCurio : public AActor
 	
 public:	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Recognition")
-		FString ID = "";
+		FString ID;
 
 	// NB: Will we assign a 'value' to each photo composition? Could get out of hand...
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Recognition")
