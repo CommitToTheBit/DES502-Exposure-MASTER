@@ -26,7 +26,7 @@ void UDES_JournalManager::ReadJournalData(FString FilePath)
 	/*for (TPair<FString, FDES_JournalEntryStruct>& Entry : Journal.Entries)
 	{
 		Journal.Entries[Entry.Key].RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
+		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(1024, 1024, PF_B8G8R8A8, false);
 	}*/
 }
 
@@ -46,19 +46,27 @@ void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 			/* This enclosed section has been adapted from: Kazimieras Mikelis' Game Blog (2020) Saving Screenshots & Byte Data in Unreal Engine. Available at: https://mikelis.net/saving-screenshots-byte-data-in-unreal-engine/ (Accessed: 2 April 2023) */
 
 			// STEP 1: Set up texture...
-			UTexture2D* Texture = UTexture2D::CreateTransient(900, 1080, PF_B8G8R8A8);
+			UTexture2D* Texture = UTexture2D::CreateTransient(1024, 1024, PF_B8G8R8A8);
 			// Get a reference to MIP 0, for convenience.
 			FTexture2DMipMap& Mip = Texture->PlatformData->Mips[0];
 
 			// STEP 2: Copy data...
 			void* MipBulkData = Mip.BulkData.Lock(LOCK_READ_WRITE);
-			Mip.BulkData.Realloc(4 * 900 * 1080);
-			FMemory::Memcpy(MipBulkData, GameData->BinaryTextures.GetData() + index * 4 * 900 * 1080, 4 * 900 * 1080);
+			Mip.BulkData.Realloc(4 * 1024 * 1024);
+			FMemory::Memcpy(MipBulkData, GameData->BinaryTextures.GetData() + index * 4 * 1024 * 1024, 4 * 1024 * 1024);
 			Mip.BulkData.Unlock();
 
 			// STEP 3: Update resources...
 			Texture->UpdateResource();
 			Journal.Entries[Entry.Key].Texture = Texture;
+
+			// FIXME: Could these settings solve our 'stair step' effect?
+			/*Journal.Entries[Entry.Key].Texture->MipGenSettings = TextureMipGenSettings::TMGS_FromTextureGroup;
+			Journal.Entries[Entry.Key].Texture->LODBias = 0;
+			Journal.Entries[Entry.Key].Texture->LODGroup = TextureGroup::TEXTUREGROUP_Pixels2D;//TEXTUREGROUP_UI;
+			Journal.Entries[Entry.Key].Texture->NeverStream = true;
+			Journal.Entries[Entry.Key].Texture->Filter = TextureFilter::TF_Trilinear;//TF_Nearest;
+			Journal.Entries[Entry.Key].Texture->CompressionSettings = TextureCompressionSettings::TC_VectorDisplacementmap;*/
 
 			/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 		}
@@ -66,7 +74,7 @@ void UDES_JournalManager::ReadJournalProgress(UDESSaveGame* GameData)
 		Journal.Entries[Entry.Key].RenderTargetActive = Journal.Entries[Entry.Key].EntryActive < 0;
 
 		Journal.Entries[Entry.Key].RenderTarget = NewObject<UTextureRenderTarget2D>(UTextureRenderTarget2D::StaticClass());
-		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(900, 1080, PF_B8G8R8A8, false);
+		Journal.Entries[Entry.Key].RenderTarget->InitCustomFormat(1024, 1024, PF_B8G8R8A8, false);
 
 		if (Journal.Entries[Entry.Key].EntryActive >= maxActive)
 			maxActive = Journal.Entries[Entry.Key].EntryActive + 1;
@@ -110,13 +118,13 @@ void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData, bool rese
 		for (int i = 0; i < Journal.Entries.Num(); i++)
 			GameData->EntriesActive[i] = -1;
 
-		GameData->BinaryTextures.Reserve(Journal.Entries.Num() * 4 * 900 * 1080); // NB: 4 values, RGBA, for each pixel of the polaroid...
+		GameData->BinaryTextures.Reserve(Journal.Entries.Num() * 4 * 1024 * 1024); // NB: 4 values, RGBA, for each pixel of the polaroid...
 		GameData->BinaryTextures.Empty();
 
 		// NB: Populating with the exact number of entries...
-		if (GameData->BinaryTextures.Num() < Journal.Entries.Num() * 4 * 900 * 1080)
-			GameData->BinaryTextures.AddUninitialized(Journal.Entries.Num() * 4 * 900 * 1080 - GameData->BinaryTextures.Num());
-		while (GameData->BinaryTextures.Num() > Journal.Entries.Num() * 4 * 900 * 1080)
+		if (GameData->BinaryTextures.Num() < Journal.Entries.Num() * 4 * 1024 * 1024)
+			GameData->BinaryTextures.AddUninitialized(Journal.Entries.Num() * 4 * 1024 * 1024 - GameData->BinaryTextures.Num());
+		while (GameData->BinaryTextures.Num() > Journal.Entries.Num() * 4 * 1024 * 1024)
 			GameData->EntriesActive.RemoveAt(GameData->EntriesActive.Num() - 1);
 	}
 	else
@@ -134,12 +142,12 @@ void UDES_JournalManager::WriteJournalProgress(UDESSaveGame* GameData, bool rese
 
 				// STEP 1: Read RenderTarget's data into an FColor array...
 				TArray<FColor> ColorArray;
-				ColorArray.Reserve(900 * 1080);
+				ColorArray.Reserve(1024 * 1024);
 				Journal.Entries[Entry.Key].RenderTarget->GameThread_GetRenderTargetResource()->ReadPixels(ColorArray);
 				ColorArray.Shrink();
 
 				// STEP 2: Copy FColor array into binary texture...
-				FMemory::Memcpy(GameData->BinaryTextures.GetData() + index * 4 * 900 * 1080, ColorArray.GetData(), 4 * 900 * 1080);
+				FMemory::Memcpy(GameData->BinaryTextures.GetData() + index * 4 * 1024 * 1024, ColorArray.GetData(), 4 * 1024 * 1024);
 
 				/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 			}
