@@ -1,0 +1,21 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/Models/Animations/Idle_mixamo_com.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/MenuContents/CaveMenu2.umap",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/MenuContents/FlickeringLight_BP.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/Element_24x.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/Helvetica.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/Helvetica-BoldOblique.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/Helvetica-BoldOblique_Font.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/Helvetica_Font.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/UI_MainMenu.uasset",
+				"D:/UNIVERSITY/DES203/DES502-Build-MASTER/DES502-Build-MASTER-main/DES502_Build/Content/UI/UI_Settings.uasset"
+			]
+		}
+	]
+}
