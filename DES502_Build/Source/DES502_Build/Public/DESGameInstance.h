@@ -73,6 +73,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Saving / Loading") // NB: BlueprintReadOnly because... Blueprints can't 'rewrite' this C++ code?
 		UDES_SaveSettings* SettingsData;
 
+	// GAMEPLAY FUNCTIONALITY:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+		bool PolaroidPressed;
+
 	// JOURNAL FUNCTIONALITY:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
 		UDES_JournalManager* JournalManager;

@@ -1,0 +1,17 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
+				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/New_Rock_01/Final_Rock_01.uasset",
+				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/New_Rock_01/Rock_Low_Poly_01_Maya_initialShadingGroup_BaseColor.uasset",
+				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/New_Rock_01/Rock_Low_Poly_01_Maya_initialShadingGroup_Normal.uasset",
+				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/New_Rock_01/Rock_Low_Poly_01_Maya_initialShadingGroup_OcclusionRoughnessMetallic.uasset",
+				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Rock_01/Final_Rock_01.uasset"
+			]
+		}
+	]
+}

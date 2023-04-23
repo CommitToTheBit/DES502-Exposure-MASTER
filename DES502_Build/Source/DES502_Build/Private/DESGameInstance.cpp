@@ -16,6 +16,9 @@ void UDESGameInstance::Init()
 	// Load any saved data...
 	LoadGameData(); // DEBUG: Set to true to reset GameData on start...
 	LoadSettingsData();
+
+	// Handle any odds and ends...
+	PolaroidPressed = false;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
@@ -58,13 +61,17 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->bCrawling = false;
 		GameData->CrawlDistance = 0.0f;
 
-		GameData->PlayerHandheld = EHandheld::ENone;
+		GameData->PlayerHandheld = EHandheld::ETorch;
 
 		// Polaroid variables...
 		GameData->PolaroidInventoried = 0;
 		GameData->PolaroidAmmo = 27;
 
 		GameData->CrowbarInventoried = 0;
+
+		GameData->TorchInventoried = 1;
+		GameData->TorchBreak = false;
+		GameData->TorchBroken = false;
 	}
 
 	// STEP 3: ...

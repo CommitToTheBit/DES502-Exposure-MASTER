@@ -6,9 +6,10 @@
 
 UENUM(BlueprintType)
 enum class EHandheld : uint8 {
+	ENone		UMETA(Displayname = "None"),
 	EPolaroid	UMETA(DisplayName = "Polaroid"),
 	ECrowbar	UMETA(DisplayName = "Crowbar"),
-	ENone		UMETA(Displayname = "None")
+	ETorch		UMETA(DisplayName = "Torch")
 };
 
 UCLASS()
@@ -34,6 +35,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 		float CrawlDistance;
 
+	// HANDHELD SAVE DATA:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 		EHandheld PlayerHandheld;
 
@@ -46,7 +48,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Crowbar")
 		int CrowbarInventoried;
 
-	//
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Torch")
+		int TorchInventoried;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Torch")
+		bool TorchBreak;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Torch")
+		bool TorchBroken;
+
+	// JOURNAL SAVE DATA
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
 		TArray<int> EntriesActive; // Store IDs in... ??
 
