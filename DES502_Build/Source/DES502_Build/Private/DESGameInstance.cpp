@@ -18,6 +18,7 @@ void UDESGameInstance::Init()
 	LoadSettingsData();
 
 	// Handle any odds and ends...
+	HandheldActive = false;
 	PolaroidPressed = false;
 }
 

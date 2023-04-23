@@ -75,6 +75,9 @@ public:
 
 	// GAMEPLAY FUNCTIONALITY:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+		bool HandheldActive;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 		bool PolaroidPressed;
 
 	// JOURNAL FUNCTIONALITY:
