@@ -18,6 +18,7 @@ void UDESGameInstance::Init()
 	LoadSettingsData();
 
 	// Handle any odds and ends...
+	PlayerHandheldActive = !GameData->TorchBroken;
 	PolaroidPressed = false;
 }
 
