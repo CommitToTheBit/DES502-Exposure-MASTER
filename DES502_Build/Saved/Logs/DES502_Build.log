@@ -1224,3 +1224,94 @@ LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
 [2023.04.24-15.41.42:954][677]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
 [2023.04.24-15.41.42:954][677]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
 [2023.04.24-15.41.47:315][692]LogD3D12RHI: Display: Temp texture streaming buffer not large enough, needed 8388608 bytes
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: ================================================
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: Total job queries 317, among them cache hits 96 (30.28%)
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: Tracking 221 distinct input hashes that result in 148 distinct outputs (66.97%)
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: RAM used: 1.74 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.21%
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: Shaders Compiled: 0
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: Jobs assigned 0, completed 0 (0.00%)
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.00 s
+[2023.04.24-15.43.25:415][697]LogShaderCompilers: Display: ================================================
+[2023.04.24-15.43.26:322][723]Cmd: DUPLICATE
+[2023.04.24-15.43.26:322][723]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.43.56:195][513]Cmd: DUPLICATE
+[2023.04.24-15.43.56:195][513]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.44.31:644][421]Cmd: DUPLICATE
+[2023.04.24-15.44.31:644][421]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.44.58:200][ 99]Cmd: DUPLICATE
+[2023.04.24-15.44.58:200][ 99]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.45.04:315][265]Cmd: DELETE
+[2023.04.24-15.45.04:315][265]Cmd: ACTOR DELETE
+[2023.04.24-15.45.04:333][265]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.24-15.45.04:383][265]LogUObjectHash: Compacting FUObjectHashTables data took   1.96ms
+[2023.04.24-15.45.04:384][265]LogEditorActor: Deleted 1 Actors (0.069 secs)
+[2023.04.24-15.51.30:486][632]LogUObjectHash: Compacting FUObjectHashTables data took   0.85ms
+[2023.04.24-15.51.42:838][632]LogSavePackage: Moving output files for package: /Temp/Autosaves/Game/Maps/STABLE_Whiteboxing1_Auto1
+[2023.04.24-15.51.42:840][632]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1_Auto165C5862E454AADA2631C23A0F2A0F1BA.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/Autosaves/Game/Maps/STABLE_Whiteboxing1_Auto1.umap'
+[2023.04.24-15.51.42:859][632]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/Maps/STABLE_Whiteboxing1' took 12.431
+[2023.04.24-15.51.42:859][632]LogFileHelpers: Editor autosave (incl. sublevels & external actors) for all levels took 12.431
+[2023.04.24-15.54.16:391][ 25]Cmd: DUPLICATE
+[2023.04.24-15.54.16:391][ 25]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.55.17:038][707]Cmd: DELETE
+[2023.04.24-15.55.17:038][707]Cmd: ACTOR DELETE
+[2023.04.24-15.55.17:209][707]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.24-15.55.17:261][707]LogUObjectHash: Compacting FUObjectHashTables data took   2.43ms
+[2023.04.24-15.55.17:262][707]LogEditorActor: Deleted 1 Actors (0.224 secs)
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: ================================================
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: Total job queries 333, among them cache hits 100 (30.03%)
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: Tracking 233 distinct input hashes that result in 156 distinct outputs (66.95%)
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: RAM used: 1.82 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.22%
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: Shaders Compiled: 0
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: Jobs assigned 0, completed 0 (0.00%)
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.00 s
+[2023.04.24-15.55.54:895][775]LogShaderCompilers: Display: ================================================
+[2023.04.24-15.55.57:022][834]LogD3D12RHI: Display: Temp texture streaming buffer not large enough, needed 8388608 bytes
+[2023.04.24-15.55.57:268][840]LogD3D12RHI: Display: Temp texture streaming buffer not large enough, needed 8388608 bytes
+[2023.04.24-15.55.57:558][848]LogD3D12RHI: Display: Temp texture streaming buffer not large enough, needed 8388608 bytes
+[2023.04.24-15.55.59:157][894]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Game/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.Final_Wall_02_Unreal_Model
+[2023.04.24-15.55.59:157][894]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Game/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.Final_Wall_02_Unreal_Model
+[2023.04.24-15.55.59:158][894]LogActorFactory: Actor Factory spawned StaticMesh /Game/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.Final_Wall_02_Unreal_Model as actor: StaticMeshActor /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1:PersistentLevel.StaticMeshActor_187
+[2023.04.24-15.56.00:205][947]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Game/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.Final_Wall_02_Unreal_Model
+[2023.04.24-15.56.00:205][947]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Game/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.Final_Wall_02_Unreal_Model
+[2023.04.24-15.56.00:207][947]LogActorFactory: Actor Factory spawned StaticMesh /Game/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.Final_Wall_02_Unreal_Model as actor: StaticMeshActor /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1:PersistentLevel.StaticMeshActor_268
+[2023.04.24-15.56.32:320][828]Cmd: DELETE
+[2023.04.24-15.56.32:320][828]Cmd: ACTOR DELETE
+[2023.04.24-15.56.32:341][828]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.24-15.56.32:388][828]LogUObjectHash: Compacting FUObjectHashTables data took   2.04ms
+[2023.04.24-15.56.32:389][828]LogEditorActor: Deleted 1 Actors (0.069 secs)
+[2023.04.24-15.56.35:311][903]Cmd: DELETE
+[2023.04.24-15.56.35:311][903]Cmd: ACTOR DELETE
+[2023.04.24-15.56.35:330][903]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.24-15.56.35:379][903]LogUObjectHash: Compacting FUObjectHashTables data took   1.98ms
+[2023.04.24-15.56.35:380][903]LogEditorActor: Deleted 1 Actors (0.069 secs)
+[2023.04.24-15.56.36:227][925]Cmd: DELETE
+[2023.04.24-15.56.36:227][925]Cmd: ACTOR DELETE
+[2023.04.24-15.56.36:250][925]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.24-15.56.36:296][925]LogUObjectHash: Compacting FUObjectHashTables data took   2.17ms
+[2023.04.24-15.56.36:298][925]LogEditorActor: Deleted 1 Actors (0.070 secs)
+[2023.04.24-15.56.42:040][ 73]Cmd: DUPLICATE
+[2023.04.24-15.56.42:040][ 73]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.57.02:886][611]Cmd: DUPLICATE
+[2023.04.24-15.57.02:886][611]Cmd: ACTOR DUPLICATE
+[2023.04.24-15.57.36:497][507]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.24-15.57.36:716][507]LogUObjectHash: Compacting FUObjectHashTables data took   2.05ms
+[2023.04.24-15.57.49:597][507]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.24-15.57.49:599][507]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing14DE9384D404227C6C74EF5A58CBE0184.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.24-15.57.49:660][507]LogFileHelpers: No new changes to save!
+[2023.04.24-15.57.49:661][507]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 12.992
+[2023.04.24-15.57.49:667][507]LogFileHelpers: InternalPromptForCheckoutAndSave took 13.1 sec (total: 26.2 sec)
+[2023.04.24-15.57.49:677][507]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.24-15.57.49:677][507]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.24-15.59.30:275][135]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.24-15.59.30:395][135]LogUObjectHash: Compacting FUObjectHashTables data took   2.02ms
+[2023.04.24-15.59.43:349][135]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.24-15.59.43:351][135]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing115298A9F4D84AE90CC76D39D39DCA0DF.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.24-15.59.43:413][135]LogFileHelpers: No new changes to save!
+[2023.04.24-15.59.43:414][135]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 13.066
+[2023.04.24-15.59.43:421][135]LogFileHelpers: InternalPromptForCheckoutAndSave took 13.1 sec (total: 39.3 sec)
+[2023.04.24-15.59.43:431][135]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.24-15.59.43:431][135]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
