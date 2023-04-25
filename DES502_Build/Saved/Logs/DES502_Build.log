@@ -10316,3 +10316,361 @@ LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
 [2023.04.25-07.06.10:025][503]LogFileHelpers: InternalPromptForCheckoutAndSave took 13.6 sec
 [2023.04.25-07.06.10:033][503]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
 [2023.04.25-07.06.10:033][503]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.07.31:247][729]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.07.31:247][729]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.04.25-07.07.31:247][729]LogShaderCompilers: Display: Total job queries 571, among them cache hits 136 (23.82%)
+[2023.04.25-07.07.31:247][729]LogShaderCompilers: Display: Tracking 435 distinct input hashes that result in 314 distinct outputs (72.18%)
+[2023.04.25-07.07.31:247][729]LogShaderCompilers: Display: RAM used: 3.58 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.44%
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Shaders Compiled: 2
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Jobs assigned 2, completed 2 (100.00%)
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Time job spent in pending queue: average 0.06 s, longest 0.06 s
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Job execution time: average 1.48 s, max 1.53 s
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Job life time (pending + execution): average 1.54 s, max 1.59
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 1.59 s
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Jobs were issued in 2 batches (only local compilation was used), average 1.00 jobs/batch
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Average processing rate: 1.25 jobs/sec
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Total thread time: 2.32 s
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Total thread preprocess time: 0.13 s
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Percentage time preprocessing: 5.65%
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Effective parallelization: 1.46 (times faster than compiling all shaders on one thread). Compare with number of workers: 4
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Top 2 most expensive shader types by average time:
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: Top 2 shader types by total compile time:
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 52.55% of total time (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 47.45% of total time (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.07.31:248][729]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.11.22:813][955]Cmd: DUPLICATE
+[2023.04.25-07.11.22:813][955]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.11.29:161][148]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.11.29:161][148]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.04.25-07.11.29:161][148]LogShaderCompilers: Display: Total job queries 573, among them cache hits 136 (23.73%)
+[2023.04.25-07.11.29:161][148]LogShaderCompilers: Display: Tracking 437 distinct input hashes that result in 315 distinct outputs (72.08%)
+[2023.04.25-07.11.29:161][148]LogShaderCompilers: Display: RAM used: 3.60 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.44%
+[2023.04.25-07.11.29:161][148]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Shaders Compiled: 2
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Jobs assigned 2, completed 2 (100.00%)
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Time job spent in pending queue: average 0.06 s, longest 0.06 s
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Job execution time: average 1.48 s, max 1.53 s
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Job life time (pending + execution): average 1.54 s, max 1.59
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 1.59 s
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Jobs were issued in 2 batches (only local compilation was used), average 1.00 jobs/batch
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Average processing rate: 1.25 jobs/sec
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Total thread time: 2.32 s
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Total thread preprocess time: 0.13 s
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Percentage time preprocessing: 5.65%
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Effective parallelization: 1.46 (times faster than compiling all shaders on one thread). Compare with number of workers: 4
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Top 2 most expensive shader types by average time:
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: Top 2 shader types by total compile time:
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 52.55% of total time (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 47.45% of total time (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.11.29:162][148]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.11.48:615][765]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.11.48:764][765]LogUObjectHash: Compacting FUObjectHashTables data took   1.03ms
+[2023.04.25-07.12.04:554][765]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.12.04:561][765]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1F04AA9104934C17E44BFAF96D67C90EF.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.12.04:685][765]LogFileHelpers: No new changes to save!
+[2023.04.25-07.12.04:685][765]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 15.943
+[2023.04.25-07.12.04:765][765]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.1 sec (total: 29.8 sec)
+[2023.04.25-07.12.04:781][765]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.12.04:781][765]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.12.06:938][833]Cmd: DUPLICATE
+[2023.04.25-07.12.06:939][833]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.12.27:832][476]Cmd: DUPLICATE
+[2023.04.25-07.12.27:832][476]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.13.06:461][634]Cmd: DELETE
+[2023.04.25-07.13.06:461][634]Cmd: ACTOR DELETE
+[2023.04.25-07.13.06:498][634]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.13.06:516][634]LogUObjectHash: Compacting FUObjectHashTables data took   1.06ms
+[2023.04.25-07.13.06:518][634]LogEditorActor: Deleted 1 Actors (0.057 secs)
+[2023.04.25-07.13.07:183][653]Cmd: DELETE
+[2023.04.25-07.13.07:183][653]Cmd: ACTOR DELETE
+[2023.04.25-07.13.07:219][653]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.13.07:235][653]LogUObjectHash: Compacting FUObjectHashTables data took   0.68ms
+[2023.04.25-07.13.07:236][653]LogEditorActor: Deleted 1 Actors (0.053 secs)
+[2023.04.25-07.13.20:571][ 63]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.13.20:759][ 63]LogUObjectHash: Compacting FUObjectHashTables data took   0.46ms
+[2023.04.25-07.13.36:728][ 63]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.13.36:736][ 63]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing18AB4330A461FF362F847ECB3E0FD3CF3.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.13.36:979][ 63]LogFileHelpers: No new changes to save!
+[2023.04.25-07.13.36:982][ 63]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 16.242
+[2023.04.25-07.13.36:999][ 63]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.4 sec (total: 46.2 sec)
+[2023.04.25-07.13.37:013][ 63]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.13.37:013][ 63]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.13.42:714][240]Cmd: DUPLICATE
+[2023.04.25-07.13.42:714][240]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.13.56:996][667]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.13.57:204][667]LogUObjectHash: Compacting FUObjectHashTables data took   1.47ms
+[2023.04.25-07.14.12:287][667]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.14.12:291][667]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1EC4426474E25673B75C72CA9FBDD9548.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.14.12:418][667]LogFileHelpers: No new changes to save!
+[2023.04.25-07.14.12:418][667]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 15.244
+[2023.04.25-07.14.12:506][667]LogFileHelpers: InternalPromptForCheckoutAndSave took 15.5 sec (total: 1:01 min)
+[2023.04.25-07.14.12:518][667]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.14.12:518][667]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.14.26:484][118]Cmd: DUPLICATE
+[2023.04.25-07.14.26:484][118]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.14.33:154][322]Cmd: DUPLICATE
+[2023.04.25-07.14.33:154][322]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.14.40:837][554]Cmd: DUPLICATE
+[2023.04.25-07.14.40:837][554]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Total job queries 575, among them cache hits 136 (23.65%)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Tracking 439 distinct input hashes that result in 316 distinct outputs (71.98%)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: RAM used: 3.61 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.44%
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Shaders Compiled: 2
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Jobs assigned 2, completed 2 (100.00%)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Time job spent in pending queue: average 0.06 s, longest 0.06 s
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Job execution time: average 1.48 s, max 1.53 s
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Job life time (pending + execution): average 1.54 s, max 1.59
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 1.59 s
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Jobs were issued in 2 batches (only local compilation was used), average 1.00 jobs/batch
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Average processing rate: 1.25 jobs/sec
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Total thread time: 2.32 s
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Total thread preprocess time: 0.13 s
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Percentage time preprocessing: 5.65%
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Effective parallelization: 1.46 (times faster than compiling all shaders on one thread). Compare with number of workers: 4
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Top 2 most expensive shader types by average time:
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: Top 2 shader types by total compile time:
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 52.55% of total time (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 47.45% of total time (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.15.32:682][146]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.16.00:622][969]Cmd: DELETE
+[2023.04.25-07.16.00:622][969]Cmd: ACTOR DELETE
+[2023.04.25-07.16.00:656][969]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.16.00:674][969]LogUObjectHash: Compacting FUObjectHashTables data took   0.85ms
+[2023.04.25-07.16.00:676][969]LogEditorActor: Deleted 1 Actors (0.054 secs)
+[2023.04.25-07.16.01:458][989]Cmd: DELETE
+[2023.04.25-07.16.01:458][989]Cmd: ACTOR DELETE
+[2023.04.25-07.16.01:493][989]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.16.01:509][989]LogUObjectHash: Compacting FUObjectHashTables data took   0.59ms
+[2023.04.25-07.16.01:510][989]LogEditorActor: Deleted 1 Actors (0.053 secs)
+[2023.04.25-07.16.36:826][ 57]Cmd: DELETE
+[2023.04.25-07.16.36:826][ 57]Cmd: ACTOR DELETE
+[2023.04.25-07.16.36:860][ 57]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.16.36:877][ 57]LogUObjectHash: Compacting FUObjectHashTables data took   0.60ms
+[2023.04.25-07.16.36:879][ 57]LogEditorActor: Deleted 1 Actors (0.053 secs)
+[2023.04.25-07.16.55:593][603]Cmd: DUPLICATE
+[2023.04.25-07.16.55:593][603]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.13:351][129]Cmd: DELETE
+[2023.04.25-07.17.13:351][129]Cmd: ACTOR DELETE
+[2023.04.25-07.17.13:388][129]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.17.13:408][129]LogUObjectHash: Compacting FUObjectHashTables data took   2.84ms
+[2023.04.25-07.17.13:410][129]LogEditorActor: Deleted 1 Actors (0.058 secs)
+[2023.04.25-07.17.23:817][446]Cmd: DUPLICATE
+[2023.04.25-07.17.23:817][446]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.28:234][574]Cmd: DUPLICATE
+[2023.04.25-07.17.28:234][574]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.32:575][700]Cmd: DUPLICATE
+[2023.04.25-07.17.32:575][700]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.34:006][739]Cmd: DUPLICATE
+[2023.04.25-07.17.34:006][739]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.39:283][887]Cmd: DUPLICATE
+[2023.04.25-07.17.39:283][887]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.42:972][996]Cmd: DUPLICATE
+[2023.04.25-07.17.42:972][996]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.17.47:613][129]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.17.47:815][129]LogUObjectHash: Compacting FUObjectHashTables data took   1.31ms
+[2023.04.25-07.18.02:971][129]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.18.02:975][129]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing10BB2AE614AEB19110942878EA9B5550D.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.18.03:078][129]LogFileHelpers: No new changes to save!
+[2023.04.25-07.18.03:078][129]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 15.284
+[2023.04.25-07.18.03:163][129]LogFileHelpers: InternalPromptForCheckoutAndSave took 15.5 sec (total: 1:17 min)
+[2023.04.25-07.18.03:178][129]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.18.03:178][129]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.21.30:280][680]Cmd: DUPLICATE
+[2023.04.25-07.21.30:280][680]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.21.32:165][734]Cmd: DUPLICATE
+[2023.04.25-07.21.32:165][734]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.21.35:469][832]Cmd: DUPLICATE
+[2023.04.25-07.21.35:469][832]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.21.41:399][ 11]Cmd: DUPLICATE
+[2023.04.25-07.21.41:399][ 11]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.21.50:860][290]Cmd: DUPLICATE
+[2023.04.25-07.21.50:861][290]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.21.55:869][436]Cmd: DUPLICATE
+[2023.04.25-07.21.55:869][436]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.21.59:498][541]Cmd: DUPLICATE
+[2023.04.25-07.21.59:498][541]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.23.22:517][122]Cmd: DUPLICATE
+[2023.04.25-07.23.22:517][122]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.23.24:571][182]Cmd: DUPLICATE
+[2023.04.25-07.23.24:571][182]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.23.28:307][289]Cmd: DUPLICATE
+[2023.04.25-07.23.28:307][289]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.23.31:767][382]Cmd: DUPLICATE
+[2023.04.25-07.23.31:767][382]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.23.34:388][454]Cmd: DUPLICATE
+[2023.04.25-07.23.34:388][454]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.24.29:740][163]Cmd: DUPLICATE
+[2023.04.25-07.24.29:740][163]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.24.42:881][544]Cmd: DUPLICATE
+[2023.04.25-07.24.42:881][544]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.24.51:294][786]Cmd: DUPLICATE
+[2023.04.25-07.24.51:294][786]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.24.53:545][853]Cmd: DUPLICATE
+[2023.04.25-07.24.53:546][853]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.24.59:540][ 36]Cmd: DUPLICATE
+[2023.04.25-07.24.59:540][ 36]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.25.11:608][397]Cmd: DUPLICATE
+[2023.04.25-07.25.11:608][397]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.25.20:649][659]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.25.20:815][659]LogUObjectHash: Compacting FUObjectHashTables data took   1.46ms
+[2023.04.25-07.25.33:904][659]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.25.33:908][659]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1C8FABDA0456CAAD2708B90A22FB7BCE5.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.25.34:048][659]LogFileHelpers: No new changes to save!
+[2023.04.25-07.25.34:048][659]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 13.258
+[2023.04.25-07.25.34:064][659]LogFileHelpers: InternalPromptForCheckoutAndSave took 13.4 sec (total: 1:30 min)
+[2023.04.25-07.25.34:078][659]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.25.34:078][659]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.26.06:930][665]Cmd: DUPLICATE
+[2023.04.25-07.26.06:930][665]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.26.26:669][271]Cmd: DUPLICATE
+[2023.04.25-07.26.26:669][271]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.26.32:901][448]Cmd: DUPLICATE
+[2023.04.25-07.26.32:901][448]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.26.38:127][602]Cmd: DUPLICATE
+[2023.04.25-07.26.38:127][602]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.26.44:155][781]Cmd: DELETE
+[2023.04.25-07.26.44:156][781]Cmd: ACTOR DELETE
+[2023.04.25-07.26.44:185][781]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.26.44:203][781]LogUObjectHash: Compacting FUObjectHashTables data took   1.39ms
+[2023.04.25-07.26.44:205][781]LogEditorActor: Deleted 1 Actors (0.049 secs)
+[2023.04.25-07.26.45:822][831]Cmd: DUPLICATE
+[2023.04.25-07.26.45:822][831]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.26.47:423][875]Cmd: DUPLICATE
+[2023.04.25-07.26.47:423][875]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.26.52:810][ 42]Cmd: TRANSACTION UNDO
+[2023.04.25-07.26.52:810][ 42]LogEditorTransaction: Undo Move Elements
+[2023.04.25-07.26.53:415][ 51]Cmd: TRANSACTION UNDO
+[2023.04.25-07.26.53:415][ 51]LogEditorTransaction: Undo Duplicate Elements
+[2023.04.25-07.26.54:912][ 94]Cmd: TRANSACTION UNDO
+[2023.04.25-07.26.54:912][ 94]LogEditorTransaction: Undo Clicking on Elements
+[2023.04.25-07.26.55:789][121]Cmd: TRANSACTION UNDO
+[2023.04.25-07.26.55:790][121]LogEditorTransaction: Undo Duplicate Elements
+[2023.04.25-07.26.58:982][210]Cmd: DUPLICATE
+[2023.04.25-07.26.58:982][210]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.27.06:409][440]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.27.06:558][440]LogUObjectHash: Compacting FUObjectHashTables data took   1.07ms
+[2023.04.25-07.27.23:360][440]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.27.23:364][440]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing16C46D3F04E216123A56847BF5A04F652.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.27.23:582][440]LogFileHelpers: No new changes to save!
+[2023.04.25-07.27.23:583][440]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 17.047
+[2023.04.25-07.27.23:595][440]LogFileHelpers: InternalPromptForCheckoutAndSave took 17.1 sec (total: 1:47 min)
+[2023.04.25-07.27.23:609][440]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.27.23:609][440]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.27.56:798][ 42]Cmd: DUPLICATE
+[2023.04.25-07.27.56:798][ 42]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.28.19:879][652]Cmd: DUPLICATE
+[2023.04.25-07.28.19:879][652]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.28.25:917][815]Cmd: DUPLICATE
+[2023.04.25-07.28.25:917][815]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.28.32:747][983]Cmd: DUPLICATE
+[2023.04.25-07.28.32:748][983]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.28.37:433][103]Cmd: DUPLICATE
+[2023.04.25-07.28.37:433][103]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.28.43:732][253]Cmd: DUPLICATE
+[2023.04.25-07.28.43:733][253]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.28.53:304][483]Cmd: DUPLICATE
+[2023.04.25-07.28.53:304][483]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.29.01:987][702]Cmd: DUPLICATE
+[2023.04.25-07.29.01:987][702]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.29.17:861][ 83]Cmd: DUPLICATE
+[2023.04.25-07.29.17:861][ 83]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.29.23:883][227]Cmd: DUPLICATE
+[2023.04.25-07.29.23:883][227]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.29.32:918][432]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.29.33:113][432]LogUObjectHash: Compacting FUObjectHashTables data took   1.09ms
+[2023.04.25-07.29.49:012][432]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.29.49:017][432]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1E927B61841500E752C4CDEA991F29EB9.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.29.49:250][432]LogFileHelpers: No new changes to save!
+[2023.04.25-07.29.49:250][432]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 16.160
+[2023.04.25-07.29.49:275][432]LogFileHelpers: InternalPromptForCheckoutAndSave took 16.3 sec (total: 2:04 min)
+[2023.04.25-07.29.49:283][432]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.29.49:283][432]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.33.49:392][698]Cmd: DUPLICATE
+[2023.04.25-07.33.49:392][698]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.33.51:672][746]Cmd: DUPLICATE
+[2023.04.25-07.33.51:672][746]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.33.55:618][839]Cmd: DUPLICATE
+[2023.04.25-07.33.55:618][839]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.34.02:679][  7]Cmd: DUPLICATE
+[2023.04.25-07.34.02:679][  7]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.34.08:871][155]Cmd: DUPLICATE
+[2023.04.25-07.34.08:871][155]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.34.21:096][453]Cmd: DUPLICATE
+[2023.04.25-07.34.21:096][453]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.34.25:775][564]Cmd: DUPLICATE
+[2023.04.25-07.34.25:775][564]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.34.46:526][ 94]Cmd: DUPLICATE
+[2023.04.25-07.34.46:526][ 94]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.34.48:885][152]Cmd: DELETE
+[2023.04.25-07.34.48:885][152]Cmd: ACTOR DELETE
+[2023.04.25-07.34.48:923][152]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.34.48:942][152]LogUObjectHash: Compacting FUObjectHashTables data took   1.28ms
+[2023.04.25-07.34.48:944][152]LogEditorActor: Deleted 1 Actors (0.059 secs)
+[2023.04.25-07.35.05:702][575]Cmd: DELETE
+[2023.04.25-07.35.05:702][575]Cmd: ACTOR DELETE
+[2023.04.25-07.35.05:739][575]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-07.35.05:756][575]LogUObjectHash: Compacting FUObjectHashTables data took   0.61ms
+[2023.04.25-07.35.05:758][575]LogEditorActor: Deleted 1 Actors (0.055 secs)
+[2023.04.25-07.36.00:983][947]Cmd: DUPLICATE
+[2023.04.25-07.36.00:984][947]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Total job queries 581, among them cache hits 136 (23.41%)
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Tracking 445 distinct input hashes that result in 318 distinct outputs (71.46%)
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: RAM used: 3.65 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.45%
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Shaders Compiled: 2
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Jobs assigned 2, completed 2 (100.00%)
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Time job spent in pending queue: average 0.06 s, longest 0.06 s
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Job execution time: average 1.48 s, max 1.53 s
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Job life time (pending + execution): average 1.54 s, max 1.59
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 1.59 s
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Jobs were issued in 2 batches (only local compilation was used), average 1.00 jobs/batch
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Average processing rate: 1.25 jobs/sec
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Total thread time: 2.32 s
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Total thread preprocess time: 0.13 s
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Percentage time preprocessing: 5.65%
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Effective parallelization: 1.46 (times faster than compiling all shaders on one thread). Compare with number of workers: 4
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display: Top 2 most expensive shader types by average time:
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.36.01:164][948]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.36.01:165][948]LogShaderCompilers: Display: Top 2 shader types by total compile time:
+[2023.04.25-07.36.01:165][948]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 52.55% of total time (compiled    1 times, average 1.22 sec, max 1.22 sec, min 1.22 sec)
+[2023.04.25-07.36.01:165][948]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 47.45% of total time (compiled    1 times, average 1.10 sec, max 1.10 sec, min 1.10 sec)
+[2023.04.25-07.36.01:165][948]LogShaderCompilers: Display: ================================================
+[2023.04.25-07.36.13:497][236]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.36.13:676][236]LogUObjectHash: Compacting FUObjectHashTables data took   1.27ms
+[2023.04.25-07.36.27:722][236]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.36.27:727][236]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1A8C052CB44FBC9B31A824B8A9BE95E50.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.36.27:965][236]LogFileHelpers: No new changes to save!
+[2023.04.25-07.36.27:965][236]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 14.309
+[2023.04.25-07.36.27:989][236]LogFileHelpers: InternalPromptForCheckoutAndSave took 14.4 sec (total: 2:18 min)
+[2023.04.25-07.36.28:010][236]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.36.28:010][236]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-07.37.31:292][843]Cmd: DUPLICATE
+[2023.04.25-07.37.31:292][843]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.37.44:507][174]Cmd: DUPLICATE
+[2023.04.25-07.37.44:507][174]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.37.53:470][373]Cmd: DUPLICATE
+[2023.04.25-07.37.53:471][373]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.37.57:096][452]Cmd: DUPLICATE
+[2023.04.25-07.37.57:096][452]Cmd: ACTOR DUPLICATE
+[2023.04.25-07.38.24:083][ 69]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-07.38.24:284][ 69]LogUObjectHash: Compacting FUObjectHashTables data took   1.21ms
+[2023.04.25-07.38.39:801][ 69]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-07.38.39:807][ 69]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing13AD5AC0A4727D8F5A0E8CAB7D8FA51BB.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-07.38.40:034][ 69]LogFileHelpers: No new changes to save!
+[2023.04.25-07.38.40:034][ 69]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 15.771
+[2023.04.25-07.38.40:047][ 69]LogFileHelpers: InternalPromptForCheckoutAndSave took 15.9 sec (total: 2:34 min)
+[2023.04.25-07.38.40:062][ 69]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-07.38.40:063][ 69]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
