@@ -5,6 +5,24 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
+				"C:/Program Files/Epic Games/UE_5.1/Engine/Content/VREditor/UI/FrameMaterial.uasset",
+				"C:/Program Files/Epic Games/UE_5.1/Engine/Content/VREditor/UI/KeyMaterial.uasset",
+				"C:/Program Files/Epic Games/UE_5.1/Engine/Content/EngineSky/M_SimpleSkyDome.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/test.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Wall/Final_Wall_02_Unreal_Model.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Staligtite/stalagmite_stalactite_Low_Poly_01.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Rock_02/Final_Rock_02.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/New_Rock_02/polySurface1.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/New_Rock_01/Final_Rock_01.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_FirstPersonCharacter.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/VFX/FlickeringLight.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Wooden_Bridge_Sketchfab_/bridge.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Wooden_Bridge_Sketchfab_/slopetest2.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/Headbobbing.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/IdleShake.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Wooden_Bridge_Sketchfab_/Wooden_bridge.uasset",
+				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Models/Enviroment/Wooden_Bridge_Sketchfab_/Wooden_bridge_diffuse.uasset",
 				"D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap"
 			]
 		}

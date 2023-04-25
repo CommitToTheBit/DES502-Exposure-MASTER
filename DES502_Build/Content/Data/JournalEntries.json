@@ -33,6 +33,12 @@
             "ID": "Painting (Skin #3)",
             "ExtractType": "Journal",
             "ExtractText": "One point to consider - one sentence text entries don't really fill the page!"
+        },
+        "test":
+        {
+            "ID": "test",
+            "ExtractType": "Journal",
+            "ExtractText": "this is a test bla bla"
         }
     }
 }
