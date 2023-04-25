@@ -37525,3 +37525,177 @@ Scale3D: 1.000000 1.000000 1.000000
 [2023.04.25-16.32.44:192][167]LogFileHelpers: InternalPromptForCheckoutAndSave took 1:27 min (total: 9:20 min)
 [2023.04.25-16.32.44:211][167]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
 [2023.04.25-16.32.44:211][167]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-16.33.22:324][342]Cmd: DUPLICATE
+[2023.04.25-16.33.22:324][342]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.33.36:828][598]Cmd: DUPLICATE
+[2023.04.25-16.33.36:828][598]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.34.11:778][192]Cmd: DUPLICATE
+[2023.04.25-16.34.11:778][192]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.34.12:077][194]Cmd: DUPLICATE
+[2023.04.25-16.34.12:077][194]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.34.20:112][332]Cmd: DUPLICATE
+[2023.04.25-16.34.20:112][332]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.34.36:562][615]Cmd: DUPLICATE
+[2023.04.25-16.34.36:562][615]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.34.48:208][821]Cmd: DUPLICATE
+[2023.04.25-16.34.48:208][821]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.35.56:295][995]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-16.35.56:520][995]LogUObjectHash: Compacting FUObjectHashTables data took   1.71ms
+[2023.04.25-16.36.48:135][995]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-16.36.48:136][995]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing14E62EA6A487243FD4D9EC88CF78ED60E.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-16.36.48:207][995]LogFileHelpers: No new changes to save!
+[2023.04.25-16.36.48:208][995]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 51.729
+[2023.04.25-16.36.48:303][995]LogFileHelpers: InternalPromptForCheckoutAndSave took 52.0 sec (total: 10:12 min)
+[2023.04.25-16.36.48:313][995]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-16.36.48:313][995]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-16.37.31:571][712]Cmd: DUPLICATE
+[2023.04.25-16.37.31:571][712]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.38.16:094][449]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-16.38.16:289][449]LogUObjectHash: Compacting FUObjectHashTables data took   1.39ms
+[2023.04.25-16.39.21:422][449]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-16.39.21:424][449]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing134C838784280226AE1CC17BA51F8CABB.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-16.39.21:490][449]LogFileHelpers: No new changes to save!
+[2023.04.25-16.39.21:490][449]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 65.238
+[2023.04.25-16.39.21:496][449]LogFileHelpers: InternalPromptForCheckoutAndSave took 1:05 min (total: 11:18 min)
+[2023.04.25-16.39.21:516][449]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-16.39.21:516][449]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-16.42.21:974][223]Cmd: DUPLICATE
+[2023.04.25-16.42.21:974][223]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.42.43:951][568]Cmd: DUPLICATE
+[2023.04.25-16.42.43:951][568]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.43.07:361][919]Cmd: DUPLICATE
+[2023.04.25-16.43.07:361][919]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.43.15:494][ 35]Cmd: DELETE
+[2023.04.25-16.43.15:494][ 35]Cmd: ACTOR DELETE
+[2023.04.25-16.43.16:042][ 35]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-16.43.16:112][ 35]LogUObjectHash: Compacting FUObjectHashTables data took   1.43ms
+[2023.04.25-16.43.16:113][ 35]LogEditorActor: Deleted 1 Actors (0.619 secs)
+[2023.04.25-16.43.17:529][ 54]Cmd: DUPLICATE
+[2023.04.25-16.43.17:529][ 54]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.43.19:787][ 86]Cmd: DUPLICATE
+[2023.04.25-16.43.19:787][ 86]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.43.21:846][117]Cmd: DUPLICATE
+[2023.04.25-16.43.21:846][117]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.43.41:322][401]Cmd: DUPLICATE
+[2023.04.25-16.43.41:322][401]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.43.47:854][501]Cmd: DELETE
+[2023.04.25-16.43.47:854][501]Cmd: ACTOR DELETE
+[2023.04.25-16.43.47:921][501]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-16.43.47:953][501]LogUObjectHash: Compacting FUObjectHashTables data took   1.51ms
+[2023.04.25-16.43.47:954][501]LogEditorActor: Deleted 1 Actors (0.100 secs)
+[2023.04.25-16.43.55:900][618]Cmd: DELETE
+[2023.04.25-16.43.55:900][618]Cmd: ACTOR DELETE
+[2023.04.25-16.43.55:976][618]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-16.43.56:008][618]LogUObjectHash: Compacting FUObjectHashTables data took   0.50ms
+[2023.04.25-16.43.56:009][618]LogEditorActor: Deleted 1 Actors (0.109 secs)
+[2023.04.25-16.43.58:331][646]Cmd: DELETE
+[2023.04.25-16.43.58:331][646]Cmd: ACTOR DELETE
+[2023.04.25-16.43.58:403][646]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-16.43.58:434][646]LogUObjectHash: Compacting FUObjectHashTables data took   0.51ms
+[2023.04.25-16.43.58:435][646]LogEditorActor: Deleted 1 Actors (0.104 secs)
+[2023.04.25-16.43.59:570][661]Cmd: DELETE
+[2023.04.25-16.43.59:571][661]Cmd: ACTOR DELETE
+[2023.04.25-16.43.59:638][661]LogEditorActor: Deleted Actor: StaticMeshActor
+[2023.04.25-16.43.59:671][661]LogUObjectHash: Compacting FUObjectHashTables data took   1.07ms
+[2023.04.25-16.43.59:672][661]LogEditorActor: Deleted 1 Actors (0.101 secs)
+[2023.04.25-16.44.20:159][964]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-16.44.20:391][964]LogUObjectHash: Compacting FUObjectHashTables data took   0.50ms
+[2023.04.25-16.45.25:567][964]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-16.45.25:570][964]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing120AF30914F8BC40BFC17E9B7792712C0.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-16.45.25:641][964]LogFileHelpers: No new changes to save!
+[2023.04.25-16.45.25:641][964]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 65.291
+[2023.04.25-16.45.25:647][964]LogFileHelpers: InternalPromptForCheckoutAndSave took 1:05 min (total: 12:23 min)
+[2023.04.25-16.45.25:668][964]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-16.45.25:668][964]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-16.46.46:583][268]Cmd: DUPLICATE
+[2023.04.25-16.46.46:583][268]Cmd: ACTOR DUPLICATE
+[2023.04.25-16.54.20:338][818]LogUObjectHash: Compacting FUObjectHashTables data took   1.67ms
+[2023.04.25-16.55.55:421][818]LogSavePackage: Moving output files for package: /Temp/Autosaves/Game/Maps/STABLE_Whiteboxing1_Auto8
+[2023.04.25-16.55.55:423][818]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing1_Auto8C140874C4BC8620F52404ABF5539C600.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/Autosaves/Game/Maps/STABLE_Whiteboxing1_Auto8.umap'
+[2023.04.25-16.55.55:451][818]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/Maps/STABLE_Whiteboxing1' took 95.143
+[2023.04.25-16.55.55:451][818]LogFileHelpers: Editor autosave (incl. sublevels & external actors) for all levels took 95.143
+[2023.04.25-17.03.14:062][371]Cmd: DUPLICATE
+[2023.04.25-17.03.14:062][371]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.03.23:834][536]Cmd: DUPLICATE
+[2023.04.25-17.03.23:834][536]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.03.31:202][656]Cmd: DUPLICATE
+[2023.04.25-17.03.31:202][656]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.04.28:216][626]Cmd: DUPLICATE
+[2023.04.25-17.04.28:216][626]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.04.38:029][788]Cmd: DUPLICATE
+[2023.04.25-17.04.38:029][788]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.04.53:002][ 34]Cmd: DUPLICATE
+[2023.04.25-17.04.53:003][ 34]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.05.32:711][693]Cmd: DUPLICATE
+[2023.04.25-17.05.32:711][693]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.06.05:391][193]Cmd: DUPLICATE
+[2023.04.25-17.06.05:392][193]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.06.12:196][298]Cmd: DUPLICATE
+[2023.04.25-17.06.12:196][298]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.06.36:713][661]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-17.06.36:930][661]LogUObjectHash: Compacting FUObjectHashTables data took   1.41ms
+[2023.04.25-17.07.31:505][661]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-17.07.31:507][661]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing13089D6A642EB9155DFBB90949DB03C29.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-17.07.31:582][661]LogFileHelpers: No new changes to save!
+[2023.04.25-17.07.31:582][661]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 54.698
+[2023.04.25-17.07.31:588][661]LogFileHelpers: InternalPromptForCheckoutAndSave took 54.8 sec (total: 13:18 min)
+[2023.04.25-17.07.31:608][661]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-17.07.31:608][661]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-17.07.48:767][792]Cmd: DUPLICATE
+[2023.04.25-17.07.48:767][792]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.08.24:804][330]Cmd: DUPLICATE
+[2023.04.25-17.08.24:804][330]Cmd: ACTOR DUPLICATE
+[2023.04.25-17.08.36:066][488]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2023.04.25-17.08.36:284][488]LogUObjectHash: Compacting FUObjectHashTables data took   1.36ms
+[2023.04.25-17.09.33:779][488]LogSavePackage: Moving output files for package: /Game/Maps/STABLE_Whiteboxing1
+[2023.04.25-17.09.33:781][488]LogSavePackage: Moving 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Saved/STABLE_Whiteboxing11B75A7AA44174BDC8497E9B8F5CFADCE.tmp' to 'D:/Abertay_University/Computer_Arts/Y_2_S_2/Des_203/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap'
+[2023.04.25-17.09.33:849][488]LogFileHelpers: No new changes to save!
+[2023.04.25-17.09.33:849][488]LogFileHelpers: Saving map 'STABLE_Whiteboxing1' took 57.607
+[2023.04.25-17.09.33:855][488]LogFileHelpers: InternalPromptForCheckoutAndSave took 57.7 sec (total: 14:16 min)
+[2023.04.25-17.09.33:880][488]AssetCheck: New page: Asset Save: STABLE_Whiteboxing1
+[2023.04.25-17.09.33:880][488]LogContentValidation: Display: Validating /Script/Engine.World /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1
+[2023.04.25-17.15.34:887][572]LogDerivedDataCache: C:/Users/2100825/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:16.107 and deleted 0 files with total size 0 MiB. Scanned 8900 files in 8528 folders with total size 260 MiB.
+[2023.04.25-17.18.11:449][ 44]LogUObjectHash: Compacting FUObjectHashTables data took   0.82ms
+[2023.04.25-17.18.11:460][ 44]LogStall: Shutdown...
+[2023.04.25-17.18.11:465][ 44]LogStall: Shutdown complete.
+[2023.04.25-17.18.12:046][ 44]LogSlate: Window 'DES502_Build - Unreal Editor' being destroyed
+[2023.04.25-17.18.12:295][ 45]Cmd: QUIT_EDITOR
+[2023.04.25-17.18.12:295][ 45]LogCore: Engine exit requested (reason: UUnrealEdEngine::CloseEditor())
+[2023.04.25-17.18.12:314][ 45]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+[2023.04.25-17.18.12:314][ 45]LogStaticMesh: Abandoning remaining async distance field tasks for shutdown
+[2023.04.25-17.18.12:314][ 45]LogStaticMesh: Abandoning remaining async card representation tasks for shutdown
+[2023.04.25-17.18.12:327][ 45]LogNavigationDirtyArea: Warning: Skipping dirty area creation because of empty bounds (object: ProceduralMeshComponent /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1:PersistentLevel.DESTROYED_BP_BloodVessel_C_CHILDACTOR_207.ProceduralMesh, from: Remove from navoctree)
+[2023.04.25-17.18.12:367][ 45]LogNavigationDirtyArea: Warning: Skipping dirty area creation because of empty bounds (object: ProceduralMeshComponent /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1:PersistentLevel.DESTROYED_BP_BloodVessel_C_CHILDACTOR_208.ProceduralMesh, from: Remove from navoctree)
+[2023.04.25-17.18.12:391][ 45]LogNavigationDirtyArea: Warning: Skipping dirty area creation because of empty bounds (object: ProceduralMeshComponent /Game/Maps/STABLE_Whiteboxing1.STABLE_Whiteboxing1:PersistentLevel.DESTROYED_BP_BloodVessel_C_CHILDACTOR_209.ProceduralMesh, from: Remove from navoctree)
+[2023.04.25-17.18.12:415][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:416][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:458][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto1, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:459][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:496][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto2, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:498][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:544][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto3, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:547][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:607][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto4, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:609][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:642][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto5, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:644][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:664][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto6, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:665][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:677][ 45]LogWorld: UWorld::CleanupWorld for STABLE_Whiteboxing1_Auto7, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.12:679][ 45]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2023.04.25-17.18.12:681][ 45]LogStylusInput: Shutting down StylusInput subsystem.
+[2023.04.25-17.18.12:682][ 45]LogLevelSequenceEditor: LevelSequenceEditor subsystem deinitialized.
+[2023.04.25-17.18.13:718][ 45]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerXAudio2)...
+[2023.04.25-17.18.13:718][ 45]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...
+[2023.04.25-17.18.13:718][ 45]LogAudio: Display: Audio Device unregistered from world 'STABLE_Whiteboxing1'.
+[2023.04.25-17.18.13:718][ 45]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1
+[2023.04.25-17.18.13:721][ 45]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1
+[2023.04.25-17.18.13:749][ 45]LogAudio: Display: Audio Device Manager Shutdown
+[2023.04.25-17.18.13:765][ 45]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2023.04.25-17.18.13:765][ 45]LogExit: Preparing to exit.
+[2023.04.25-17.18.13:806][ 45]LogUObjectHash: Compacting FUObjectHashTables data took   1.37ms
+[2023.04.25-17.18.14:232][ 45]LogWorld: UWorld::CleanupWorld for World_1, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.14:232][ 45]LogWorld: UWorld::CleanupWorld for World_0, bSessionEnded=true, bCleanupResources=true
+[2023.04.25-17.18.14:527][ 45]LogExit: Editor shut down
+[2023.04.25-17.18.14:534][ 45]LogExit: Transaction tracking system shut down
+[2023.04.25-17.18.14:554][ 45]LogDemo: Cleaned up 0 splitscreen connections, owner deletion: enabled
