@@ -80,6 +80,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
 		bool PolaroidPressed;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+		bool PickaxeSwung;
+
 	// JOURNAL FUNCTIONALITY:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
 		UDES_JournalManager* JournalManager;
