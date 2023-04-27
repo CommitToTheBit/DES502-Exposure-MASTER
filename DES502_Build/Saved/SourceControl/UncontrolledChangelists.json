@@ -1,0 +1,27 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/LightFlickerShorter.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/MenuContents/FlickeringLight_BP.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/MenuContents/CaveMenu2.umap",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/BarrelFall.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/BeanScream1.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/BeanScream2.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/Breathing.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/CameraFlash.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/CaveAmbienceLoop.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/HeartBeatNew.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/HittingBarricade.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/JumpscareAudio.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/LightFlicker.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/PaperFlick.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/SawneyEating.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/SuspenseBuildUp.uasset"
+			]
+		}
+	]
+}
