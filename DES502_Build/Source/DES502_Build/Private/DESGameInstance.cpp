@@ -20,6 +20,7 @@ void UDESGameInstance::Init()
 	// Handle any odds and ends...
 	PlayerHandheldActive = !GameData->TorchBroken;
 	PolaroidPressed = false;
+	PickaxeSwung = false;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */ 
@@ -65,7 +66,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->PlayerHandheld = EHandheld::ETorch;
 
 		// Polaroid variables...
-		GameData->PolaroidInventoried = 0;
+		GameData->PolaroidInventoried = 1;
 		GameData->PolaroidAmmo = 27;
 
 		GameData->CrowbarInventoried = 0;
@@ -73,6 +74,14 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->TorchInventoried = 1;
 		GameData->TorchBreak = false;
 		GameData->TorchBroken = false;
+
+		// Tutorial variables...
+		GameData->TutorialisedRaiseCamera = false;
+		GameData->TutorialisedPressCamera = false;
+		GameData->TutorialisedOpenJournal = false;
+		GameData->TutorialisedRaisePickaxe = false;
+		GameData->TutorialisedSwingPickaxe = false;
+		GameData->TutorialisedScrollInventory = false;
 	}
 
 	// STEP 3: ...
