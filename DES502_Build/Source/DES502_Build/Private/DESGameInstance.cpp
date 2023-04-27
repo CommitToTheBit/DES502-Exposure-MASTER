@@ -66,7 +66,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->PlayerHandheld = EHandheld::ETorch;
 
 		// Polaroid variables...
-		GameData->PolaroidInventoried = 0;
+		GameData->PolaroidInventoried = 1;
 		GameData->PolaroidAmmo = 27;
 
 		GameData->CrowbarInventoried = 0;
