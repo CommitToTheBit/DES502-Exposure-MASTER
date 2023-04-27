@@ -74,6 +74,14 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->TorchInventoried = 1;
 		GameData->TorchBreak = false;
 		GameData->TorchBroken = false;
+
+		// Tutorial variables...
+		GameData->TutorialisedRaiseCamera = false;
+		GameData->TutorialisedPressCamera = false;
+		GameData->TutorialisedOpenJournal = false;
+		GameData->TutorialisedRaisePickaxe = false;
+		GameData->TutorialisedSwingPickaxe = false;
+		GameData->TutorialisedScrollInventory = false;
 	}
 
 	// STEP 3: ...

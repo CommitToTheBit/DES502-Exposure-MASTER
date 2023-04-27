@@ -57,10 +57,29 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Torch")
 		bool TorchBroken;
 
-	// JOURNAL SAVE DATA
+	// JOURNAL SAVE DATA:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Journal")
 		TArray<int> EntriesActive; // Store IDs in... ??
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Journal")
 		TArray<uint8> BinaryTextures;
+
+	// TUTORIAL SAVE DATA:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedRaiseCamera;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedPressCamera;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedOpenJournal;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedRaisePickaxe;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedSwingPickaxe;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedScrollInventory;
 };
