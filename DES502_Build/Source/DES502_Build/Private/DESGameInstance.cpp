@@ -18,7 +18,7 @@ void UDESGameInstance::Init()
 	LoadSettingsData();
 
 	// Handle any odds and ends...
-	PlayerHandheldActive = !GameData->TorchBroken;
+	PlayerHandheldActive = false;
 	PolaroidPressed = false;
 	PickaxeSwung = false;
 }
@@ -76,6 +76,7 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 		GameData->TorchBroken = false;
 
 		// Tutorial variables...
+		GameData->TutorialisedRaise = false;
 		GameData->TutorialisedRaiseCamera = false;
 		GameData->TutorialisedPressCamera = false;
 		GameData->TutorialisedOpenJournal = false;

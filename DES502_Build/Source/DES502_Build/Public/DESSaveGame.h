@@ -66,6 +66,9 @@ public:
 
 	// TUTORIAL SAVE DATA:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
+		bool TutorialisedRaise;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
 		bool TutorialisedRaiseCamera;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tutorial")
