@@ -1,0 +1,22 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_FirstPersonCharacter.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_PickupCrowbar.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_PickupPolaroid.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/SwingPickaxe.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/AmbienceAudio.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_Board.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/NewSoundCue.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/CaveAmbCue.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Assets/SqueezyMuffle.uasset",
+				"C:/Users/Samuel Small/OneDrive/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Audio/Swing.uasset"
+			]
+		}
+	]
+}
