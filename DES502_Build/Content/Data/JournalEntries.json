@@ -39,6 +39,24 @@
             "ID": "test",
             "ExtractType": "Journal",
             "ExtractText": "this is a test bla bla"
+        },
+        "Lamp":
+        {
+            "ID": "Lamp",
+            "ExtractType": "Journal",
+            "ExtractText": "Nothing interesting, just an old rusty lamp"
+        },
+        "Buoy":
+        {
+            "ID": "Buoy",
+            "ExtractType": "Journal",
+            "ExtractText": "Hmm, how on earth did this wind up here?"
+        },
+        "Camp":
+        {
+            "ID": "Camp",
+            "ExtractType": "Journal",
+            "ExtractText": "Someone left in a hurry..."
         }
     }
 }

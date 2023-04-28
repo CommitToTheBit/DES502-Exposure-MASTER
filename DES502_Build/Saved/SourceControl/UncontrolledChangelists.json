@@ -5,6 +5,10 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
+				"E:/DES502 Build/DES502-Build-MASTER/DES502_Build/Content/Blueprints/Curios/BP_Lamp.uasset",
+				"E:/DES502 Build/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
+				"E:/DES502 Build/DES502-Build-MASTER/DES502_Build/Content/Blueprints/Curios/BP_LifeBuoy.uasset",
+				"E:/DES502 Build/DES502-Build-MASTER/DES502_Build/Content/Blueprints/Curios/BP_Camp.uasset",
 				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
 				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/Curios/BP_test.uasset"
 			]
