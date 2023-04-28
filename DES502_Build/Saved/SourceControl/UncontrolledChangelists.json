@@ -5,6 +5,8 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
+				"C:/Users/Sam/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
+				"C:/Users/Sam/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/VFX/VignetteScreenShader.uasset",
 				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Maps/STABLE_Whiteboxing1.umap",
 				"C:/Users/Raymo/Documents/GitHub/DES502-Build-MASTER/DES502_Build/Content/Blueprints/BP_PickupTorch.uasset"
 			]
