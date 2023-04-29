@@ -57,6 +57,18 @@
             "ID": "Camp",
             "ExtractType": "Journal",
             "ExtractText": "Someone left in a hurry..."
+        },
+         "Bones":
+        {
+            "ID": "Bones",
+            "ExtractType": "Journal",
+            "ExtractText": "Just animal bones, right?!?"
+        },
+        "Toys":
+        {
+            "ID": "Toys",
+            "ExtractType": "Journal",
+            "ExtractText": "What on earth are these doing down here?"
         }
     }
 }
