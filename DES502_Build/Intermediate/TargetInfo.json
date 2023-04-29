@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "DES502_Build",
+			"Path": "C:\\Users\\Raymo\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\Source\\DES502_Build.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "DES502_BuildEditor",
+			"Path": "C:\\Users\\Raymo\\Documents\\GitHub\\DES502-Build-MASTER\\DES502_Build\\Source\\DES502_BuildEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
