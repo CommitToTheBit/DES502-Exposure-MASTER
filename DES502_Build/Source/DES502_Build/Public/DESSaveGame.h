@@ -21,6 +21,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
 		bool ProgressStarted;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		bool ProgressSplashRead;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Progress")
+		bool ProgressSawneyWallCrawled;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 		FVector PlayerPosition;
 

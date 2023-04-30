@@ -55,6 +55,8 @@ void UDESGameInstance::LoadGameData(bool resetGameData)
 
 		// Progress variables
 		GameData->ProgressStarted = false;
+		GameData->ProgressSplashRead = false;
+		GameData->ProgressSawneyWallCrawled = false;
 
 		// Player variables...
 		GameData->PlayerPosition = FVector(0.0, 0.0, 0.0);
