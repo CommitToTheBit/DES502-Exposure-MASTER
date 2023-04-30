@@ -4,7 +4,7 @@ rv : RVSession (2)
 {
 	session
 	{
-		float fps = 30.000000
+		float fps = 60.000000
 		int realtime = 1
 	}
 
@@ -28,7 +28,7 @@ sourceGroup000000_source : RVFileSource (1)
 	cut
 	{
 		int in = 0
-		int out = 329
+		int out = 280
 	}
 
 	group
@@ -56,7 +56,7 @@ sourceGroup000001_source : RVFileSource (1)
 	cut
 	{
 		int in = 0
-		int out = 150
+		int out = 300
 	}
 
 	group
@@ -67,6 +67,118 @@ sourceGroup000001_source : RVFileSource (1)
 	media
 	{
 		string movie = "shot0020_01.avi"
+		string shot = ""
+	}
+}
+
+sourceGroup000002 : RVSourceGroup (1)
+{
+	ui
+	{
+		string name = "shot0030_01.avi"
+	}
+}
+
+sourceGroup000002_source : RVFileSource (1)
+{
+	cut
+	{
+		int in = 0
+		int out = 300
+	}
+
+	group
+	{
+		int noMovieAudio = 1
+	}
+
+	media
+	{
+		string movie = "shot0030_01.avi"
+		string shot = ""
+	}
+}
+
+sourceGroup000003 : RVSourceGroup (1)
+{
+	ui
+	{
+		string name = "shot0040_01.avi"
+	}
+}
+
+sourceGroup000003_source : RVFileSource (1)
+{
+	cut
+	{
+		int in = 0
+		int out = 193
+	}
+
+	group
+	{
+		int noMovieAudio = 1
+	}
+
+	media
+	{
+		string movie = "shot0040_01.avi"
+		string shot = ""
+	}
+}
+
+sourceGroup000004 : RVSourceGroup (1)
+{
+	ui
+	{
+		string name = "shot0050_01.avi"
+	}
+}
+
+sourceGroup000004_source : RVFileSource (1)
+{
+	cut
+	{
+		int in = 0
+		int out = 177
+	}
+
+	group
+	{
+		int noMovieAudio = 1
+	}
+
+	media
+	{
+		string movie = "shot0050_01.avi"
+		string shot = ""
+	}
+}
+
+sourceGroup000005 : RVSourceGroup (1)
+{
+	ui
+	{
+		string name = "shot0060_01.avi"
+	}
+}
+
+sourceGroup000005_source : RVFileSource (1)
+{
+	cut
+	{
+		int in = 0
+		int out = 300
+	}
+
+	group
+	{
+		int noMovieAudio = 1
+	}
+
+	media
+	{
+		string movie = "shot0060_01.avi"
 		string shot = ""
 	}
 }
