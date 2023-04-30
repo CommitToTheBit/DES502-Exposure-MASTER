@@ -69,6 +69,24 @@
             "ID": "Toys",
             "ExtractType": "Journal",
             "ExtractText": "What on earth are these doing down here?"
+        },
+        "Backpack":
+        {
+            "ID": "Backpack",
+            "ExtractType": "Newspaper",
+            "ExtractText": "Whoever left this came prepared"
+        },
+        "BarrelSpill":
+        {
+            "ID": "BarrelSpill",
+            "ExtractType": "Newspaper",
+            "ExtractText": "The barrels are filled with some weird gooey substance that contains... body parts?"
+        },
+        "Barrel":
+        {
+            "ID": "Barrel",
+            "ExtractType": "Newspaper",
+            "ExtractText": "why isnt this working omg"
         }
     }
 }
