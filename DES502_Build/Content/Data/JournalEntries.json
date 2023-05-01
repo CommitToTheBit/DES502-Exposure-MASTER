@@ -81,7 +81,7 @@ place a visit."
         "Backpack":
         {
             "ID": "Backpack",
-            "CaptionText": "Niall's?",
+            "CaptionText": "...Niall?",
             "ExtractType": "Newspaper",
             "ExtractText": "Doesn't seem like there's anything 
 useful besides the pickaxe."
