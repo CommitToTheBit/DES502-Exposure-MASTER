@@ -1,1 +1,0 @@
-rv -nomb -fullscreen -noBorders -fps 60.000000 shot0010_01.avi shot0020_01.avi shot0030_01.avi shot0040_01.avi shot0050_01.avi shot0060_01.avi
