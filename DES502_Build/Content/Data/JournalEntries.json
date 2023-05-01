@@ -44,43 +44,45 @@
         {
             "ID": "Lamp",
             "ExtractType": "Journal",
-            "ExtractText": "Nothing interesting, just an old rusty lamp"
+            "ExtractText": "An old, rusty lamp. Looks ancient."
         },
         "Buoy":
         {
             "ID": "Buoy",
+            "CaptionText": "A buoy..?",
             "ExtractType": "Journal",
-            "ExtractText": "Hmm, how on earth did this wind up here?"
+            "ExtractText": "How on earth did this wind up here?"
         },
         "Camp":
         {
             "ID": "Camp",
+            "CaptionText": "Been empty for a while?",
             "ExtractType": "Journal",
-            "ExtractText": "Someone left in a hurry..."
+            "ExtractText": "Seems like I'm not the only one who thought to pay this place a visit."
         },
          "Bones":
         {
             "ID": "Bones",
             "ExtractType": "Journal",
-            "ExtractText": "Just animal bones, right?!?"
+            "ExtractText": "Just animal bones, right?"
         },
         "Toys":
         {
             "ID": "Toys",
             "ExtractType": "Journal",
-            "ExtractText": "What on earth are these doing down here?"
+            "ExtractText": "What are toys doing this far down a cave?"
         },
         "Backpack":
         {
             "ID": "Backpack",
             "ExtractType": "Newspaper",
-            "ExtractText": "Whoever left this came prepared"
+            "ExtractText": "Doesn't seem like there's anything useful besides the pickaxe."
         },
         "BarrelSpill":
         {
             "ID": "BarrelSpill",
             "ExtractType": "Newspaper",
-            "ExtractText": "The barrels are filled with some weird gooey substance that contains... body parts?"
+            "ExtractText": "Wait are these barrels filled with... body parts?"
         },
         "Barrel":
         {
@@ -92,13 +94,27 @@
         {
             "ID": "KayleighPainting",
             "ExtractType": "Newspaper",
-            "ExtractText": "A painting of a rich lady. Her cat is adorable."
+            "ExtractText": "A painting of a rich lady. Old paintings always have the funniest depictions of cats. Still cute."
         },
         "EuanPainting":
         {
             "ID": "EuanPainting",
             "ExtractType": "Newspaper",
-            "ExtractText": "Nice painting, beautiful strokes. He looks peaceful."
+            "ExtractText": "How I wish that was me right now."
+        },
+        "Table":
+        {
+            "ID": "Table",
+            "CaptionText": "Witchcraft?",
+            "ExtractType": "Folklore",
+            "ExtractText": "These books supposedly contain incantations. Maybe it can tell me my horoscope too."
+        },
+        "Vase":
+        {
+            "ID": "Vase",
+            "CaptionText": "Old vases",
+            "ExtractType": "Folklore",
+            "ExtractText": "A bunch of old vases. Maybe they contain rupees?"
         }
     }
 }
