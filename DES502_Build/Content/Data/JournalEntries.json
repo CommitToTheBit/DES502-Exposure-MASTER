@@ -87,6 +87,12 @@
             "ID": "Barrel",
             "ExtractType": "Newspaper",
             "ExtractText": "why isnt this working omg"
+        },
+        "KayleighPainting":
+        {
+            "ID": "KayleighPainting",
+            "ExtractType": "Newspaper",
+            "ExtractText": "A painting of a rich lady. Her cat is adorable."
         }
     }
 }
