@@ -93,6 +93,12 @@
             "ID": "KayleighPainting",
             "ExtractType": "Newspaper",
             "ExtractText": "A painting of a rich lady. Her cat is adorable."
+        },
+        "EuanPainting":
+        {
+            "ID": "EuanPainting",
+            "ExtractType": "Newspaper",
+            "ExtractText": "Nice painting, beautiful strokes. He looks peaceful."
         }
     }
 }
