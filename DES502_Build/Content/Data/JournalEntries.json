@@ -43,6 +43,7 @@
         "Lamp":
         {
             "ID": "Lamp",
+            "CaptionText": "15th century-ish?",
             "ExtractType": "Journal",
             "ExtractText": "An old, rusty lamp. Looks ancient."
         },
@@ -51,14 +52,18 @@
             "ID": "Buoy",
             "CaptionText": "A buoy..?",
             "ExtractType": "Journal",
-            "ExtractText": "How on earth did this wind up here?"
+            "ExtractText": "   How on earth did 
+this wind up here?"
         },
         "Camp":
         {
             "ID": "Camp",
             "CaptionText": "Been empty for a while?",
             "ExtractType": "Journal",
-            "ExtractText": "Seems like I'm not the only one who thought to pay this place a visit."
+            "ExtractText": "Seems like I'm not 
+the only one who 
+thought to pay this 
+place a visit."
         },
          "Bones":
         {
@@ -69,30 +74,37 @@
         "Toys":
         {
             "ID": "Toys",
+            "CaptionText": "The missing family?",
             "ExtractType": "Journal",
-            "ExtractText": "What are toys doing this far down a cave?"
+            "ExtractText": "   What are toys doing this far down a cave?"
         },
         "Backpack":
         {
             "ID": "Backpack",
+            "CaptionText": "Niall's?",
             "ExtractType": "Newspaper",
-            "ExtractText": "Doesn't seem like there's anything useful besides the pickaxe."
+            "ExtractText": "Doesn't seem like there's anything 
+useful besides the pickaxe."
         },
         "BarrelSpill":
         {
             "ID": "BarrelSpill",
+            "CaptionText": "Gooey substance",
             "ExtractType": "Newspaper",
-            "ExtractText": "Wait are these barrels filled with... body parts?"
+            "ExtractText": "Wait are these barrels filled 
+    with... body parts?"
         },
         "Barrel":
         {
             "ID": "Barrel",
             "ExtractType": "Newspaper",
-            "ExtractText": "A barrel? All the way down here? I wonder what's inside."
+            "ExtractText": "A barrel? All the way down here? 
+            I wonder what's inside."
         },
         "KayleighPainting":
         {
             "ID": "KayleighPainting",
+            "CaptionText": "Reminds me of someone",
             "ExtractType": "Newspaper",
             "ExtractText": "A painting of a rich lady. Old paintings always have the funniest depictions of cats. Still cute."
         },
@@ -100,21 +112,26 @@
         {
             "ID": "EuanPainting",
             "ExtractType": "Newspaper",
-            "ExtractText": "How I wish that was me right now."
+            "ExtractText": "Not a care in the world that guy."
         },
         "Table":
         {
             "ID": "Table",
             "CaptionText": "Witchcraft?",
             "ExtractType": "Folklore",
-            "ExtractText": "These books supposedly contain incantations. Maybe it can tell me my horoscope too."
+            "ExtractText": "These books supposedly 
+contain incantations. 
+Maybe it can tell me 
+my horoscope too."
         },
         "Vase":
         {
             "ID": "Vase",
             "CaptionText": "Old vases",
             "ExtractType": "Folklore",
-            "ExtractText": "A bunch of old vases. Maybe they contain rupees?"
+            "ExtractText": "A bunch of old vases. 
+Maybe they contain 
+rupees?"
         }
     }
 }
